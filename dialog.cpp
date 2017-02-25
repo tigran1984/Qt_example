@@ -47,7 +47,7 @@ Dialog::Dialog(QWidget *parent) :
     //square2->setPos(0,0);
     //scene->addItem(group);
     QGraphicsLineItem *line = new QGraphicsLineItem(0,0,100,100);
-	//Arrow *ar = new Arrow(square,square2);
+	Arrow *ar = new Arrow(square,square2);
     //group->addToGroup(ar);
     scene->addItem(square);
 	scene->addItem(square2);
