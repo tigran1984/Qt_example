@@ -7,7 +7,7 @@
 
 const qreal Pi = 3.14;
 
-Arrow::Arrow(DiagramItem *startItem, DiagramItem *endItem, QGraphicsItem *parent = 0)
+Arrow::Arrow(MySquare *startItem, MySquare *endItem,QGraphicsItem *parent  )
     : QGraphicsLineItem(parent)
 {
     myStartItem = startItem;
@@ -36,8 +36,9 @@ QPainterPath Arrow::shape() const
 
 void Arrow::updatePosition()
 {
-    QLineF line(mapFromItem(myStartItem, 0, 0), mapFromItem(myEndItem, 0, 0));
+    QLineF line(mapFromItem(myStartItem, 20, 20), mapFromItem(myEndItem, 20, 20));
     setLine(line);
+    qDebug() << myStartItem->x() << "item1 pos" ; 
 }
 
 void Arrow::paint(QPainter *painter, const QStyleOptionGraphicsItem *,

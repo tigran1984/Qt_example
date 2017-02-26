@@ -47,11 +47,16 @@ Dialog::Dialog(QWidget *parent) :
     //square2->setPos(0,0);
     //scene->addItem(group);
     QGraphicsLineItem *line = new QGraphicsLineItem(0,0,100,100);
-	Arrow *ar = new Arrow(square,square2);
+
+	//Arrow *ar = new Arrow(0,0,100,200);
     //group->addToGroup(ar);
     scene->addItem(square);
 	scene->addItem(square2);
-    scene->addItem(line);
+	Arrow *ar = new Arrow(square,square2);
+    square->addArrow(ar);
+    square2->addArrow(ar);
+    scene->addItem(ar);
+    ar->updatePosition();
     //qDebug() << (scene->items())  << " Items";
 
 

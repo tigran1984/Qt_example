@@ -2,6 +2,7 @@
 #include<QTranslator>
 
 MySquare::MySquare()
+        :QGraphicsItem()
 {
     Pressed = false;
     setFlag(ItemIsMovable);
@@ -49,7 +50,7 @@ void MySquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
     painter->drawPath(path);
     QImage img("/home/tiko/workspace/Qt_proj/view2/image.svg");
     //QImage img(QCoreApplication::applicationDirPath() + "/image.png");
-    qDebug() << "App path : " << QCoreApplication::applicationDirPath();
+    //qDebug() << "App path : " << QCoreApplication::applicationDirPath();
     Q_ASSERT(!img.isNull());
     painter->drawImage(QRect(55, 55, 35, 35), img);
 
@@ -59,14 +60,61 @@ void MySquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
 
 void MySquare::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    Pressed = true;
-    update();
+    //Pressed = true;
+    //update();
     QGraphicsItem::mousePressEvent(event);
 }
 
 void MySquare::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
-    Pressed = false;
-    update();
+    //Pressed = false;
+    //update();
     QGraphicsItem::mouseReleaseEvent(event);
+}
+
+
+//QVariant MySquare::itemChange(GraphicsItemChange change, const QVariant &value)
+//{
+//    if (change == QGraphicsItem::ItemPositionChange) {
+//        foreach (Arrow *arrow, arrows) {
+//            arrow->updatePosition();
+//        }
+//       qDebug() << "helooooooo" ;
+//    }
+//
+//    return value;
+//}
+
+
+
+QVariant MySquare::itemChange(GraphicsItemChange change, const QVariant &value)
+{
+    if (change == QGraphicsItem::ItemPositionChange || scene()) {
+        foreach (Arrow *arrow, arrows) {
+            arrow->updatePosition();
+        }
+        // value is the new position.
+        //QPointF newPos = value.toPointF();
+        //QRectF rect = scene()->sceneRect();
+        //if (!rect.contains(newPos)) {
+            // Keep the item inside the scene rect.
+        //    newPos.setX(qMin(rect.right(), qMax(newPos.x(), rect.left())));
+        //    newPos.setY(qMin(rect.bottom(), qMax(newPos.y(), rect.top())));
+        //    return newPos;
+        //}
+    qDebug() << "helooooooo" ;
+    }
+    return QGraphicsItem::itemChange(change, value);
+}
+
+
+
+
+
+
+
+
+void MySquare::addArrow(Arrow *arrow)
+{
+    arrows.append(arrow);
 }

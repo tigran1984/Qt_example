@@ -3,8 +3,9 @@
 
 #include <QGraphicsLineItem>
 
+#include <QDebug>
 #include "mysquare.h"
-#define  DiagramItem MySquare
+class MySquare;
 
 
 class QGraphicsPolygonItem;
@@ -19,15 +20,15 @@ class Arrow : public QGraphicsLineItem
 public:
     enum { Type = UserType + 4 };
 
-    Arrow(DiagramItem *startItem, DiagramItem *endItem,
-      QGraphicsItem *parent = 0);
+    Arrow(MySquare *startItem, MySquare *endItem, QGraphicsItem *parent = 0);
+    //Arrow(qreal x1, qreal x2, qreal x3, qreal x4, QGraphicsItem *parent = 0);
 
     int type() const Q_DECL_OVERRIDE { return Type; }
     QRectF boundingRect() const Q_DECL_OVERRIDE;
     QPainterPath shape() const Q_DECL_OVERRIDE;
     void setColor(const QColor &color) { myColor = color; }
-    DiagramItem *startItem() const { return myStartItem; }
-    DiagramItem *endItem() const { return myEndItem; }
+    MySquare *startItem() const { return myStartItem; }
+    MySquare *endItem() const { return myEndItem; }
 
     void updatePosition();
 
@@ -35,8 +36,8 @@ protected:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0) Q_DECL_OVERRIDE;
 
 private:
-    DiagramItem *myStartItem;
-    DiagramItem *myEndItem;
+    MySquare *myStartItem;
+    MySquare *myEndItem;
     QColor myColor;
     QPolygonF arrowHead;
 };
