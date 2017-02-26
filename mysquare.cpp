@@ -9,6 +9,7 @@ MySquare::MySquare()
     QGraphicsTextItem *text = new QGraphicsTextItem("description",this);
     text->setTextInteractionFlags(Qt::TextEditorInteraction);
     text->setPos(105, 75);
+    setFlag(ItemSendsScenePositionChanges, true);
 }
 
 QRectF MySquare::boundingRect() const
@@ -53,6 +54,9 @@ void MySquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
     //qDebug() << "App path : " << QCoreApplication::applicationDirPath();
     Q_ASSERT(!img.isNull());
     painter->drawImage(QRect(55, 55, 35, 35), img);
+    //foreach (Arrow *arrow, arrows) {
+    //    arrow->updatePosition();
+    //}
 
 
     //painter->drawRect(rec);
@@ -118,3 +122,36 @@ void MySquare::addArrow(Arrow *arrow)
 {
     arrows.append(arrow);
 }
+
+QPointF MySquare::returnCenter()
+{
+    qreal width = boundingRect().width();
+    qreal height = boundingRect().height();
+    QPointF p = QPointF(width/2 + this->pos().x(), this->pos().y() + height/2 );
+    return p;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

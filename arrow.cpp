@@ -36,9 +36,9 @@ QPainterPath Arrow::shape() const
 
 void Arrow::updatePosition()
 {
-    QLineF line(mapFromItem(myStartItem, 20, 20), mapFromItem(myEndItem, 20, 20));
+    QLineF line(mapFromItem(myStartItem, 0, 0), mapFromItem(myEndItem, 0, 0));
     setLine(line);
-    qDebug() << myStartItem->x() << "item1 pos" ; 
+    //qDebug() << myEndItem->x() << "myEndItem pos.x()" << myEndItem->y() << "myEndItem pos.y()" ; 
 }
 
 void Arrow::paint(QPainter *painter, const QStyleOptionGraphicsItem *,
@@ -53,14 +53,14 @@ void Arrow::paint(QPainter *painter, const QStyleOptionGraphicsItem *,
     painter->setPen(myPen);
     painter->setBrush(myColor);
 
-    QLineF centerLine(myStartItem->pos(), myEndItem->pos());
+    QLineF centerLine(myStartItem->returnCenter(), myEndItem->returnCenter());
     QPolygonF endPolygon = myEndItem->polygon();
-    QPointF p1 = endPolygon.first() + myEndItem->pos();
+    QPointF p1 = endPolygon.first() + myEndItem->returnCenter();
     QPointF p2;
     QPointF intersectPoint;
     QLineF polyLine;
     for (int i = 1; i < endPolygon.count(); ++i) {
-    p2 = endPolygon.at(i) + myEndItem->pos();
+    p2 = endPolygon.at(i) + myEndItem->returnCenter();
     polyLine = QLineF(p1, p2);
     QLineF::IntersectType intersectType =
         polyLine.intersect(centerLine, &intersectPoint);
@@ -69,7 +69,9 @@ void Arrow::paint(QPainter *painter, const QStyleOptionGraphicsItem *,
         p1 = p2;
     }
 
-    setLine(QLineF(intersectPoint, myStartItem->pos()));
+    //setLine(QLineF(intersectPoint, myStartItem->returnCenter()));
+    setLine(QLineF(myEndItem->pos(), myStartItem->returnCenter()));
+
 
     double angle = ::acos(line().dx() / line().length());
     if (line().dy() >= 0)
@@ -93,4 +95,5 @@ void Arrow::paint(QPainter *painter, const QStyleOptionGraphicsItem *,
         painter->drawLine(myLine);
     }
 }
+
 
