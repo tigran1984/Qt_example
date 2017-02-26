@@ -20,8 +20,8 @@ QRectF MySquare::boundingRect() const
 void MySquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 
 {
-    //QRectF rect = boundingRect();
-    QRectF rect(50,50,150 ,70);
+    QRectF rect = boundingRect();
+    //QRectF rect(50,50,150 ,70);
     QBrush brush(Qt::green);
 
     if (Pressed)
@@ -125,33 +125,10 @@ void MySquare::addArrow(Arrow *arrow)
 
 QPointF MySquare::returnCenter()
 {
-    qreal width = boundingRect().width();
-    qreal height = boundingRect().height();
-    QPointF p = QPointF(width/2 + this->pos().x(), this->pos().y() + height/2 );
+    QRectF rect = boundingRect();
+    qreal width = rect.width();
+    qreal height = rect.height();
+    QPointF p = QPointF(width/2 + rect.x(), rect.y() + height/2 );
     return p;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -70,8 +70,7 @@ void Arrow::paint(QPainter *painter, const QStyleOptionGraphicsItem *,
     }
 
     //setLine(QLineF(intersectPoint, myStartItem->returnCenter()));
-    setLine(QLineF(myEndItem->pos(), myStartItem->returnCenter()));
-
+    setLine(QLineF(myEndItem->pos()+myEndItem->returnCenter(), myStartItem->pos()+myStartItem->returnCenter()));
 
     double angle = ::acos(line().dx() / line().length());
     if (line().dy() >= 0)
