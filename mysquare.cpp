@@ -93,7 +93,7 @@ void MySquare::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 
 QVariant MySquare::itemChange(GraphicsItemChange change, const QVariant &value)
 {
-    if (change == QGraphicsItem::ItemPositionChange || scene()) {
+    if (change == QGraphicsItem::ItemPositionChange && scene()) {
         foreach (Arrow *arrow, arrows) {
             arrow->updatePosition();
         }

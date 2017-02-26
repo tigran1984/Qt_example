@@ -11,7 +11,7 @@ MAKEFILE      = Makefile
 ####### Compiler, tools and options
 
 CC            = gcc
-CXX           = g++ -std=c++11
+CXX           = g++
 DEFINES       = -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -O2 -Wall -W -D_REENTRANT -fPIE $(DEFINES)
 CXXFLAGS      = -pipe -O2 -Wall -W -D_REENTRANT -fPIE $(DEFINES)
@@ -616,6 +616,7 @@ moc_dialog.cpp: /usr/include/qt5/QtWidgets/QDialog \
 		/usr/include/qt5/QtGui/qdesktopservices.h \
 		/usr/include/qt5/QtGui/qvalidator.h \
 		/usr/include/qt5/QtGui/qtguiversion.h \
+		/usr/include/qt5/QtCore/QLineF \
 		mysquare.h \
 		/usr/include/qt5/QtGui/QPainter \
 		/usr/include/qt5/QtWidgets/QGraphicsItem \
@@ -1084,6 +1085,7 @@ dialog.o: dialog.cpp /usr/include/qt5/QtWidgets/QHBoxLayout \
 		/usr/include/qt5/QtGui/qdesktopservices.h \
 		/usr/include/qt5/QtGui/qvalidator.h \
 		/usr/include/qt5/QtGui/qtguiversion.h \
+		/usr/include/qt5/QtCore/QLineF \
 		mysquare.h \
 		/usr/include/qt5/QtGui/QPainter \
 		/usr/include/qt5/QtWidgets/QGraphicsItem \
@@ -1407,6 +1409,7 @@ main.o: main.cpp dialog.h \
 		/usr/include/qt5/QtGui/qdesktopservices.h \
 		/usr/include/qt5/QtGui/qvalidator.h \
 		/usr/include/qt5/QtGui/qtguiversion.h \
+		/usr/include/qt5/QtCore/QLineF \
 		mysquare.h \
 		/usr/include/qt5/QtGui/QPainter \
 		/usr/include/qt5/QtWidgets/QGraphicsItem \

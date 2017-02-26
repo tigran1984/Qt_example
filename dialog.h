@@ -4,6 +4,7 @@
 #include <QDialog>
 #include<QtCore>
 #include<QtGui>
+#include<QLineF>
 #include"mysquare.h"
 #include "mygroup.h"
 
