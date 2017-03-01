@@ -15,7 +15,7 @@ CXX           = g++
 DEFINES       = -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -O2 -Wall -W -D_REENTRANT -fPIE $(DEFINES)
 CXXFLAGS      = -pipe -O2 -Wall -W -D_REENTRANT -fPIE $(DEFINES)
-INCPATH       = -I/usr/lib/i386-linux-gnu/qt5/mkspecs/linux-g++ -I. -I. -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I.
+INCPATH       = -I/usr/lib/i386-linux-gnu/qt5/mkspecs/linux-g++ -I. -I. -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I.
 LINK          = g++
 LFLAGS        = -Wl,-O1
 LIBS          = $(SUBLIBS) -lQt5Widgets -L/usr/lib/i386-linux-gnu -lQt5Gui -lQt5Core -lGL -lpthread 
@@ -147,7 +147,7 @@ first: all
 
 all: Makefile $(TARGET)
 
-$(TARGET):  $(OBJECTS)  
+$(TARGET): ui_dialog.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: test.pro /usr/lib/i386-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf /usr/lib/i386-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -286,7 +286,7 @@ qmake_all: FORCE
 
 dist: 
 	@test -d .tmp/test1.0.0 || mkdir -p .tmp/test1.0.0
-	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/test1.0.0/ && $(COPY_FILE) --parents arrow.h dialog.h mygroup.h mysquare.h ui_dialog.h .tmp/test1.0.0/ && $(COPY_FILE) --parents arrow.cpp dialog.cpp main.cpp mygroup.cpp mysquare.cpp .tmp/test1.0.0/ && (cd `dirname .tmp/test1.0.0` && $(TAR) test1.0.0.tar test1.0.0 && $(COMPRESS) test1.0.0.tar) && $(MOVE) `dirname .tmp/test1.0.0`/test1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/test1.0.0
+	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/test1.0.0/ && $(COPY_FILE) --parents arrow.h dialog.h mygroup.h mysquare.h ui_dialog.h .tmp/test1.0.0/ && $(COPY_FILE) --parents arrow.cpp dialog.cpp main.cpp mygroup.cpp mysquare.cpp .tmp/test1.0.0/ && $(COPY_FILE) --parents dialog.ui .tmp/test1.0.0/ && (cd `dirname .tmp/test1.0.0` && $(TAR) test1.0.0.tar test1.0.0 && $(COMPRESS) test1.0.0.tar) && $(MOVE) `dirname .tmp/test1.0.0`/test1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/test1.0.0
 
 
 clean:compiler_clean 
@@ -638,15 +638,19 @@ moc_dialog.cpp: /usr/include/qt5/QtWidgets/QDialog \
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all:
+compiler_uic_make_all: ui_dialog.h
 compiler_uic_clean:
+	-$(DEL_FILE) ui_dialog.h
+ui_dialog.h: dialog.ui
+	/usr/lib/i386-linux-gnu/qt5/bin/uic dialog.ui -o ui_dialog.h
+
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
 compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_header_clean 
+compiler_clean: compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 

@@ -8,13 +8,16 @@ MySquare::MySquare()
     setFlag(ItemIsMovable);
     QGraphicsTextItem *text = new QGraphicsTextItem("description",this);
     text->setTextInteractionFlags(Qt::TextEditorInteraction);
-    text->setPos(105, 75);
+    //text->setPos(105, 75);
+    text->setPos(55, 25);
+    setMyPolygon();
     setFlag(ItemSendsScenePositionChanges, true);
 }
 
 QRectF MySquare::boundingRect() const
 {
-    return QRectF(50,50,150,70);
+    //return QRectF(50,50,150,70);
+    return QRectF(0,0,150,70);
 }
 
 void MySquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
@@ -40,7 +43,8 @@ void MySquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
     //path.addText(QPointF(40,30),font, tr("Partners \nand Customers"));
     painter->fillPath(path, Qt::white);
     painter->setPen(Qt::blue);
-    painter->drawText(QRect(105, 55, 115, 35), Qt::AlignLeft, mystr );
+    //painter->drawText(QRect(105, 55, 115, 35), Qt::AlignLeft, mystr );
+    painter->drawText(QRect(55, 5, 115, 35), Qt::AlignLeft, mystr );
     QPen pen(Qt::black, 1);
     painter->setPen(pen);
     //painter->setBrush(brush);
@@ -53,7 +57,8 @@ void MySquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
     //QImage img(QCoreApplication::applicationDirPath() + "/image.png");
     //qDebug() << "App path : " << QCoreApplication::applicationDirPath();
     Q_ASSERT(!img.isNull());
-    painter->drawImage(QRect(55, 55, 35, 35), img);
+    //painter->drawImage(QRect(55, 55, 35, 35), img);
+    painter->drawImage(QRect(5, 5, 35, 35), img);
     //foreach (Arrow *arrow, arrows) {
     //    arrow->updatePosition();
     //}
@@ -106,7 +111,8 @@ QVariant MySquare::itemChange(GraphicsItemChange change, const QVariant &value)
         //    newPos.setY(qMin(rect.bottom(), qMax(newPos.y(), rect.top())));
         //    return newPos;
         //}
-    qDebug() << "helooooooo" ;
+    qDebug() << "helooooooo"<< boundingRect().topLeft() << this->pos() 
+                << this->polygon();
     }
     return QGraphicsItem::itemChange(change, value);
 }
@@ -129,6 +135,18 @@ QPointF MySquare::returnCenter()
     qreal width = rect.width();
     qreal height = rect.height();
     QPointF p = QPointF(width/2 + rect.x(), rect.y() + height/2 );
-    return p;
+    //return p;// changet for test 
+    return this->pos()+p;// changet for test 
+}
+
+void MySquare::setMyPolygon()
+{
+    QRectF rec = boundingRect();
+    QPolygonF poly ;
+    //QPointF p = rec.topLeft();
+    poly << rec.topLeft() + this->pos()  << rec.topRight() + this->pos() 
+        << rec.bottomRight()  + this->pos() << rec.bottomLeft() + this->pos()
+        << rec.topLeft() + this->pos();
+    myPolygon =  poly;
 }
 

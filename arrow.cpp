@@ -14,8 +14,8 @@ Arrow::Arrow(MySquare *startItem, MySquare *endItem,QGraphicsItem *parent  )
     myEndItem = endItem;
     setFlag(QGraphicsItem::ItemIsSelectable, true);
     myColor = Qt::black;
-    setPen(QPen(myColor, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
-    //setZValue(-1000);
+    setPen(QPen(myColor, 1, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+    setZValue(-1000);
 }
 
 QRectF Arrow::boundingRect() const
@@ -50,18 +50,22 @@ void Arrow::paint(QPainter *painter, const QStyleOptionGraphicsItem *,
 
     QPen myPen = pen();
     myPen.setColor(myColor);
-    qreal arrowSize = 20;
+    qreal arrowSize = 5;
+    painter->setRenderHint(QPainter::Antialiasing); 
     painter->setPen(myPen);
     painter->setBrush(myColor);
 
     QLineF centerLine(myStartItem->returnCenter(), myEndItem->returnCenter());
+    myEndItem->setMyPolygon();// update item polygon values
     QPolygonF endPolygon = myEndItem->polygon();
-    QPointF p1 = endPolygon.first() + myEndItem->returnCenter();
+    //QPointF p1 = endPolygon.first() + myEndItem->returnCenter();
+    QPointF p1 = endPolygon.first() ; // changed for test
     QPointF p2;
     QPointF intersectPoint;
     QLineF polyLine;
     for (int i = 1; i < endPolygon.count(); ++i) {
-    p2 = endPolygon.at(i) + myEndItem->returnCenter();
+    //p2 = endPolygon.at(i) + myEndItem->returnCenter();
+    p2 = endPolygon.at(i);//changed for test
     polyLine = QLineF(p1, p2);
     QLineF::IntersectType intersectType =
         polyLine.intersect(centerLine, &intersectPoint);
@@ -70,8 +74,9 @@ void Arrow::paint(QPainter *painter, const QStyleOptionGraphicsItem *,
         p1 = p2;
     }
 
-    //setLine(QLineF(intersectPoint, myStartItem->returnCenter()));
-    setLine(QLineF(myEndItem->pos()+myEndItem->returnCenter(), myStartItem->pos()+myStartItem->returnCenter()));
+    setLine(QLineF(intersectPoint, myStartItem->returnCenter()));
+    //setLine(QLineF(myEndItem->pos()+myEndItem->returnCenter(), myStartItem->pos()+myStartItem->returnCenter()));//before test
+    //setLine(QLineF(myEndItem->returnCenter(), myStartItem->returnCenter()));//changed for test
 
     double angle = ::acos(line().dx() / line().length());
     if (line().dy() >= 0)

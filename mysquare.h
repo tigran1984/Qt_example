@@ -28,6 +28,7 @@ public:
     bool Pressed;
     void addArrow(Arrow *arrow);
     QPointF returnCenter();
+    void setMyPolygon();
 protected:
         void mousePressEvent(QGraphicsSceneMouseEvent *event);
         void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
