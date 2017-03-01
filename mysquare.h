@@ -13,7 +13,10 @@
 #include <QList>
 #include <QVariant>
 #include <QDebug>
+#include <QtSvg>
+#include <QSvgGenerator>
 #include "arrow.h"
+class QGraphicsSvgItem;
 class QPolygonF;
 class Arrow;
 

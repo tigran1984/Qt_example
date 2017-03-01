@@ -10,7 +10,7 @@ MySquare::MySquare()
     text->setTextInteractionFlags(Qt::TextEditorInteraction);
     //text->setPos(105, 75);
     text->setPos(55, 25);
-    setMyPolygon();
+    setMyPolygon();//member function
     setFlag(ItemSendsScenePositionChanges, true);
 }
 
@@ -53,12 +53,17 @@ void MySquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
     //painter->drawRoundedRect( rect.translated(0.5,0.5), 5.0, 5.0 ) ;
     //painter->setRenderHint(painter->HighQualityAntialiasing );
     painter->drawPath(path);
-    QImage img("/home/tiko/workspace/Qt_proj/view2/image.svg");
-    //QImage img(QCoreApplication::applicationDirPath() + "/image.png");
+
+    //QImage img("/home/tiko/workspace/Qt_proj/view2/image.svg");
+    //QGraphicsItem *img = new QGraphicsSvgItem("/home/tiko/workspace/Qt_proj/view2/image.svg");
+
+    QImage img(QCoreApplication::applicationDirPath() + "/image.svg");
     //qDebug() << "App path : " << QCoreApplication::applicationDirPath();
     Q_ASSERT(!img.isNull());
     //painter->drawImage(QRect(55, 55, 35, 35), img);
+
     painter->drawImage(QRect(5, 5, 35, 35), img);
+
     //foreach (Arrow *arrow, arrows) {
     //    arrow->updatePosition();
     //}
@@ -66,6 +71,10 @@ void MySquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
 
     //painter->drawRect(rec);
 }
+
+
+
+
 
 void MySquare::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {

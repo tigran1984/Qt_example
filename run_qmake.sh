@@ -1,7 +1,7 @@
 #!/bin/bash
 qmake -project -o test.pro
 match='INCLUDEPATH += .'
-insert='QT += widgets'
+insert='QT += widgets\nQT += svg'
 file='test.pro'
 
 sed -i "/$match/a $insert" $file

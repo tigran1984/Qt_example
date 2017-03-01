@@ -64,6 +64,9 @@ Dialog::Dialog(QWidget *parent) :
     scene->addItem(ar);
     ar->updatePosition();
     //qDebug() << (scene->items())  << " Items";
+    QGraphicsItem  *m_svgItem = new QGraphicsSvgItem("/home/tiko/workspace/Qt_proj/view2/image.svg");
+    m_svgItem->setPos(100,100);
+    scene->addItem(m_svgItem);
 
 
 
