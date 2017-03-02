@@ -5,6 +5,7 @@
 #include<QtCore>
 #include<QtGui>
 #include<QLineF>
+#include<QList>
 #include"mysquare.h"
 #include "mygroup.h"
 

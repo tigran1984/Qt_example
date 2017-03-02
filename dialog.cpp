@@ -21,11 +21,14 @@ Dialog::Dialog(QWidget *parent) :
     gview->setScene(scene);
     gview->setGeometry(0,0,350,350);
 
-
+    QList<MySquare * > items;
+    for (int i=0 ;i<9 ;++i)
+    {
+        items.append(new MySquare);
+    }
     square = new MySquare();
+    items.at(0)->setItemSize(0,0,200,200);
 	square2 = new MySquare();
-    //QGraphicsEllipseItem square5 = new QGraphicsEllipseItem(0,0,30,30);
-    //square->setPos(10,10);
     square2->setPos(130,130);
     //square->setPos(100,200);
     MyGroup *group = new MyGroup();
@@ -58,9 +61,12 @@ Dialog::Dialog(QWidget *parent) :
 
 	//Arrow *ar = new Arrow(0,0,100,200);
     //group->addToGroup(ar);
-    scene->addItem(square);
+
+    //scene->addItem(square);
+    scene->addItem(items.at(0));
 	scene->addItem(square2);
-	Arrow *ar = new Arrow(square,square2);
+	//Arrow *ar = new Arrow(square,square2);
+	Arrow *ar = new Arrow(items.at(0),square2);
     square->addArrow(ar);
     square2->addArrow(ar);
     scene->addItem(ar);

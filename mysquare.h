@@ -15,6 +15,7 @@
 #include <QDebug>
 #include <QtSvg>
 #include <QSvgGenerator>
+#include<QTranslator>
 #include "arrow.h"
 class QGraphicsSvgItem;
 class QPolygonF;
@@ -33,6 +34,7 @@ public:
     void addArrow(Arrow *arrow);
     QPointF returnCenter();
     void setMyPolygon();
+    void setItemSize(qreal x1,qreal y1,qreal height,qreal width);
 protected:
         void mousePressEvent(QGraphicsSceneMouseEvent *event);
         void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
@@ -40,6 +42,7 @@ protected:
 private:
         QPolygonF myPolygon;
         QList<Arrow *> arrows;
+        QRectF myItemRect;
 
 };
 
