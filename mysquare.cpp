@@ -2,16 +2,34 @@
 #include<QTranslator>
 
 MySquare::MySquare()
-        :QGraphicsItem()
+        //:QGraphicsItem()
+        :QGraphicsItemGroup()
 {
-    Pressed = false;
-    setFlag(ItemIsMovable);
+    //Pressed = false;
+    //setFlag(ItemIsMovable);
+    //QGraphicsTextItem *text = new QGraphicsTextItem("description",this);
+    //text->setTextInteractionFlags(Qt::TextEditorInteraction);
+    ////text->setPos(105, 75);
+    //text->setPos(55, 25);
+    //setMyPolygon();//member function
+    //setFlag(ItemSendsScenePositionChanges, true);
+    //
+    //
+    //
+    //
+    //
+    setFlag(ItemSendsScenePositionChanges, true);
+    setMyPolygon();//member function
+    setFlags(ItemIsSelectable | ItemIsMovable);
     QGraphicsTextItem *text = new QGraphicsTextItem("description",this);
     text->setTextInteractionFlags(Qt::TextEditorInteraction);
-    //text->setPos(105, 75);
     text->setPos(55, 25);
-    setMyPolygon();//member function
-    setFlag(ItemSendsScenePositionChanges, true);
+    this->addToGroup(text);
+    QGraphicsItem  *m_svgItem = new QGraphicsSvgItem(QCoreApplication::applicationDirPath() + "/image.svg");
+    Q_ASSERT(!m_svgItem.isNull());
+    m_svgItem->setPos(5,5);
+    //m_svgItem->setSize(35,35);
+    this->addToGroup(m_svgItem);
 }
 
 QRectF MySquare::boundingRect() const
@@ -27,10 +45,6 @@ void MySquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
     //QRectF rect(50,50,150 ,70);
     QBrush brush(Qt::green);
 
-    if (Pressed)
-    {
-        brush.setColor(Qt::red);
-    }
 
     QPainterPath path;
     //path.addRoundedRect(QRectF(0, 0, 150, 50), 5,5);
@@ -57,12 +71,15 @@ void MySquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
     //QImage img("/home/tiko/workspace/Qt_proj/view2/image.svg");
     //QGraphicsItem *img = new QGraphicsSvgItem("/home/tiko/workspace/Qt_proj/view2/image.svg");
 
-    QImage img(QCoreApplication::applicationDirPath() + "/image.svg");
+    //QImage img(QCoreApplication::applicationDirPath() + "/image.svg");
+
     //qDebug() << "App path : " << QCoreApplication::applicationDirPath();
-    Q_ASSERT(!img.isNull());
+    
+    //Q_ASSERT(!img.isNull());
+
     //painter->drawImage(QRect(55, 55, 35, 35), img);
 
-    painter->drawImage(QRect(5, 5, 35, 35), img);
+    //painter->drawImage(QRect(5, 5, 35, 35), img);
 
     //foreach (Arrow *arrow, arrows) {
     //    arrow->updatePosition();
@@ -80,51 +97,49 @@ void MySquare::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     //Pressed = true;
     //update();
-    QGraphicsItem::mousePressEvent(event);
+    QGraphicsItemGroup::mousePressEvent(event);
 }
 
 void MySquare::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
     //Pressed = false;
     //update();
-    QGraphicsItem::mouseReleaseEvent(event);
+    QGraphicsItemGroup::mouseReleaseEvent(event);
 }
-
-
-//QVariant MySquare::itemChange(GraphicsItemChange change, const QVariant &value)
-//{
-//    if (change == QGraphicsItem::ItemPositionChange) {
-//        foreach (Arrow *arrow, arrows) {
-//            arrow->updatePosition();
-//        }
-//       qDebug() << "helooooooo" ;
-//    }
-//
-//    return value;
-//}
-
 
 
 QVariant MySquare::itemChange(GraphicsItemChange change, const QVariant &value)
 {
-    if (change == QGraphicsItem::ItemPositionChange && scene()) {
+    if (change == QGraphicsItemGroup::ItemPositionChange && scene()) {
         foreach (Arrow *arrow, arrows) {
             arrow->updatePosition();
         }
-        // value is the new position.
-        //QPointF newPos = value.toPointF();
-        //QRectF rect = scene()->sceneRect();
-        //if (!rect.contains(newPos)) {
-            // Keep the item inside the scene rect.
-        //    newPos.setX(qMin(rect.right(), qMax(newPos.x(), rect.left())));
-        //    newPos.setY(qMin(rect.bottom(), qMax(newPos.y(), rect.top())));
-        //    return newPos;
-        //}
-    qDebug() << "helooooooo"<< boundingRect().topLeft() << this->pos() 
-                << this->polygon();
     }
-    return QGraphicsItem::itemChange(change, value);
+    return QGraphicsItemGroup::itemChange(change, value);
 }
+
+              // this is a mysquare itemChange implementation 
+           
+//QVariant MySquare::itemChange(GraphicsItemChange change, const QVariant &value)
+//{
+//    if (change == QGraphicsItem::ItemPositionChange && scene()) {
+//        foreach (Arrow *arrow, arrows) {
+//            arrow->updatePosition();
+//        }
+//        // value is the new position.
+//        //QPointF newPos = value.toPointF();
+//        //QRectF rect = scene()->sceneRect();
+//        //if (!rect.contains(newPos)) {
+//            // Keep the item inside the scene rect.
+//        //    newPos.setX(qMin(rect.right(), qMax(newPos.x(), rect.left())));
+//        //    newPos.setY(qMin(rect.bottom(), qMax(newPos.y(), rect.top())));
+//        //    return newPos;
+//        //}
+//    qDebug() << "helooooooo"<< boundingRect().topLeft() << this->pos() 
+//                << this->polygon();
+//    }
+//    return QGraphicsItem::itemChange(change, value);
+//}
 
 
 
@@ -148,6 +163,7 @@ QPointF MySquare::returnCenter()
     return this->pos()+p;// changet for test 
 }
 
+// polygon using for arrow and endItem rect corners intersection points.
 void MySquare::setMyPolygon()
 {
     QRectF rec = boundingRect();

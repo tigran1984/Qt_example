@@ -1,9 +1,5 @@
 #include "arrow.h"
 
-#include <math.h>
-
-#include <QPen>
-#include <QPainter>
 
 const qreal Pi = 3.14;
 

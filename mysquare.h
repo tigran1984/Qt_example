@@ -20,7 +20,8 @@ class QGraphicsSvgItem;
 class QPolygonF;
 class Arrow;
 
-class MySquare : public QGraphicsItem
+//class MySquare : public QGraphicsItem
+class MySquare : public  QGraphicsItemGroup
 {
 public:
     MySquare();

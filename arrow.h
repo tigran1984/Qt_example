@@ -1,13 +1,14 @@
 #ifndef ARROW_H
 #define ARROW_H
 
+#include <math.h>
+#include <QPen>
+#include <QPainter>
 #include <QGraphicsLineItem>
-
 #include <QDebug>
 #include "mysquare.h"
+
 class MySquare;
-
-
 class QGraphicsPolygonItem;
 class QGraphicsLineItem;
 class QGraphicsScene;

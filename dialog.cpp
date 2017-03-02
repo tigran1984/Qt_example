@@ -51,8 +51,10 @@ Dialog::Dialog(QWidget *parent) :
     line.setAngle(0);
     line.setLength(500);
     QGraphicsLineItem *myline = new QGraphicsLineItem();
+    group->addToGroup(myline);
     myline->setLine(line);
-    scene->addItem(myline);
+    //scene->addItem(myline);
+    scene->addItem(group);
 
 	//Arrow *ar = new Arrow(0,0,100,200);
     //group->addToGroup(ar);
@@ -64,9 +66,13 @@ Dialog::Dialog(QWidget *parent) :
     scene->addItem(ar);
     ar->updatePosition();
     //qDebug() << (scene->items())  << " Items";
-    QGraphicsItem  *m_svgItem = new QGraphicsSvgItem("/home/tiko/workspace/Qt_proj/view2/image.svg");
-    m_svgItem->setPos(100,100);
-    scene->addItem(m_svgItem);
+    //QGraphicsItem  *m_svgItem = new QGraphicsSvgItem(QCoreApplication::applicationDirPath() + "/image.svg");
+    //qDebug() << "App path : " << QCoreApplication::applicationDirPath();
+    Q_ASSERT(!img.isNull());
+    //painter->drawImage(QRect(55, 55, 35, 35), img);
+;
+    //m_svgItem->setPos(100,100);
+    //scene->addItem(m_svgItem);
 
 
 
