@@ -1,10 +1,11 @@
 #include "mysquare.h"
+#include "mysvgitem.h"
 #include<QTranslator>
 
 MySquare::MySquare()
         :QGraphicsItem()
 {
-    Pressed = false;
+    myItemRect = QRectF(0,0,150,70); //default value
     setFlag(ItemIsMovable);
     QGraphicsTextItem *text = new QGraphicsTextItem("description",this);
     text->setTextInteractionFlags(Qt::TextEditorInteraction);
@@ -16,25 +17,15 @@ MySquare::MySquare()
 
 QRectF MySquare::boundingRect() const
 {
-    //return QRectF(50,50,150,70);
-    return QRectF(0,0,150,70);
+    return myItemRect;
 }
 
 void MySquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 
 {
     QRectF rect = boundingRect();
-    //QRectF rect(50,50,150 ,70);
     QBrush brush(Qt::green);
-
-    if (Pressed)
-    {
-        brush.setColor(Qt::red);
-    }
-
     QPainterPath path;
-    //path.addRoundedRect(QRectF(0, 0, 150, 50), 5,5);
-    //path.addRoundedRect(rec, 10, 10);
     path.addRoundedRect( rect.translated(0.3,0.3), 5.0, 5.0 );
     QFont font;
     //font.setFamily("Armenian (phonetic)");
@@ -50,26 +41,9 @@ void MySquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
     //painter->setBrush(brush);
 
     painter->setRenderHint(QPainter::Antialiasing); // this for rectangel alignment
-    //painter->drawRoundedRect( rect.translated(0.5,0.5), 5.0, 5.0 ) ;
-    //painter->setRenderHint(painter->HighQualityAntialiasing );
     painter->drawPath(path);
 
-    //QImage img("/home/tiko/workspace/Qt_proj/view2/image.svg");
-    //QGraphicsItem *img = new QGraphicsSvgItem("/home/tiko/workspace/Qt_proj/view2/image.svg");
 
-    QImage img(QCoreApplication::applicationDirPath() + "/image.svg");
-    //qDebug() << "App path : " << QCoreApplication::applicationDirPath();
-    Q_ASSERT(!img.isNull());
-    //painter->drawImage(QRect(55, 55, 35, 35), img);
-
-    painter->drawImage(QRect(5, 5, 35, 35), img);
-
-    //foreach (Arrow *arrow, arrows) {
-    //    arrow->updatePosition();
-    //}
-
-
-    //painter->drawRect(rec);
 }
 
 
@@ -111,27 +85,9 @@ QVariant MySquare::itemChange(GraphicsItemChange change, const QVariant &value)
         foreach (Arrow *arrow, arrows) {
             arrow->updatePosition();
         }
-        // value is the new position.
-        //QPointF newPos = value.toPointF();
-        //QRectF rect = scene()->sceneRect();
-        //if (!rect.contains(newPos)) {
-            // Keep the item inside the scene rect.
-        //    newPos.setX(qMin(rect.right(), qMax(newPos.x(), rect.left())));
-        //    newPos.setY(qMin(rect.bottom(), qMax(newPos.y(), rect.top())));
-        //    return newPos;
-        //}
-    qDebug() << "helooooooo"<< boundingRect().topLeft() << this->pos() 
-                << this->polygon();
     }
     return QGraphicsItem::itemChange(change, value);
 }
-
-
-
-
-
-
-
 
 void MySquare::addArrow(Arrow *arrow)
 {
@@ -159,3 +115,30 @@ void MySquare::setMyPolygon()
     myPolygon =  poly;
 }
 
+
+void MySquare::setItemSize(qreal width,qreal height)
+{
+     myItemRect = QRectF(0,0,width,height);
+}
+
+void MySquare::setImage(QString str) 
+{
+    QGraphicsItem  *m_svgItem = new QGraphicsSvgItem(\
+            QCoreApplication::applicationDirPath() + "/" + str);
+    Q_ASSERT(!m_svgItem.isNull());
+    m_svgItem->setPos(5,5);
+    m_svgItem->setParentItem(this);
+}
+
+void MySquare::setImage(QString str ,qreal w, qreal h) 
+{
+    //QGraphicsSvgItem  *svg = new QGraphicsSvgItem(\
+            QCoreApplication::applicationDirPath() + "/" + str);
+    MySvgItem  *svg = new MySvgItem(\
+            QCoreApplication::applicationDirPath() + "/" + str +"h");
+    svg->setSize(w,h);
+    //svg->setMaximumCacheSize(QSize(35,35));
+    QGraphicsItem  *m_svgItem = svg; 
+    //m_svgItem->setPos(5,5);
+    m_svgItem->setParentItem(this);
+}

@@ -32,6 +32,10 @@ public:
     void addArrow(Arrow *arrow);
     QPointF returnCenter();
     void setMyPolygon();
+    void setItemSize(qreal height,qreal width);
+    void setImage(QString str);
+    void setImage(QString str ,qreal w, qreal h);
+ 
 protected:
         void mousePressEvent(QGraphicsSceneMouseEvent *event);
         void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
@@ -39,6 +43,7 @@ protected:
 private:
         QPolygonF myPolygon;
         QList<Arrow *> arrows;
+        QRectF myItemRect;
 
 };
 
