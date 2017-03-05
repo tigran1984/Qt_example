@@ -23,6 +23,8 @@ QRectF MySquare::boundingRect() const
 void MySquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 
 {
+    Q_UNUSED(widget);
+    Q_UNUSED(option);
     QRectF rect = boundingRect();
     QBrush brush(Qt::green);
     QPainterPath path;
@@ -121,7 +123,7 @@ void MySquare::setItemSize(qreal width,qreal height)
      myItemRect = QRectF(0,0,width,height);
 }
 
-void MySquare::setImage(QString str) 
+void MySquare::setImage(const QString& str) 
 {
     QGraphicsItem  *m_svgItem = new QGraphicsSvgItem(\
             QCoreApplication::applicationDirPath() + "/" + str);
@@ -130,14 +132,15 @@ void MySquare::setImage(QString str)
     m_svgItem->setParentItem(this);
 }
 
-void MySquare::setImage(QString str ,qreal w, qreal h) 
+void MySquare::setImage(const QString& str ,QSizeF size) 
 {
-    //QGraphicsSvgItem  *svg = new QGraphicsSvgItem(\
-            QCoreApplication::applicationDirPath() + "/" + str);
+    /*QGraphicsSvgItem  *svg = new QGraphicsSvgItem(\
+            QCoreApplication::applicationDirPath() + "/" + str);*/
     MySvgItem  *svg = new MySvgItem(\
-            QCoreApplication::applicationDirPath() + "/" + str +"h");
-    svg->setSize(w,h);
+            QCoreApplication::applicationDirPath() + "/" + str );
+    svg->setSize(size);
     //svg->setMaximumCacheSize(QSize(35,35));
+    Q_ASSERT(!svg.isNull());
     QGraphicsItem  *m_svgItem = svg; 
     //m_svgItem->setPos(5,5);
     m_svgItem->setParentItem(this);

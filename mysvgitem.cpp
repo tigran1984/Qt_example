@@ -1,28 +1,60 @@
-#include"mysvgitem.h"
+#include "mysvgitem.h"
+#include <QSvgRenderer>
+#include <QStyleOptionGraphicsItem>
 
-MySvgItem::MySvgItem(const QString &path)
-    :QGraphicsSvgItem(path)
+MySvgItem::MySvgItem(QGraphicsItem* parent)
+    : QGraphicsSvgItem(parent), size_m(-1.0, -1.0)
 {
-    QSizeF size = this->maximumCacheSize();
-    MyWidth  = size.width();
-    MyHeight = size.height();
 }
 
-MySvgItem::MySvgItem(const QString &path,qreal width,qreal height)
-    :QGraphicsSvgItem(path), MyWidth(width), MyHeight(height)
+MySvgItem::MySvgItem(const QString& fileName, QGraphicsItem* parent)
+    : QGraphicsSvgItem(fileName, parent), size_m(-1.0, -1.0)
 {
-    QSizeF size = this->maximumCacheSize();
-    MyWidth  = size.width();
-    MyHeight = size.height();
 }
 
-QRectF MySvgItem::boundingRect() const
+void MySvgItem::paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget)
 {
-    return QRectF(0,0,MyWidth,MyHeight); 
+    //QGraphicsSvgItem::paint(painter, option, widget);
+
+    Q_UNUSED(widget);
+    Q_UNUSED(option);
+    
+    if (!renderer()->isValid())
+        return;
+    
+    if (elementId().isEmpty())
+        renderer()->render(painter, boundingRect());
+    else
+        renderer()->render(painter, elementId(), boundingRect());
 }
 
-void MySvgItem::setSize(qreal w, qreal h)
+void MySvgItem::setSize(QSizeF size)
 {
-    MyWidth  = w;
-    MyHeight = h;
+    if (size_m != size) {
+        prepareGeometryChange();
+        size_m = size;
+        update(boundingRect());
+    }
 }
+
+QSizeF MySvgItem::size()
+{
+    qreal width = size_m.width();
+    qreal height = size_m.height();
+    
+    if (size_m.width() < 0) {
+        width = (renderer()->boundsOnElement(elementId()).size().width());
+    }
+    
+    if (size_m.height() < 0) {
+        height = (renderer()->boundsOnElement(elementId()).size().width());
+    }
+    
+    return QSizeF(width, height);
+}
+
+QRectF MySvgItem::boundingRect()
+{
+    return QRectF(QPointF(0.0, 0.0), size());
+}
+

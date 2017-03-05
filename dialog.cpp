@@ -40,7 +40,7 @@ Dialog::Dialog(QWidget *parent) :
     items.at(0)->setImage("instigate_design3.svg");
     items.at(1)->setImage("barcode8.svg");
     items.at(2)->setImage("tools.svg");
-    items.at(3)->setImage("settings21.svg",35,35);
+    items.at(3)->setImage("settings21.svg",QSizeF(35,35));
     items.at(4)->setImage("newspaper11.svg");
     items.at(5)->setImage("address14.svg");
     items.at(6)->setImage("workers.svg");

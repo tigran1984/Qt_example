@@ -4,17 +4,28 @@
 #include<QSizeF>
 #include<QGraphicsSvgItem>
 
-class MySvgItem: public QGraphicsSvgItem
+#include <QGraphicsSvgItem>
+
+class MySvgItem : public QGraphicsSvgItem
 {
 public:
-    MySvgItem(const QString &path);
-    MySvgItem(const QString &path,qreal width,qreal height);
-    QRectF boundingRect() const;
-    void setSize(qreal w, qreal h);
+MySvgItem(QGraphicsItem* parent = 0);
+MySvgItem(const QString& fileName, QGraphicsItem* parent = 0);
+
+//==================
+// SETTERS & GETTERS
+void setSize(QSizeF size);
+/*inl*/ void setSize(qreal width, qreal height);
+QSizeF size();
+
+//================================================== ======
+// REIMPLEMENTATION OF VIRTUAL METHODS OF QGRAPHICSSVGITEM
+void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget = 0);
+QRectF boundingRect();
 
 private:
-    qreal MyWidth;
-    qreal MyHeight;
+QSizeF size_m;
 };
 
+inline void MySvgItem::setSize(qreal width, qreal height) { setSize(QSizeF(width, height)); }
 #endif

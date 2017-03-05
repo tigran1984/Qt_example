@@ -632,6 +632,7 @@ moc_dialog.cpp: /usr/include/qt5/QtWidgets/QDialog \
 		/usr/include/qt5/QtGui/QImage \
 		/usr/include/qt5/QtCore/QCoreApplication \
 		/usr/include/qt5/QtCore/QStringBuilder \
+		/usr/include/qt5/QtCore/QString \
 		/usr/include/qt5/QtCore/QTranslator \
 		/usr/include/qt5/QtCore/QVariant \
 		/usr/include/qt5/QtSvg/QtSvg \
@@ -904,11 +905,13 @@ arrow.o: arrow.cpp arrow.h \
 		/usr/include/qt5/QtWidgets/QGraphicsItemGroup \
 		/usr/include/qt5/QtGui/QPainterPath \
 		/usr/include/qt5/QtCore/QPointF \
+		/usr/include/qt5/QtCore/QSizeF \
 		/usr/include/qt5/QtGui/QImage \
 		/usr/include/qt5/QtCore/QCoreApplication \
 		/usr/include/qt5/QtCore/qcoreapplication.h \
 		/usr/include/qt5/QtCore/qeventloop.h \
 		/usr/include/qt5/QtCore/QStringBuilder \
+		/usr/include/qt5/QtCore/QString \
 		/usr/include/qt5/QtCore/QTranslator \
 		/usr/include/qt5/QtCore/qtranslator.h \
 		/usr/include/qt5/QtCore/QList \
@@ -1069,7 +1072,6 @@ arrow.o: arrow.cpp arrow.h \
 		/usr/include/qt5/QtGui/qscreen.h \
 		/usr/include/qt5/QtCore/QRect \
 		/usr/include/qt5/QtCore/QSize \
-		/usr/include/qt5/QtCore/QSizeF \
 		/usr/include/qt5/QtGui/QTransform \
 		/usr/include/qt5/QtGui/qsessionmanager.h \
 		/usr/include/qt5/QtGui/qstylehints.h \
@@ -1585,6 +1587,7 @@ dialog.o: dialog.cpp /usr/include/qt5/QtWidgets/QHBoxLayout \
 		/usr/include/qt5/QtGui/QImage \
 		/usr/include/qt5/QtCore/QCoreApplication \
 		/usr/include/qt5/QtCore/QStringBuilder \
+		/usr/include/qt5/QtCore/QString \
 		/usr/include/qt5/QtCore/QTranslator \
 		/usr/include/qt5/QtCore/QVariant \
 		/usr/include/qt5/QtSvg/QtSvg \
@@ -2039,6 +2042,7 @@ main.o: main.cpp dialog.h \
 		/usr/include/qt5/QtGui/QImage \
 		/usr/include/qt5/QtCore/QCoreApplication \
 		/usr/include/qt5/QtCore/QStringBuilder \
+		/usr/include/qt5/QtCore/QString \
 		/usr/include/qt5/QtCore/QTranslator \
 		/usr/include/qt5/QtCore/QVariant \
 		/usr/include/qt5/QtSvg/QtSvg \
@@ -2292,11 +2296,13 @@ mygroup.o: mygroup.cpp mygroup.h \
 		/usr/include/qt5/QtGui/QPainterPath \
 		mysquare.h \
 		/usr/include/qt5/QtCore/QPointF \
+		/usr/include/qt5/QtCore/QSizeF \
 		/usr/include/qt5/QtGui/QImage \
 		/usr/include/qt5/QtCore/QCoreApplication \
 		/usr/include/qt5/QtCore/qcoreapplication.h \
 		/usr/include/qt5/QtCore/qeventloop.h \
 		/usr/include/qt5/QtCore/QStringBuilder \
+		/usr/include/qt5/QtCore/QString \
 		/usr/include/qt5/QtCore/QTranslator \
 		/usr/include/qt5/QtCore/qtranslator.h \
 		/usr/include/qt5/QtCore/QList \
@@ -2457,7 +2463,6 @@ mygroup.o: mygroup.cpp mygroup.h \
 		/usr/include/qt5/QtGui/qscreen.h \
 		/usr/include/qt5/QtCore/QRect \
 		/usr/include/qt5/QtCore/QSize \
-		/usr/include/qt5/QtCore/QSizeF \
 		/usr/include/qt5/QtGui/QTransform \
 		/usr/include/qt5/QtGui/qsessionmanager.h \
 		/usr/include/qt5/QtGui/qstylehints.h \
@@ -2751,11 +2756,13 @@ mysquare.o: mysquare.cpp mysquare.h \
 		/usr/include/qt5/QtCore/QDebug \
 		/usr/include/qt5/QtGui/QPainterPath \
 		/usr/include/qt5/QtCore/QPointF \
+		/usr/include/qt5/QtCore/QSizeF \
 		/usr/include/qt5/QtGui/QImage \
 		/usr/include/qt5/QtCore/QCoreApplication \
 		/usr/include/qt5/QtCore/qcoreapplication.h \
 		/usr/include/qt5/QtCore/qeventloop.h \
 		/usr/include/qt5/QtCore/QStringBuilder \
+		/usr/include/qt5/QtCore/QString \
 		/usr/include/qt5/QtCore/QTranslator \
 		/usr/include/qt5/QtCore/qtranslator.h \
 		/usr/include/qt5/QtCore/QList \
@@ -2916,7 +2923,6 @@ mysquare.o: mysquare.cpp mysquare.h \
 		/usr/include/qt5/QtGui/qscreen.h \
 		/usr/include/qt5/QtCore/QRect \
 		/usr/include/qt5/QtCore/QSize \
-		/usr/include/qt5/QtCore/QSizeF \
 		/usr/include/qt5/QtGui/QTransform \
 		/usr/include/qt5/QtGui/qsessionmanager.h \
 		/usr/include/qt5/QtGui/qstylehints.h \
@@ -3204,7 +3210,41 @@ mysvgitem.o: mysvgitem.cpp mysvgitem.h \
 		/usr/include/qt5/QtCore/qsharedpointer_impl.h \
 		/usr/include/qt5/QtGui/qimage.h \
 		/usr/include/qt5/QtGui/qtransform.h \
-		/usr/include/qt5/QtSvg/qtsvgglobal.h
+		/usr/include/qt5/QtSvg/qtsvgglobal.h \
+		/usr/include/qt5/QtSvg/QSvgRenderer \
+		/usr/include/qt5/QtSvg/qsvgrenderer.h \
+		/usr/include/qt5/QtCore/qxmlstream.h \
+		/usr/include/qt5/QtWidgets/QStyleOptionGraphicsItem \
+		/usr/include/qt5/QtWidgets/qstyleoption.h \
+		/usr/include/qt5/QtWidgets/qabstractspinbox.h \
+		/usr/include/qt5/QtWidgets/qwidget.h \
+		/usr/include/qt5/QtCore/qmargins.h \
+		/usr/include/qt5/QtGui/qpalette.h \
+		/usr/include/qt5/QtGui/qbrush.h \
+		/usr/include/qt5/QtGui/qfont.h \
+		/usr/include/qt5/QtGui/qfontmetrics.h \
+		/usr/include/qt5/QtGui/qfontinfo.h \
+		/usr/include/qt5/QtWidgets/qsizepolicy.h \
+		/usr/include/qt5/QtGui/qcursor.h \
+		/usr/include/qt5/QtGui/qkeysequence.h \
+		/usr/include/qt5/QtGui/qevent.h \
+		/usr/include/qt5/QtCore/qurl.h \
+		/usr/include/qt5/QtCore/qurlquery.h \
+		/usr/include/qt5/QtCore/qfile.h \
+		/usr/include/qt5/QtCore/qfiledevice.h \
+		/usr/include/qt5/QtGui/qvector2d.h \
+		/usr/include/qt5/QtGui/qtouchdevice.h \
+		/usr/include/qt5/QtGui/qvalidator.h \
+		/usr/include/qt5/QtCore/qregularexpression.h \
+		/usr/include/qt5/QtGui/qicon.h \
+		/usr/include/qt5/QtWidgets/qslider.h \
+		/usr/include/qt5/QtWidgets/qabstractslider.h \
+		/usr/include/qt5/QtWidgets/qstyle.h \
+		/usr/include/qt5/QtWidgets/qtabbar.h \
+		/usr/include/qt5/QtWidgets/qtabwidget.h \
+		/usr/include/qt5/QtWidgets/qrubberband.h \
+		/usr/include/qt5/QtWidgets/qframe.h \
+		/usr/include/qt5/QtCore/qabstractitemmodel.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mysvgitem.o mysvgitem.cpp
 
 moc_dialog.o: moc_dialog.cpp 

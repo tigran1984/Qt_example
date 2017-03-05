@@ -6,9 +6,11 @@
 #include<QDebug>
 #include<QPainterPath>
 #include<QPointF>
+#include<QSizeF>
 #include<QImage>
 #include<QCoreApplication>
 #include <QStringBuilder>
+#include <QString>
 #include <QTranslator>
 #include <QList>
 #include <QVariant>
@@ -33,8 +35,8 @@ public:
     QPointF returnCenter();
     void setMyPolygon();
     void setItemSize(qreal height,qreal width);
-    void setImage(QString str);
-    void setImage(QString str ,qreal w, qreal h);
+    void setImage(const QString& str);
+    void setImage(const QString& str ,QSizeF);
  
 protected:
         void mousePressEvent(QGraphicsSceneMouseEvent *event);
