@@ -1,5 +1,6 @@
 #ifndef MYSQUARE_H
 #define MYSQUARE_H
+#include<QObject>
 #include<QPainter>
 #include<QGraphicsItem>
 #include<QGraphicsItemGroup>
@@ -23,8 +24,9 @@ class QGraphicsSvgItem;
 class QPolygonF;
 class Arrow;
 
-class MySquare : public QGraphicsItem
+class MySquare : public QObject,  public QGraphicsItem
 {
+    Q_OBJECT
 public:
     MySquare();
 
@@ -43,6 +45,9 @@ public:
     void setSvgImage(const QString& str ,QSizeF);
     void setSvgImage(const QString& str ,QRectF rec);
     void setText(const QString& str ,QRectF rec); 
+    ~MySquare();
+signals:
+    void click();
  
 protected:
         void mousePressEvent(QGraphicsSceneMouseEvent *event);

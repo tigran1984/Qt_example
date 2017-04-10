@@ -18,8 +18,10 @@ class Dialog : public QDialog
 
 public:
     explicit Dialog(QWidget *parent = 0);
-void setPartnersPage(QGraphicsScene* scene);
+    void setPartnersPage();
     ~Dialog();
+public slots:
+    void nextPage();
 
 private:
     Ui::Dialog *ui;

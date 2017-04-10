@@ -44,10 +44,6 @@ void MySquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
 
 }
 
-
-
-
-
 void MySquare::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     //Pressed = true;
@@ -60,6 +56,7 @@ void MySquare::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
     //Pressed = false;
     //update();
     QGraphicsItem::mouseReleaseEvent(event);
+    emit click();
 }
 
 
@@ -207,4 +204,14 @@ void MySquare::setText(const QString& str ,QRectF rec)
     text->setTextInteractionFlags(Qt::TextEditorInteraction);
     text->setHtml(str);
     text->setPos(rec.x(), rec.y());
+}
+
+MySquare::~MySquare()
+{
+    for (int i=0; i< arrows.count(); i++)
+    {
+        if (arrows.at(i)== NULL){
+          delete arrows.at(i);   
+        }
+    }
 }

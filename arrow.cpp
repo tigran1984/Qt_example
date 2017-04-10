@@ -101,4 +101,9 @@ void Arrow::paint(QPainter *painter, const QStyleOptionGraphicsItem *,
     }
 }
 
-
+Arrow::~Arrow()
+{
+    //delete myStartItem;
+    //delete myEndItem;
+    //
+}
