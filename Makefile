@@ -1722,7 +1722,8 @@ dialog.o: dialog.cpp /usr/include/qt5/QtWidgets/QHBoxLayout \
 		/usr/include/qt5/QtSvg/QSvgGenerator \
 		arrow.h \
 		/usr/include/qt5/QtWidgets/QGraphicsLineItem \
-		mygroup.h
+		mygroup.h \
+		/usr/include/qt5/QtWidgets/QPushButton
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dialog.o dialog.cpp
 
 main.o: main.cpp dialog.h \

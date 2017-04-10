@@ -3,6 +3,7 @@
 #include<QPainter>
 #include<QGraphicsItem>
 #include<QGraphicsItemGroup>
+#include<QGraphicsPixmapItem>
 #include<QDebug>
 #include<QPainterPath>
 #include<QPointF>
@@ -36,7 +37,12 @@ public:
     void setMyPolygon();
     void setItemSize(qreal height,qreal width);
     void setImage(const QString& str);
-    void setImage(const QString& str ,QSizeF);
+    void setImage(const QString& str ,QSize);
+    void setImage(const QString& str ,QRectF rec);
+    void setSvgImage(const QString& str);
+    void setSvgImage(const QString& str ,QSizeF);
+    void setSvgImage(const QString& str ,QRectF rec);
+    void setText(const QString& str ,QRectF rec); 
  
 protected:
         void mousePressEvent(QGraphicsSceneMouseEvent *event);
@@ -46,6 +52,8 @@ private:
         QPolygonF myPolygon;
         QList<Arrow *> arrows;
         QRectF myItemRect;
+        QString MyText;
+        QRectF MyTextRect;
 
 };
 

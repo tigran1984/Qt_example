@@ -7,10 +7,6 @@ MySquare::MySquare()
 {
     myItemRect = QRectF(0,0,150,70); //default value
     setFlag(ItemIsMovable);
-    QGraphicsTextItem *text = new QGraphicsTextItem("description",this);
-    text->setTextInteractionFlags(Qt::TextEditorInteraction);
-    //text->setPos(105, 75);
-    text->setPos(55, 25);
     setMyPolygon();//member function
     setFlag(ItemSendsScenePositionChanges, true);
 }
@@ -32,12 +28,12 @@ void MySquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
     QFont font;
     //font.setFamily("Armenian (phonetic)");
     font.setPointSize(20);
-    QString mystr = "Partners and\nCustomers";
+    //QString mystr = "Partners and\nCustomers";
     //path.addText(QPointF(40,30),font, tr("Partners \nand Customers"));
     painter->fillPath(path, Qt::white);
     painter->setPen(Qt::blue);
     //painter->drawText(QRect(105, 55, 115, 35), Qt::AlignLeft, mystr );
-    painter->drawText(QRect(55, 5, 115, 35), Qt::AlignLeft, mystr );
+    painter->drawText(MyTextRect, Qt::AlignLeft, MyText );
     QPen pen(Qt::black, 1);
     painter->setPen(pen);
     //painter->setBrush(brush);
@@ -125,6 +121,52 @@ void MySquare::setItemSize(qreal width,qreal height)
 
 void MySquare::setImage(const QString& str) 
 {
+    QImage image(QCoreApplication::applicationDirPath() + "/" + str);
+
+    QImage img = image;
+    QGraphicsItem *item = new QGraphicsPixmapItem(\
+                    QPixmap::fromImage(img));
+
+    //item->setSize(size);
+    //svg->setMaximumCacheSize(QSize(350,350));
+    Q_ASSERT(!item.isNull());
+    item->setParentItem(this);
+}
+
+void MySquare::setImage(const QString& str, const QSize size) 
+{
+    QImage image(QCoreApplication::applicationDirPath() + "/" + str);
+
+    QImage img = image.scaled(size);
+    /*QGraphicsPixmapItem* item = new QGraphicsPixmapItem(\
+                    QPixmap::fromImage(image));*/
+    QGraphicsItem *item = new QGraphicsPixmapItem(\
+                    QPixmap::fromImage(img));
+
+    //item->setSize(size);
+    //svg->setMaximumCacheSize(QSize(350,350));
+    Q_ASSERT(!item.isNull());
+    item->setPos(21,11);
+    item->setParentItem(this);
+}
+
+void MySquare::setImage(const QString& str ,QRectF rec) 
+{
+    QImage image(QCoreApplication::applicationDirPath() + "/" + str);
+
+    QImage img = image.scaled(QSize(rec.width(),rec.height()));
+    /*QGraphicsPixmapItem* item = new QGraphicsPixmapItem(\
+                    QPixmap::fromImage(image));*/
+    QGraphicsItem *item = new QGraphicsPixmapItem(\
+                    QPixmap::fromImage(img));
+    Q_ASSERT(!item.isNull());
+    //item->setSize(QSize(rec.width(),rec.height()));
+    item->setParentItem(this);
+    item->setPos(rec.x(),rec.y());
+}
+
+void MySquare::setSvgImage(const QString& str) 
+{
     QGraphicsItem  *m_svgItem = new QGraphicsSvgItem(\
             QCoreApplication::applicationDirPath() + "/" + str);
     Q_ASSERT(!m_svgItem.isNull());
@@ -132,16 +174,37 @@ void MySquare::setImage(const QString& str)
     m_svgItem->setParentItem(this);
 }
 
-void MySquare::setImage(const QString& str ,QSizeF size) 
+void MySquare::setSvgImage(const QString& str ,QSizeF size) 
 {
     /*QGraphicsSvgItem  *svg = new QGraphicsSvgItem(\
             QCoreApplication::applicationDirPath() + "/" + str);*/
     MySvgItem  *svg = new MySvgItem(\
             QCoreApplication::applicationDirPath() + "/" + str );
     svg->setSize(size);
-    //svg->setMaximumCacheSize(QSize(35,35));
+    //svg->setMaximumCacheSize(QSize(350,350));
     Q_ASSERT(!svg.isNull());
     QGraphicsItem  *m_svgItem = svg; 
     //m_svgItem->setPos(5,5);
     m_svgItem->setParentItem(this);
+    m_svgItem->setZValue(-1000);
+}
+
+void MySquare::setSvgImage(const QString& str ,QRectF rec) 
+{
+    MySvgItem  *svg = new MySvgItem(\
+            QCoreApplication::applicationDirPath() + "/" + str );
+    Q_ASSERT(!svg.isNull());
+    svg->setSize(QSize(rec.width(),rec.height()));
+    QGraphicsItem  *m_svgItem = svg; 
+    m_svgItem->setParentItem(this);
+    m_svgItem->setPos(rec.x(),rec.y());
+    m_svgItem->setZValue(-1000);
+}
+
+void MySquare::setText(const QString& str ,QRectF rec) 
+{
+    QGraphicsTextItem *text = new QGraphicsTextItem(this);
+    text->setTextInteractionFlags(Qt::TextEditorInteraction);
+    text->setHtml(str);
+    text->setPos(rec.x(), rec.y());
 }

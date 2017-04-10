@@ -18,6 +18,7 @@ class Dialog : public QDialog
 
 public:
     explicit Dialog(QWidget *parent = 0);
+void setPartnersPage(QGraphicsScene* scene);
     ~Dialog();
 
 private:
