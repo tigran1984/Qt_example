@@ -22,6 +22,7 @@ public:
     ~Dialog();
 public slots:
     void nextPage();
+    void firstPage();
 
 private:
     Ui::Dialog *ui;

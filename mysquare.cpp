@@ -201,7 +201,7 @@ void MySquare::setSvgImage(const QString& str ,QRectF rec)
 void MySquare::setText(const QString& str ,QRectF rec) 
 {
     QGraphicsTextItem *text = new QGraphicsTextItem(this);
-    text->setTextInteractionFlags(Qt::TextEditorInteraction);
+    //text->setTextInteractionFlags(Qt::TextEditorInteraction);
     text->setHtml(str);
     text->setPos(rec.x(), rec.y());
 }

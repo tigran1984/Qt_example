@@ -24,14 +24,22 @@ Dialog::Dialog(QWidget *parent) :
     gview->setGeometry(0,0,700,700);
     scene->addRect(10,10,650,650);
 
-    QPushButton * btn = new QPushButton();
-    btn->setGeometry(0,0,100,50);
-    btn->setParent(this);
-    btn->setText("Clear Page");
-    btn->show();
-    //connect(btn, &QPushButton::clicked, scene, &QGraphicsScene::clear);
-    connect(btn, &QPushButton::clicked, this, &Dialog::nextPage);
+    //QPushButton * btn = new QPushButton();
+    //btn->setGeometry(0,0,100,50);
+    //btn->setParent(this);
+    //btn->setText("Clear Page");
+    //btn->show();
+    ////connect(btn, &QPushButton::clicked, scene, &QGraphicsScene::clear);
+    //connect(btn, &QPushButton::clicked, this, &Dialog::nextPage);
+    firstPage();
 
+
+}
+
+void Dialog::firstPage()
+{
+
+    scene->clear();
     //create MySquare item pointers
     QList<MySquare * > items;
     for (int i=0 ;i<9 ;++i)
@@ -191,10 +199,7 @@ Dialog::Dialog(QWidget *parent) :
     //btn2->setText("Clear Page");
     //btn2->show();
     connect(items.at(8), &MySquare::click, this, &Dialog::nextPage);
-
-
 }
-
 void Dialog::nextPage()
 {
     //std::cout << scene->
@@ -361,6 +366,7 @@ void Dialog::setPartnersPage()
     //ar8->updatePosition();
     //ar9->updatePosition();
     //delete ui;
+    connect(items2.at(6), &MySquare::click, this, &Dialog::firstPage);
 }
 
 Dialog::~Dialog()
