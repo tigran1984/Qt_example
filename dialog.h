@@ -27,11 +27,11 @@ class Dialog : public QDialog
 
 public:
     explicit Dialog(QWidget *parent = 0);
-    void setPartnersPage();
     ~Dialog();
 public slots:
     void nextPage();
     void firstPage();
+    void setPartnersPage();
 
 private:
     Ui::Dialog *ui;

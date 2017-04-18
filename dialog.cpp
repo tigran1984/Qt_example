@@ -31,7 +31,6 @@ Dialog::Dialog(QWidget *parent) :
     //connect(timer2, SIGNAL(timeout()), this, SLOT(nextPage()));
     //timer1->start(1000);
     //timer2->start(1500);
-    groupAnim = new QParallelAnimationGroup;
 
 
 }
@@ -182,7 +181,7 @@ void Dialog::firstPage()
     ar8->updatePosition();
     ar9->updatePosition();
     //setPartnersPage();
-    qDebug() << items.at(0)->pos()  << " \n";
+    qDebug() << items.at(0)->x()  << " \n";
     QPushButton * btn2 = new QPushButton();
     btn2->setGeometry(0,0,50,100);
     btn2->setParent(this);
@@ -190,24 +189,95 @@ void Dialog::firstPage()
     btn2->show();
     connect(items.at(8), &MySquare::click, this, &Dialog::nextPage);
     // set Animation when page changed //
-    QPropertyAnimation *anim1 = new QPropertyAnimation(items.at(0),"opacity" );
-    anim1->setDuration(4000);
-    anim1->setStartValue(1.0);
-    //anim1->setEndValue( QPoint(400, 400));
-    anim1->setEndValue( 0.1);
-    anim1->start();
-    //anim1->setStartValue(items.at(1)->pos());
-    //anim1->setEndValue(items.at(0)->pos());
-    //groupAnim->addAnimation(anim1);
+    QPropertyAnimation *anim1 = new QPropertyAnimation(items.at(1),"x" );
+    anim1->setDuration(1000);
+    anim1->setEndValue(items.at(0)->x());
+    QPropertyAnimation *anim2 = new QPropertyAnimation(items.at(2),"x" );
+    anim2->setDuration(1000);
+    anim2->setEndValue(items.at(0)->x());
+    QPropertyAnimation *anim3 = new QPropertyAnimation(items.at(3),"x" );
+    anim3->setDuration(1000);
+    anim3->setEndValue(items.at(0)->x());
+    QPropertyAnimation *anim4 = new QPropertyAnimation(items.at(4),"x" );
+    anim4->setDuration(1000);
+    anim4->setEndValue(items.at(0)->x());
+    QPropertyAnimation *anim5 = new QPropertyAnimation(items.at(5),"x" );
+    anim5->setDuration(1000);
+    anim5->setEndValue(items.at(0)->x());
+    QPropertyAnimation *anim6 = new QPropertyAnimation(items.at(6),"x" );
+    anim6->setDuration(1000);
+    anim6->setEndValue(items.at(0)->x());
+    QPropertyAnimation *anim7 = new QPropertyAnimation(items.at(7),"x" );
+    anim7->setDuration(1000);
+    anim7->setEndValue(items.at(0)->x());
+    QPropertyAnimation *anim8 = new QPropertyAnimation(items.at(8),"x" );
+    anim8->setDuration(1000);
+    anim8->setEndValue(items.at(0)->x());
+    //QPropertyAnimation *anim9 = new QPropertyAnimation(items.at(9),"x" );
+    //anim9->setDuration(1000);
+    //anim9->setEndValue(items.at(0)->x());
 
+
+    QPropertyAnimation *anim11 = new QPropertyAnimation(items.at(1),"y" );
+    anim11->setDuration(1000);
+    anim11->setEndValue(items.at(0)->y());
+    QPropertyAnimation *anim12 = new QPropertyAnimation(items.at(2),"y" );
+    anim12->setDuration(1000);
+    anim12->setEndValue(items.at(0)->y());
+    QPropertyAnimation *anim13 = new QPropertyAnimation(items.at(3),"y" );
+    anim13->setDuration(1000);
+    anim13->setEndValue(items.at(0)->y());
+    QPropertyAnimation *anim14 = new QPropertyAnimation(items.at(4),"y" );
+    anim14->setDuration(1000);
+    anim14->setEndValue(items.at(0)->y());
+    QPropertyAnimation *anim15 = new QPropertyAnimation(items.at(5),"y" );
+    anim15->setDuration(1000);
+    anim15->setEndValue(items.at(0)->y());
+    QPropertyAnimation *anim16 = new QPropertyAnimation(items.at(6),"y" );
+    anim16->setDuration(1000);
+    anim16->setEndValue(items.at(0)->y());
+    QPropertyAnimation *anim17 = new QPropertyAnimation(items.at(7),"y" );
+    anim17->setDuration(1000);
+    anim17->setEndValue(items.at(0)->y());
+    QPropertyAnimation *anim18 = new QPropertyAnimation(items.at(8),"y" );
+    anim18->setDuration(1000);
+    anim18->setEndValue(items.at(0)->y());
+    //QPropertyAnimation *anim19 = new QPropertyAnimation(items.at(9),"y" );
+    //anim19->setDuration(1000);
+    //anim19->setEndValue(items.at(0)->y());
+
+
+    //anim1->setStartValue(items.at(1)->x();
+    //anim1->setEndValue(items.at(0)->x();
+    //groupAnim->addAnimation(anim1);
+    groupAnim = new QParallelAnimationGroup;
+    groupAnim->addAnimation(anim1);
+    groupAnim->addAnimation(anim2);
+    groupAnim->addAnimation(anim3);
+    groupAnim->addAnimation(anim4);
+    groupAnim->addAnimation(anim5);
+    groupAnim->addAnimation(anim6);
+    groupAnim->addAnimation(anim7);
+    groupAnim->addAnimation(anim8);
+
+    groupAnim->addAnimation(anim11);
+    groupAnim->addAnimation(anim12);
+    groupAnim->addAnimation(anim13);
+    groupAnim->addAnimation(anim14);
+    groupAnim->addAnimation(anim15);
+    groupAnim->addAnimation(anim16);
+    groupAnim->addAnimation(anim17);
+    groupAnim->addAnimation(anim18);
+    //groupAnim->addAnimation(anim19);
 }
 void Dialog::nextPage()
 {
     //std::cout << scene->
-    //groupAnim->start();
-    //QTimer::singleShot(4000, scene, SLOT(scene->clear()));
+    groupAnim->start();
+    QTimer::singleShot(1200, scene, SLOT(clear()));
     //scene->clear();
-    setPartnersPage();
+    QTimer::singleShot(1500, this, SLOT(setPartnersPage()));
+    //setPartnersPage();
 }
 
 void Dialog::setPartnersPage()

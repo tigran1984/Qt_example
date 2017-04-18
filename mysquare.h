@@ -29,6 +29,8 @@ class MySquare : public QObject,  public QGraphicsItem
     Q_OBJECT
     Q_PROPERTY(qreal opacity READ opacity WRITE setOpacity);
     Q_PROPERTY(QPointF pos READ pos WRITE setPos);
+    Q_PROPERTY(qreal x READ x WRITE setX);
+    Q_PROPERTY(qreal y READ y WRITE setY);
 public:
     MySquare();
 
