@@ -1,12 +1,21 @@
 #ifndef DIALOG_H
 #define DIALOG_H
 
+#include<iostream>
+#include<QDebug>
+#include <QPropertyAnimation>
+#include <QParallelAnimationGroup>
+#include<QTimer>
+#include<QHBoxLayout>
+#include<QGraphicsView>
+#include<QPushButton>
 #include <QDialog>
 #include<QtCore>
 #include<QtGui>
 #include<QLineF>
 #include"mysquare.h"
 #include "mygroup.h"
+#include"arrow.h"
 
 namespace Ui {
 class Dialog;
@@ -31,6 +40,7 @@ private:
     //MyGroup *group2;
     MySquare *square;
     MySquare *square2;
+    QParallelAnimationGroup * groupAnim;
 
 };
 

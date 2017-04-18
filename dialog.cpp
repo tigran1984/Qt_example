@@ -1,11 +1,4 @@
-#include<iostream>
-#include<QHBoxLayout>
-#include<QGraphicsView>
 #include "dialog.h"
-#include"arrow.h"
-#include<QPushButton>
-//#include "mygroup.h"
-//#include "ui_dialog.h"
 
 Dialog::Dialog(QWidget *parent) :
     QDialog(parent)
@@ -32,13 +25,19 @@ Dialog::Dialog(QWidget *parent) :
     ////connect(btn, &QPushButton::clicked, scene, &QGraphicsScene::clear);
     //connect(btn, &QPushButton::clicked, this, &Dialog::nextPage);
     firstPage();
+    //QTimer *timer1 = new QTimer(this);
+    //QTimer *timer2 = new QTimer(this);
+    //connect(timer1, SIGNAL(timeout()), this, SLOT(firstPage()));
+    //connect(timer2, SIGNAL(timeout()), this, SLOT(nextPage()));
+    //timer1->start(1000);
+    //timer2->start(1500);
+    groupAnim = new QParallelAnimationGroup;
 
 
 }
 
 void Dialog::firstPage()
 {
-
     scene->clear();
     //create MySquare item pointers
     QList<MySquare * > items;
@@ -55,7 +54,7 @@ void Dialog::firstPage()
     items.at(6)->setItemSize(169,70);
     items.at(7)->setItemSize(169,70);
     items.at(8)->setItemSize(169,70);
-
+    ///////////////////
     items.at(0)->setPos(291,168);
     items.at(1)->setPos(106,423);
     items.at(2)->setPos(647,203);
@@ -65,7 +64,7 @@ void Dialog::firstPage()
     items.at(6)->setPos(41,232);
     items.at(7)->setPos(42,328);
     items.at(8)->setPos(42,139);
-
+    ///////////////////
     items.at(0)->setSvgImage("instigate_design3.svg",QSizeF(286,203));
     items.at(1)->setSvgImage("barcode8.svg",QRectF(5,5,60,60));
     items.at(2)->setSvgImage("tools.svg",QRectF(16,15,32,35));
@@ -75,8 +74,7 @@ void Dialog::firstPage()
     items.at(6)->setSvgImage("workers.svg",QRectF(12,15,38,46));
     items.at(7)->setSvgImage("businessman175.svg",QRectF(9,13,39,40));
     items.at(8)->setSvgImage("image.svg",QRectF(14,16,35,37));
-
-
+    ////////////////////
     QString str1 = "<div  style='color:blue'><h3>IP\
           offerings</h3></div>";
     QString str2 = "<div  style='color:blue'>\
@@ -93,7 +91,7 @@ void Dialog::firstPage()
      Career</h3></div>";
     QString str8 = "<div  style='color:blue'><h3>\
      Partners and <br>Customers</h3></div>";
-
+    /////////////////////
     QString str3_ = "<ul><li>Electronic Design Automation,\
             CAD</li><li>Embedded Systems, OS/FW</li><li>\
             Close-to-HW programming, DSP</li><li>HW modeling\
@@ -113,62 +111,55 @@ void Dialog::firstPage()
     items.at(6)->setText(str6,QRectF(66,22,286,203));
     items.at(7)->setText(str7,QRectF(63,22,286,203));
     items.at(8)->setText(str8,QRectF(61,0,286,203));
-    
-
+    //////////////////
     items.at(1)->setText(str1_,QRectF(4,48,286,203));
     items.at(2)->setText(str2_,QRectF(10,50,286,203));
     items.at(3)->setText(str3_,QRectF(16,50,286,203));
-
-             
-
     // create arrows
 	Arrow *ar0 = new Arrow(items.at(0),items.at(1));
     items.at(0)->addArrow(ar0);
     items.at(1)->addArrow(ar0);
-
+    /////////////////
 	Arrow *ar1 = new Arrow(items.at(0),items.at(2));
     items.at(0)->addArrow(ar1);
     items.at(2)->addArrow(ar1);
-
+    /////////////////
 	Arrow *ar2 = new Arrow(items.at(0),items.at(3));
     items.at(0)->addArrow(ar2);
     items.at(3)->addArrow(ar2);
-
+    /////////////////
 	Arrow *ar3 = new Arrow(items.at(0),items.at(4));
     items.at(0)->addArrow(ar3);
     items.at(4)->addArrow(ar3);
-    
+    /////////////////
 	Arrow *ar4 = new Arrow(items.at(0),items.at(5));
     items.at(0)->addArrow(ar4);
     items.at(5)->addArrow(ar4);
-    
+    /////////////////
 	Arrow *ar5 = new Arrow(items.at(0),items.at(6));
     items.at(0)->addArrow(ar5);
     items.at(6)->addArrow(ar5);
-    
+    /////////////////
 	Arrow *ar6 = new Arrow(items.at(0),items.at(7));
     items.at(0)->addArrow(ar6);
     items.at(7)->addArrow(ar6);
-    
+    /////////////////
 	Arrow *ar7 = new Arrow(items.at(0),items.at(8));
     items.at(0)->addArrow(ar7);
     items.at(8)->addArrow(ar7);
-    
+    /////////////////
 	Arrow *ar8 = new Arrow(items.at(2),items.at(3));
     items.at(2)->addArrow(ar8);
     items.at(3)->addArrow(ar8);
-    
+    /////////////////
 	Arrow *ar9 = new Arrow(items.at(1),items.at(3));
     items.at(1)->addArrow(ar8);
     items.at(3)->addArrow(ar8);
-    
-
-
+    /////// add items in scene //////////
     for (int i=0 ;i<9 ;++i)
     {
         scene->addItem(items.at(i));
     }
-
     scene->addItem(ar0);
     scene->addItem(ar1);
     scene->addItem(ar2);
@@ -179,7 +170,7 @@ void Dialog::firstPage()
     scene->addItem(ar7);
     scene->addItem(ar8);
     scene->addItem(ar9);
-
+    /////////////////
     ar0->updatePosition();
     ar1->updatePosition();
     ar2->updatePosition();
@@ -191,19 +182,31 @@ void Dialog::firstPage()
     ar8->updatePosition();
     ar9->updatePosition();
     //setPartnersPage();
-    //qDebug() << (scene->items())  << " Items";
-
-    //QPushButton * btn2 = new QPushButton();
-    //btn2->setGeometry(0,0,50,100);
-    //btn2->setParent(this);
-    //btn2->setText("Clear Page");
-    //btn2->show();
+    qDebug() << items.at(0)->pos()  << " \n";
+    QPushButton * btn2 = new QPushButton();
+    btn2->setGeometry(0,0,50,100);
+    btn2->setParent(this);
+    btn2->setText("Clear Page");
+    btn2->show();
     connect(items.at(8), &MySquare::click, this, &Dialog::nextPage);
+    // set Animation when page changed //
+    QPropertyAnimation *anim1 = new QPropertyAnimation(items.at(0),"opacity" );
+    anim1->setDuration(4000);
+    anim1->setStartValue(1.0);
+    //anim1->setEndValue( QPoint(400, 400));
+    anim1->setEndValue( 0.1);
+    anim1->start();
+    //anim1->setStartValue(items.at(1)->pos());
+    //anim1->setEndValue(items.at(0)->pos());
+    //groupAnim->addAnimation(anim1);
+
 }
 void Dialog::nextPage()
 {
     //std::cout << scene->
-    scene->clear();
+    //groupAnim->start();
+    //QTimer::singleShot(4000, scene, SLOT(scene->clear()));
+    //scene->clear();
     setPartnersPage();
 }
 

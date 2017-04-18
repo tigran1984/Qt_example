@@ -96,7 +96,7 @@ QPointF MySquare::returnCenter()
     qreal height = rect.height();
     QPointF p = QPointF(width/2 + rect.x(), rect.y() + height/2 );
     //return p;// changet for test 
-    return this->pos()+p;// changet for test 
+    return this->pos()+p;// changed for test 
 }
 
 void MySquare::setMyPolygon()

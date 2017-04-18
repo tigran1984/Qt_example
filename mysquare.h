@@ -27,6 +27,8 @@ class Arrow;
 class MySquare : public QObject,  public QGraphicsItem
 {
     Q_OBJECT
+    Q_PROPERTY(qreal opacity READ opacity WRITE setOpacity);
+    Q_PROPERTY(QPointF pos READ pos WRITE setPos);
 public:
     MySquare();
 
