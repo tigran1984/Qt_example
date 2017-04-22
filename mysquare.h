@@ -10,6 +10,7 @@
 #include<QPointF>
 #include<QSizeF>
 #include<QImage>
+#include<QLabel>
 #include<QCoreApplication>
 #include <QStringBuilder>
 #include <QString>
@@ -29,6 +30,7 @@ class MySquare : public QObject,  public QGraphicsItem
     Q_OBJECT
     Q_PROPERTY(qreal opacity READ opacity WRITE setOpacity);
     Q_PROPERTY(QPointF pos READ pos WRITE setPos);
+    Q_PROPERTY(qreal rotation READ rotation WRITE setRotation);
     Q_PROPERTY(qreal x READ x WRITE setX);
     Q_PROPERTY(qreal y READ y WRITE setY);
 public:
@@ -54,15 +56,17 @@ signals:
     void click();
  
 protected:
-        void mousePressEvent(QGraphicsSceneMouseEvent *event);
-        void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
-        QVariant itemChange(GraphicsItemChange change, const QVariant &value) Q_DECL_OVERRIDE;
+    void mousePressEvent(QGraphicsSceneMouseEvent *event);
+    void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
+    QVariant itemChange(GraphicsItemChange change, const QVariant &value) Q_DECL_OVERRIDE;
 private:
-        QPolygonF myPolygon;
-        QList<Arrow *> arrows;
-        QRectF myItemRect;
-        QString MyText;
-        QRectF MyTextRect;
+    QPolygonF myPolygon;
+    QList<Arrow *> arrows;
+    QRectF myItemRect;
+    QString MyText;
+    QRectF MyTextRect;
+    QGraphicsTextItem *itemXY;
+    QString *posXY;
 
 };
 

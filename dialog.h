@@ -29,8 +29,9 @@ public:
     explicit Dialog(QWidget *parent = 0);
     ~Dialog();
 public slots:
-    void nextPage();
     void firstPage();
+    void partnersPage();
+    void setFirstPage();
     void setPartnersPage();
 
 private:
@@ -40,7 +41,8 @@ private:
     //MyGroup *group2;
     MySquare *square;
     MySquare *square2;
-    QParallelAnimationGroup * groupAnim;
+    QParallelAnimationGroup * groupAnim_1;
+    QParallelAnimationGroup * groupAnim_2;
 
 };
 

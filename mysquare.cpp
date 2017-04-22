@@ -9,6 +9,15 @@ MySquare::MySquare()
     setFlag(ItemIsMovable);
     setMyPolygon();//member function
     setFlag(ItemSendsScenePositionChanges, true);
+    posXY = new QString(QString::number(this->x())+", "+
+            QString::number(this->y()));
+    itemXY = new QGraphicsTextItem(this);
+    itemXY->setPlainText((*posXY));
+    itemXY->setTextInteractionFlags(Qt::TextEditorInteraction);
+    itemXY->setZValue(2000);
+    //text->setHtml("<heloooooooooo>");
+    itemXY->setPos(this->x(), this->y());
+    
 }
 
 QRectF MySquare::boundingRect() const
@@ -55,8 +64,9 @@ void MySquare::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
     //Pressed = false;
     //update();
+    //emit click();
+    QTimer::singleShot(500, this, SIGNAL(click()));
     QGraphicsItem::mouseReleaseEvent(event);
-    emit click();
 }
 
 
@@ -80,6 +90,10 @@ QVariant MySquare::itemChange(GraphicsItemChange change, const QVariant &value)
         foreach (Arrow *arrow, arrows) {
             arrow->updatePosition();
         }
+        *posXY = QString::number(this->x())+", "+
+                            QString::number(this->y());
+        itemXY->setPlainText((*posXY));
+
     }
     return QGraphicsItem::itemChange(change, value);
 }

@@ -650,6 +650,8 @@ moc_dialog.cpp: /usr/include/qt5/QtCore/QDebug \
 		/usr/include/qt5/QtGui/QPainterPath \
 		/usr/include/qt5/QtCore/QPointF \
 		/usr/include/qt5/QtGui/QImage \
+		/usr/include/qt5/QtWidgets/QLabel \
+		/usr/include/qt5/QtWidgets/qlabel.h \
 		/usr/include/qt5/QtCore/QCoreApplication \
 		/usr/include/qt5/QtCore/QStringBuilder \
 		/usr/include/qt5/QtCore/QString \
@@ -753,7 +755,6 @@ moc_dialog.cpp: /usr/include/qt5/QtCore/QDebug \
 		/usr/include/qt5/QtWidgets/qfontcombobox.h \
 		/usr/include/qt5/QtWidgets/qgroupbox.h \
 		/usr/include/qt5/QtWidgets/qkeysequenceedit.h \
-		/usr/include/qt5/QtWidgets/qlabel.h \
 		/usr/include/qt5/QtWidgets/qlcdnumber.h \
 		/usr/include/qt5/QtWidgets/qmainwindow.h \
 		/usr/include/qt5/QtWidgets/qmdiarea.h \
@@ -897,6 +898,22 @@ moc_mysquare.cpp: /usr/include/qt5/QtCore/QObject \
 		/usr/include/qt5/QtCore/QPointF \
 		/usr/include/qt5/QtCore/QSizeF \
 		/usr/include/qt5/QtGui/QImage \
+		/usr/include/qt5/QtWidgets/QLabel \
+		/usr/include/qt5/QtWidgets/qlabel.h \
+		/usr/include/qt5/QtWidgets/qframe.h \
+		/usr/include/qt5/QtWidgets/qwidget.h \
+		/usr/include/qt5/QtCore/qmargins.h \
+		/usr/include/qt5/QtGui/qpalette.h \
+		/usr/include/qt5/QtWidgets/qsizepolicy.h \
+		/usr/include/qt5/QtGui/qcursor.h \
+		/usr/include/qt5/QtGui/qkeysequence.h \
+		/usr/include/qt5/QtGui/qevent.h \
+		/usr/include/qt5/QtCore/qurl.h \
+		/usr/include/qt5/QtCore/qurlquery.h \
+		/usr/include/qt5/QtCore/qfile.h \
+		/usr/include/qt5/QtCore/qfiledevice.h \
+		/usr/include/qt5/QtGui/qvector2d.h \
+		/usr/include/qt5/QtGui/qtouchdevice.h \
 		/usr/include/qt5/QtCore/QCoreApplication \
 		/usr/include/qt5/QtCore/qcoreapplication.h \
 		/usr/include/qt5/QtCore/qeventloop.h \
@@ -926,8 +943,6 @@ moc_mysquare.cpp: /usr/include/qt5/QtCore/QObject \
 		/usr/include/qt5/QtCore/qbuffer.h \
 		/usr/include/qt5/QtCore/qdir.h \
 		/usr/include/qt5/QtCore/qfileinfo.h \
-		/usr/include/qt5/QtCore/qfile.h \
-		/usr/include/qt5/QtCore/qfiledevice.h \
 		/usr/include/qt5/QtCore/qdiriterator.h \
 		/usr/include/qt5/QtCore/qfileselector.h \
 		/usr/include/qt5/QtCore/QStringList \
@@ -942,8 +957,6 @@ moc_mysquare.cpp: /usr/include/qt5/QtCore/QObject \
 		/usr/include/qt5/QtCore/qtemporarydir.h \
 		/usr/include/qt5/QtCore/QScopedPointer \
 		/usr/include/qt5/QtCore/qtemporaryfile.h \
-		/usr/include/qt5/QtCore/qurl.h \
-		/usr/include/qt5/QtCore/qurlquery.h \
 		/usr/include/qt5/QtCore/qabstractitemmodel.h \
 		/usr/include/qt5/QtCore/qabstractproxymodel.h \
 		/usr/include/qt5/QtCore/qidentityproxymodel.h \
@@ -1007,7 +1020,6 @@ moc_mysquare.cpp: /usr/include/qt5/QtCore/QObject \
 		/usr/include/qt5/QtCore/qcryptographichash.h \
 		/usr/include/qt5/QtCore/qelapsedtimer.h \
 		/usr/include/qt5/QtCore/qlinkedlist.h \
-		/usr/include/qt5/QtCore/qmargins.h \
 		/usr/include/qt5/QtCore/qmessageauthenticationcode.h \
 		/usr/include/qt5/QtCore/qqueue.h \
 		/usr/include/qt5/QtCore/qregularexpression.h \
@@ -1021,10 +1033,6 @@ moc_mysquare.cpp: /usr/include/qt5/QtCore/QObject \
 		/usr/include/qt5/QtGui/QtGui \
 		/usr/include/qt5/QtGui/QtGuiDepends \
 		/usr/include/qt5/QtGui/qaccessible.h \
-		/usr/include/qt5/QtGui/qevent.h \
-		/usr/include/qt5/QtGui/qkeysequence.h \
-		/usr/include/qt5/QtGui/qvector2d.h \
-		/usr/include/qt5/QtGui/qtouchdevice.h \
 		/usr/include/qt5/QtGui/qaccessiblebridge.h \
 		/usr/include/qt5/QtGui/qaccessibleobject.h \
 		/usr/include/qt5/QtGui/qaccessibleplugin.h \
@@ -1041,7 +1049,6 @@ moc_mysquare.cpp: /usr/include/qt5/QtCore/QObject \
 		/usr/include/qt5/QtGui/qpixmapcache.h \
 		/usr/include/qt5/QtGui/qstandarditemmodel.h \
 		/usr/include/qt5/QtGui/qclipboard.h \
-		/usr/include/qt5/QtGui/qcursor.h \
 		/usr/include/qt5/QtGui/qdrag.h \
 		/usr/include/qt5/QtGui/qgenericplugin.h \
 		/usr/include/qt5/QtGui/qgenericpluginfactory.h \
@@ -1057,7 +1064,6 @@ moc_mysquare.cpp: /usr/include/qt5/QtCore/QObject \
 		/usr/include/qt5/QtGui/qopengles2ext.h \
 		/usr/include/qt5/QtGui/qopenglext.h \
 		/usr/include/qt5/QtGui/qopenglversionfunctions.h \
-		/usr/include/qt5/QtGui/qpalette.h \
 		/usr/include/qt5/QtGui/qscreen.h \
 		/usr/include/qt5/QtCore/QRect \
 		/usr/include/qt5/QtCore/QSize \
@@ -1110,15 +1116,12 @@ moc_mysquare.cpp: /usr/include/qt5/QtCore/QObject \
 		/usr/include/qt5/QtWidgets/qaccessiblewidget.h \
 		/usr/include/qt5/QtWidgets/qcolordialog.h \
 		/usr/include/qt5/QtWidgets/qdialog.h \
-		/usr/include/qt5/QtWidgets/qwidget.h \
-		/usr/include/qt5/QtWidgets/qsizepolicy.h \
 		/usr/include/qt5/QtWidgets/qerrormessage.h \
 		/usr/include/qt5/QtWidgets/qfiledialog.h \
 		/usr/include/qt5/QtWidgets/qfilesystemmodel.h \
 		/usr/include/qt5/QtWidgets/qfontdialog.h \
 		/usr/include/qt5/QtWidgets/qinputdialog.h \
 		/usr/include/qt5/QtWidgets/qlineedit.h \
-		/usr/include/qt5/QtWidgets/qframe.h \
 		/usr/include/qt5/QtWidgets/qmessagebox.h \
 		/usr/include/qt5/QtWidgets/qprogressdialog.h \
 		/usr/include/qt5/QtWidgets/qwizard.h \
@@ -1215,7 +1218,6 @@ moc_mysquare.cpp: /usr/include/qt5/QtCore/QObject \
 		/usr/include/qt5/QtWidgets/qfontcombobox.h \
 		/usr/include/qt5/QtWidgets/qgroupbox.h \
 		/usr/include/qt5/QtWidgets/qkeysequenceedit.h \
-		/usr/include/qt5/QtWidgets/qlabel.h \
 		/usr/include/qt5/QtWidgets/qlcdnumber.h \
 		/usr/include/qt5/QtWidgets/qmainwindow.h \
 		/usr/include/qt5/QtWidgets/qmdiarea.h \
@@ -1380,6 +1382,22 @@ arrow.o: arrow.cpp arrow.h \
 		/usr/include/qt5/QtCore/QPointF \
 		/usr/include/qt5/QtCore/QSizeF \
 		/usr/include/qt5/QtGui/QImage \
+		/usr/include/qt5/QtWidgets/QLabel \
+		/usr/include/qt5/QtWidgets/qlabel.h \
+		/usr/include/qt5/QtWidgets/qframe.h \
+		/usr/include/qt5/QtWidgets/qwidget.h \
+		/usr/include/qt5/QtCore/qmargins.h \
+		/usr/include/qt5/QtGui/qpalette.h \
+		/usr/include/qt5/QtWidgets/qsizepolicy.h \
+		/usr/include/qt5/QtGui/qcursor.h \
+		/usr/include/qt5/QtGui/qkeysequence.h \
+		/usr/include/qt5/QtGui/qevent.h \
+		/usr/include/qt5/QtCore/qurl.h \
+		/usr/include/qt5/QtCore/qurlquery.h \
+		/usr/include/qt5/QtCore/qfile.h \
+		/usr/include/qt5/QtCore/qfiledevice.h \
+		/usr/include/qt5/QtGui/qvector2d.h \
+		/usr/include/qt5/QtGui/qtouchdevice.h \
 		/usr/include/qt5/QtCore/QCoreApplication \
 		/usr/include/qt5/QtCore/qcoreapplication.h \
 		/usr/include/qt5/QtCore/qeventloop.h \
@@ -1409,8 +1427,6 @@ arrow.o: arrow.cpp arrow.h \
 		/usr/include/qt5/QtCore/qbuffer.h \
 		/usr/include/qt5/QtCore/qdir.h \
 		/usr/include/qt5/QtCore/qfileinfo.h \
-		/usr/include/qt5/QtCore/qfile.h \
-		/usr/include/qt5/QtCore/qfiledevice.h \
 		/usr/include/qt5/QtCore/qdiriterator.h \
 		/usr/include/qt5/QtCore/qfileselector.h \
 		/usr/include/qt5/QtCore/QStringList \
@@ -1425,8 +1441,6 @@ arrow.o: arrow.cpp arrow.h \
 		/usr/include/qt5/QtCore/qtemporarydir.h \
 		/usr/include/qt5/QtCore/QScopedPointer \
 		/usr/include/qt5/QtCore/qtemporaryfile.h \
-		/usr/include/qt5/QtCore/qurl.h \
-		/usr/include/qt5/QtCore/qurlquery.h \
 		/usr/include/qt5/QtCore/qabstractitemmodel.h \
 		/usr/include/qt5/QtCore/qabstractproxymodel.h \
 		/usr/include/qt5/QtCore/qidentityproxymodel.h \
@@ -1490,7 +1504,6 @@ arrow.o: arrow.cpp arrow.h \
 		/usr/include/qt5/QtCore/qcryptographichash.h \
 		/usr/include/qt5/QtCore/qelapsedtimer.h \
 		/usr/include/qt5/QtCore/qlinkedlist.h \
-		/usr/include/qt5/QtCore/qmargins.h \
 		/usr/include/qt5/QtCore/qmessageauthenticationcode.h \
 		/usr/include/qt5/QtCore/qqueue.h \
 		/usr/include/qt5/QtCore/qregularexpression.h \
@@ -1504,10 +1517,6 @@ arrow.o: arrow.cpp arrow.h \
 		/usr/include/qt5/QtGui/QtGui \
 		/usr/include/qt5/QtGui/QtGuiDepends \
 		/usr/include/qt5/QtGui/qaccessible.h \
-		/usr/include/qt5/QtGui/qevent.h \
-		/usr/include/qt5/QtGui/qkeysequence.h \
-		/usr/include/qt5/QtGui/qvector2d.h \
-		/usr/include/qt5/QtGui/qtouchdevice.h \
 		/usr/include/qt5/QtGui/qaccessiblebridge.h \
 		/usr/include/qt5/QtGui/qaccessibleobject.h \
 		/usr/include/qt5/QtGui/qaccessibleplugin.h \
@@ -1524,7 +1533,6 @@ arrow.o: arrow.cpp arrow.h \
 		/usr/include/qt5/QtGui/qpixmapcache.h \
 		/usr/include/qt5/QtGui/qstandarditemmodel.h \
 		/usr/include/qt5/QtGui/qclipboard.h \
-		/usr/include/qt5/QtGui/qcursor.h \
 		/usr/include/qt5/QtGui/qdrag.h \
 		/usr/include/qt5/QtGui/qgenericplugin.h \
 		/usr/include/qt5/QtGui/qgenericpluginfactory.h \
@@ -1540,7 +1548,6 @@ arrow.o: arrow.cpp arrow.h \
 		/usr/include/qt5/QtGui/qopengles2ext.h \
 		/usr/include/qt5/QtGui/qopenglext.h \
 		/usr/include/qt5/QtGui/qopenglversionfunctions.h \
-		/usr/include/qt5/QtGui/qpalette.h \
 		/usr/include/qt5/QtGui/qscreen.h \
 		/usr/include/qt5/QtCore/QRect \
 		/usr/include/qt5/QtCore/QSize \
@@ -1593,15 +1600,12 @@ arrow.o: arrow.cpp arrow.h \
 		/usr/include/qt5/QtWidgets/qaccessiblewidget.h \
 		/usr/include/qt5/QtWidgets/qcolordialog.h \
 		/usr/include/qt5/QtWidgets/qdialog.h \
-		/usr/include/qt5/QtWidgets/qwidget.h \
-		/usr/include/qt5/QtWidgets/qsizepolicy.h \
 		/usr/include/qt5/QtWidgets/qerrormessage.h \
 		/usr/include/qt5/QtWidgets/qfiledialog.h \
 		/usr/include/qt5/QtWidgets/qfilesystemmodel.h \
 		/usr/include/qt5/QtWidgets/qfontdialog.h \
 		/usr/include/qt5/QtWidgets/qinputdialog.h \
 		/usr/include/qt5/QtWidgets/qlineedit.h \
-		/usr/include/qt5/QtWidgets/qframe.h \
 		/usr/include/qt5/QtWidgets/qmessagebox.h \
 		/usr/include/qt5/QtWidgets/qprogressdialog.h \
 		/usr/include/qt5/QtWidgets/qwizard.h \
@@ -1698,7 +1702,6 @@ arrow.o: arrow.cpp arrow.h \
 		/usr/include/qt5/QtWidgets/qfontcombobox.h \
 		/usr/include/qt5/QtWidgets/qgroupbox.h \
 		/usr/include/qt5/QtWidgets/qkeysequenceedit.h \
-		/usr/include/qt5/QtWidgets/qlabel.h \
 		/usr/include/qt5/QtWidgets/qlcdnumber.h \
 		/usr/include/qt5/QtWidgets/qmainwindow.h \
 		/usr/include/qt5/QtWidgets/qmdiarea.h \
@@ -2064,6 +2067,8 @@ dialog.o: dialog.cpp dialog.h \
 		/usr/include/qt5/QtGui/QPainterPath \
 		/usr/include/qt5/QtCore/QPointF \
 		/usr/include/qt5/QtGui/QImage \
+		/usr/include/qt5/QtWidgets/QLabel \
+		/usr/include/qt5/QtWidgets/qlabel.h \
 		/usr/include/qt5/QtCore/QCoreApplication \
 		/usr/include/qt5/QtCore/QStringBuilder \
 		/usr/include/qt5/QtCore/QString \
@@ -2167,7 +2172,6 @@ dialog.o: dialog.cpp dialog.h \
 		/usr/include/qt5/QtWidgets/qfontcombobox.h \
 		/usr/include/qt5/QtWidgets/qgroupbox.h \
 		/usr/include/qt5/QtWidgets/qkeysequenceedit.h \
-		/usr/include/qt5/QtWidgets/qlabel.h \
 		/usr/include/qt5/QtWidgets/qlcdnumber.h \
 		/usr/include/qt5/QtWidgets/qmainwindow.h \
 		/usr/include/qt5/QtWidgets/qmdiarea.h \
@@ -2535,6 +2539,8 @@ main.o: main.cpp dialog.h \
 		/usr/include/qt5/QtGui/QPainterPath \
 		/usr/include/qt5/QtCore/QPointF \
 		/usr/include/qt5/QtGui/QImage \
+		/usr/include/qt5/QtWidgets/QLabel \
+		/usr/include/qt5/QtWidgets/qlabel.h \
 		/usr/include/qt5/QtCore/QCoreApplication \
 		/usr/include/qt5/QtCore/QStringBuilder \
 		/usr/include/qt5/QtCore/QString \
@@ -2638,7 +2644,6 @@ main.o: main.cpp dialog.h \
 		/usr/include/qt5/QtWidgets/qfontcombobox.h \
 		/usr/include/qt5/QtWidgets/qgroupbox.h \
 		/usr/include/qt5/QtWidgets/qkeysequenceedit.h \
-		/usr/include/qt5/QtWidgets/qlabel.h \
 		/usr/include/qt5/QtWidgets/qlcdnumber.h \
 		/usr/include/qt5/QtWidgets/qmainwindow.h \
 		/usr/include/qt5/QtWidgets/qmdiarea.h \
@@ -2784,6 +2789,22 @@ mygroup.o: mygroup.cpp mygroup.h \
 		/usr/include/qt5/QtCore/QPointF \
 		/usr/include/qt5/QtCore/QSizeF \
 		/usr/include/qt5/QtGui/QImage \
+		/usr/include/qt5/QtWidgets/QLabel \
+		/usr/include/qt5/QtWidgets/qlabel.h \
+		/usr/include/qt5/QtWidgets/qframe.h \
+		/usr/include/qt5/QtWidgets/qwidget.h \
+		/usr/include/qt5/QtCore/qmargins.h \
+		/usr/include/qt5/QtGui/qpalette.h \
+		/usr/include/qt5/QtWidgets/qsizepolicy.h \
+		/usr/include/qt5/QtGui/qcursor.h \
+		/usr/include/qt5/QtGui/qkeysequence.h \
+		/usr/include/qt5/QtGui/qevent.h \
+		/usr/include/qt5/QtCore/qurl.h \
+		/usr/include/qt5/QtCore/qurlquery.h \
+		/usr/include/qt5/QtCore/qfile.h \
+		/usr/include/qt5/QtCore/qfiledevice.h \
+		/usr/include/qt5/QtGui/qvector2d.h \
+		/usr/include/qt5/QtGui/qtouchdevice.h \
 		/usr/include/qt5/QtCore/QCoreApplication \
 		/usr/include/qt5/QtCore/qcoreapplication.h \
 		/usr/include/qt5/QtCore/qeventloop.h \
@@ -2813,8 +2834,6 @@ mygroup.o: mygroup.cpp mygroup.h \
 		/usr/include/qt5/QtCore/qbuffer.h \
 		/usr/include/qt5/QtCore/qdir.h \
 		/usr/include/qt5/QtCore/qfileinfo.h \
-		/usr/include/qt5/QtCore/qfile.h \
-		/usr/include/qt5/QtCore/qfiledevice.h \
 		/usr/include/qt5/QtCore/qdiriterator.h \
 		/usr/include/qt5/QtCore/qfileselector.h \
 		/usr/include/qt5/QtCore/QStringList \
@@ -2829,8 +2848,6 @@ mygroup.o: mygroup.cpp mygroup.h \
 		/usr/include/qt5/QtCore/qtemporarydir.h \
 		/usr/include/qt5/QtCore/QScopedPointer \
 		/usr/include/qt5/QtCore/qtemporaryfile.h \
-		/usr/include/qt5/QtCore/qurl.h \
-		/usr/include/qt5/QtCore/qurlquery.h \
 		/usr/include/qt5/QtCore/qabstractitemmodel.h \
 		/usr/include/qt5/QtCore/qabstractproxymodel.h \
 		/usr/include/qt5/QtCore/qidentityproxymodel.h \
@@ -2894,7 +2911,6 @@ mygroup.o: mygroup.cpp mygroup.h \
 		/usr/include/qt5/QtCore/qcryptographichash.h \
 		/usr/include/qt5/QtCore/qelapsedtimer.h \
 		/usr/include/qt5/QtCore/qlinkedlist.h \
-		/usr/include/qt5/QtCore/qmargins.h \
 		/usr/include/qt5/QtCore/qmessageauthenticationcode.h \
 		/usr/include/qt5/QtCore/qqueue.h \
 		/usr/include/qt5/QtCore/qregularexpression.h \
@@ -2908,10 +2924,6 @@ mygroup.o: mygroup.cpp mygroup.h \
 		/usr/include/qt5/QtGui/QtGui \
 		/usr/include/qt5/QtGui/QtGuiDepends \
 		/usr/include/qt5/QtGui/qaccessible.h \
-		/usr/include/qt5/QtGui/qevent.h \
-		/usr/include/qt5/QtGui/qkeysequence.h \
-		/usr/include/qt5/QtGui/qvector2d.h \
-		/usr/include/qt5/QtGui/qtouchdevice.h \
 		/usr/include/qt5/QtGui/qaccessiblebridge.h \
 		/usr/include/qt5/QtGui/qaccessibleobject.h \
 		/usr/include/qt5/QtGui/qaccessibleplugin.h \
@@ -2928,7 +2940,6 @@ mygroup.o: mygroup.cpp mygroup.h \
 		/usr/include/qt5/QtGui/qpixmapcache.h \
 		/usr/include/qt5/QtGui/qstandarditemmodel.h \
 		/usr/include/qt5/QtGui/qclipboard.h \
-		/usr/include/qt5/QtGui/qcursor.h \
 		/usr/include/qt5/QtGui/qdrag.h \
 		/usr/include/qt5/QtGui/qgenericplugin.h \
 		/usr/include/qt5/QtGui/qgenericpluginfactory.h \
@@ -2944,7 +2955,6 @@ mygroup.o: mygroup.cpp mygroup.h \
 		/usr/include/qt5/QtGui/qopengles2ext.h \
 		/usr/include/qt5/QtGui/qopenglext.h \
 		/usr/include/qt5/QtGui/qopenglversionfunctions.h \
-		/usr/include/qt5/QtGui/qpalette.h \
 		/usr/include/qt5/QtGui/qscreen.h \
 		/usr/include/qt5/QtCore/QRect \
 		/usr/include/qt5/QtCore/QSize \
@@ -2997,15 +3007,12 @@ mygroup.o: mygroup.cpp mygroup.h \
 		/usr/include/qt5/QtWidgets/qaccessiblewidget.h \
 		/usr/include/qt5/QtWidgets/qcolordialog.h \
 		/usr/include/qt5/QtWidgets/qdialog.h \
-		/usr/include/qt5/QtWidgets/qwidget.h \
-		/usr/include/qt5/QtWidgets/qsizepolicy.h \
 		/usr/include/qt5/QtWidgets/qerrormessage.h \
 		/usr/include/qt5/QtWidgets/qfiledialog.h \
 		/usr/include/qt5/QtWidgets/qfilesystemmodel.h \
 		/usr/include/qt5/QtWidgets/qfontdialog.h \
 		/usr/include/qt5/QtWidgets/qinputdialog.h \
 		/usr/include/qt5/QtWidgets/qlineedit.h \
-		/usr/include/qt5/QtWidgets/qframe.h \
 		/usr/include/qt5/QtWidgets/qmessagebox.h \
 		/usr/include/qt5/QtWidgets/qprogressdialog.h \
 		/usr/include/qt5/QtWidgets/qwizard.h \
@@ -3102,7 +3109,6 @@ mygroup.o: mygroup.cpp mygroup.h \
 		/usr/include/qt5/QtWidgets/qfontcombobox.h \
 		/usr/include/qt5/QtWidgets/qgroupbox.h \
 		/usr/include/qt5/QtWidgets/qkeysequenceedit.h \
-		/usr/include/qt5/QtWidgets/qlabel.h \
 		/usr/include/qt5/QtWidgets/qlcdnumber.h \
 		/usr/include/qt5/QtWidgets/qmainwindow.h \
 		/usr/include/qt5/QtWidgets/qmdiarea.h \
@@ -3245,6 +3251,22 @@ mysquare.o: mysquare.cpp mysquare.h \
 		/usr/include/qt5/QtCore/QPointF \
 		/usr/include/qt5/QtCore/QSizeF \
 		/usr/include/qt5/QtGui/QImage \
+		/usr/include/qt5/QtWidgets/QLabel \
+		/usr/include/qt5/QtWidgets/qlabel.h \
+		/usr/include/qt5/QtWidgets/qframe.h \
+		/usr/include/qt5/QtWidgets/qwidget.h \
+		/usr/include/qt5/QtCore/qmargins.h \
+		/usr/include/qt5/QtGui/qpalette.h \
+		/usr/include/qt5/QtWidgets/qsizepolicy.h \
+		/usr/include/qt5/QtGui/qcursor.h \
+		/usr/include/qt5/QtGui/qkeysequence.h \
+		/usr/include/qt5/QtGui/qevent.h \
+		/usr/include/qt5/QtCore/qurl.h \
+		/usr/include/qt5/QtCore/qurlquery.h \
+		/usr/include/qt5/QtCore/qfile.h \
+		/usr/include/qt5/QtCore/qfiledevice.h \
+		/usr/include/qt5/QtGui/qvector2d.h \
+		/usr/include/qt5/QtGui/qtouchdevice.h \
 		/usr/include/qt5/QtCore/QCoreApplication \
 		/usr/include/qt5/QtCore/qcoreapplication.h \
 		/usr/include/qt5/QtCore/qeventloop.h \
@@ -3274,8 +3296,6 @@ mysquare.o: mysquare.cpp mysquare.h \
 		/usr/include/qt5/QtCore/qbuffer.h \
 		/usr/include/qt5/QtCore/qdir.h \
 		/usr/include/qt5/QtCore/qfileinfo.h \
-		/usr/include/qt5/QtCore/qfile.h \
-		/usr/include/qt5/QtCore/qfiledevice.h \
 		/usr/include/qt5/QtCore/qdiriterator.h \
 		/usr/include/qt5/QtCore/qfileselector.h \
 		/usr/include/qt5/QtCore/QStringList \
@@ -3290,8 +3310,6 @@ mysquare.o: mysquare.cpp mysquare.h \
 		/usr/include/qt5/QtCore/qtemporarydir.h \
 		/usr/include/qt5/QtCore/QScopedPointer \
 		/usr/include/qt5/QtCore/qtemporaryfile.h \
-		/usr/include/qt5/QtCore/qurl.h \
-		/usr/include/qt5/QtCore/qurlquery.h \
 		/usr/include/qt5/QtCore/qabstractitemmodel.h \
 		/usr/include/qt5/QtCore/qabstractproxymodel.h \
 		/usr/include/qt5/QtCore/qidentityproxymodel.h \
@@ -3355,7 +3373,6 @@ mysquare.o: mysquare.cpp mysquare.h \
 		/usr/include/qt5/QtCore/qcryptographichash.h \
 		/usr/include/qt5/QtCore/qelapsedtimer.h \
 		/usr/include/qt5/QtCore/qlinkedlist.h \
-		/usr/include/qt5/QtCore/qmargins.h \
 		/usr/include/qt5/QtCore/qmessageauthenticationcode.h \
 		/usr/include/qt5/QtCore/qqueue.h \
 		/usr/include/qt5/QtCore/qregularexpression.h \
@@ -3369,10 +3386,6 @@ mysquare.o: mysquare.cpp mysquare.h \
 		/usr/include/qt5/QtGui/QtGui \
 		/usr/include/qt5/QtGui/QtGuiDepends \
 		/usr/include/qt5/QtGui/qaccessible.h \
-		/usr/include/qt5/QtGui/qevent.h \
-		/usr/include/qt5/QtGui/qkeysequence.h \
-		/usr/include/qt5/QtGui/qvector2d.h \
-		/usr/include/qt5/QtGui/qtouchdevice.h \
 		/usr/include/qt5/QtGui/qaccessiblebridge.h \
 		/usr/include/qt5/QtGui/qaccessibleobject.h \
 		/usr/include/qt5/QtGui/qaccessibleplugin.h \
@@ -3389,7 +3402,6 @@ mysquare.o: mysquare.cpp mysquare.h \
 		/usr/include/qt5/QtGui/qpixmapcache.h \
 		/usr/include/qt5/QtGui/qstandarditemmodel.h \
 		/usr/include/qt5/QtGui/qclipboard.h \
-		/usr/include/qt5/QtGui/qcursor.h \
 		/usr/include/qt5/QtGui/qdrag.h \
 		/usr/include/qt5/QtGui/qgenericplugin.h \
 		/usr/include/qt5/QtGui/qgenericpluginfactory.h \
@@ -3405,7 +3417,6 @@ mysquare.o: mysquare.cpp mysquare.h \
 		/usr/include/qt5/QtGui/qopengles2ext.h \
 		/usr/include/qt5/QtGui/qopenglext.h \
 		/usr/include/qt5/QtGui/qopenglversionfunctions.h \
-		/usr/include/qt5/QtGui/qpalette.h \
 		/usr/include/qt5/QtGui/qscreen.h \
 		/usr/include/qt5/QtCore/QRect \
 		/usr/include/qt5/QtCore/QSize \
@@ -3458,15 +3469,12 @@ mysquare.o: mysquare.cpp mysquare.h \
 		/usr/include/qt5/QtWidgets/qaccessiblewidget.h \
 		/usr/include/qt5/QtWidgets/qcolordialog.h \
 		/usr/include/qt5/QtWidgets/qdialog.h \
-		/usr/include/qt5/QtWidgets/qwidget.h \
-		/usr/include/qt5/QtWidgets/qsizepolicy.h \
 		/usr/include/qt5/QtWidgets/qerrormessage.h \
 		/usr/include/qt5/QtWidgets/qfiledialog.h \
 		/usr/include/qt5/QtWidgets/qfilesystemmodel.h \
 		/usr/include/qt5/QtWidgets/qfontdialog.h \
 		/usr/include/qt5/QtWidgets/qinputdialog.h \
 		/usr/include/qt5/QtWidgets/qlineedit.h \
-		/usr/include/qt5/QtWidgets/qframe.h \
 		/usr/include/qt5/QtWidgets/qmessagebox.h \
 		/usr/include/qt5/QtWidgets/qprogressdialog.h \
 		/usr/include/qt5/QtWidgets/qwizard.h \
@@ -3563,7 +3571,6 @@ mysquare.o: mysquare.cpp mysquare.h \
 		/usr/include/qt5/QtWidgets/qfontcombobox.h \
 		/usr/include/qt5/QtWidgets/qgroupbox.h \
 		/usr/include/qt5/QtWidgets/qkeysequenceedit.h \
-		/usr/include/qt5/QtWidgets/qlabel.h \
 		/usr/include/qt5/QtWidgets/qlcdnumber.h \
 		/usr/include/qt5/QtWidgets/qmainwindow.h \
 		/usr/include/qt5/QtWidgets/qmdiarea.h \

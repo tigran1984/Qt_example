@@ -39,12 +39,14 @@ void Arrow::updatePosition()
 {
     QLineF line(mapFromItem(myStartItem, 0, 0), mapFromItem(myEndItem, 0, 0));
     setLine(line);
+    //this->setOpacity(myStartItem->opacity());
     //qDebug() << myEndItem->x() << "myEndItem pos.x()" << myEndItem->y() << "myEndItem pos.y()" ; 
 }
 
 void Arrow::paint(QPainter *painter, const QStyleOptionGraphicsItem *,
           QWidget *)
 {
+
     if (myStartItem->collidesWithItem(myEndItem))
         return;
 
