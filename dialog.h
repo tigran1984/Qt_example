@@ -27,6 +27,10 @@ class Dialog : public QDialog
 
 public:
     explicit Dialog(QWidget *parent = 0);
+    QPropertyAnimation* posAnimation(MySquare* ptr,int duration,QPointF startValue,
+            QPointF endValue, QEasingCurve easing);
+    QPropertyAnimation* opacityAnimation(MySquare* ptr,int duration,qreal startValue,
+            qreal endValue, QEasingCurve easing);
     ~Dialog();
 public slots:
     void firstPage();
@@ -43,6 +47,7 @@ private:
     MySquare *square2;
     QParallelAnimationGroup * groupAnim_1;
     QParallelAnimationGroup * groupAnim_2;
+    QParallelAnimationGroup * groupAnim_3;
 
 };
 

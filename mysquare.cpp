@@ -90,12 +90,17 @@ QVariant MySquare::itemChange(GraphicsItemChange change, const QVariant &value)
         foreach (Arrow *arrow, arrows) {
             arrow->updatePosition();
         }
-        *posXY = QString::number(this->x())+", "+
+       *posXY = QString::number(this->x())+", "+
                             QString::number(this->y());
         itemXY->setPlainText((*posXY));
 
     }
-    return QGraphicsItem::itemChange(change, value);
+    if (change == QGraphicsItem::ItemOpacityChange ) {
+        foreach (Arrow *arrow, arrows) {
+            arrow->setOpacity(this->opacity());
+        }
+    }
+   return QGraphicsItem::itemChange(change, value);
 }
 
 void MySquare::addArrow(Arrow *arrow)
