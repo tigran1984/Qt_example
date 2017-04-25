@@ -188,7 +188,7 @@ void Dialog::setFirstPage()
      for (int i=0 ;i<9 ;++i)
     {
         groupAnim_2->addAnimation(opacityAnimation(
-                                items.at(i),3001,0.0,1.0,QEasingCurve::InExpo));   
+                                items.at(i),3001,0.0,1.0,QEasingCurve::Linear));   
     }
     //groupAnim_2->addAnimation(opacityAnimation(
     //                            ar0,3001,0.0,1.0,QEasingCurve::InExpo));
@@ -210,109 +210,47 @@ void Dialog::setFirstPage()
     //                            ar8,3001,0.0,1.0,QEasingCurve::InExpo));
     //groupAnim_2->addAnimation(opacityAnimation(
     //                            ar9,3001,0.0,1.0,QEasingCurve::InExpo));
+    items.at(8)->setZValue(1000);
+    items.at(8)->setZValue(999);
    // set Animation when page changed //
     groupAnim_1->addAnimation(posAnimation(
-                                items.at(0),3001,items.at(0)->pos(),items.at(0)->pos(),QEasingCurve::InExpo));
-    //QPropertyAnimation *anim0 = new QPropertyAnimation(items.at(0),"pos" );
-    //anim0->setDuration(3001);
-    ////anim0->setStartValue(items.at(0)->pos());
-    //anim0->setStartValue(QPoint(42,139));
-    //anim0->setEndValue(items.at(0)->pos());
-    QPropertyAnimation *anim1 = new QPropertyAnimation(items.at(1),"pos" );
-    anim1->setDuration(3001);
-    anim1->setEndValue(items.at(0)->pos());
-    QPropertyAnimation *anim2 = new QPropertyAnimation(items.at(2),"pos" );
-    anim2->setDuration(3001);
-    anim2->setEndValue(items.at(0)->pos());
-    QPropertyAnimation *anim3 = new QPropertyAnimation(items.at(3),"pos" );
-    anim3->setDuration(3001);
-    anim3->setEndValue(items.at(0)->pos());
-    QPropertyAnimation *anim4 = new QPropertyAnimation(items.at(4),"pos" );
-    anim4->setDuration(3001);
-    anim4->setEndValue(items.at(0)->pos());
-    QPropertyAnimation *anim5 = new QPropertyAnimation(items.at(5),"pos" );
-    anim5->setDuration(3001);
-    anim5->setEndValue(items.at(0)->pos());
-    QPropertyAnimation *anim6 = new QPropertyAnimation(items.at(6),"pos" );
-    anim6->setDuration(3001);
-    anim6->setEndValue(items.at(0)->pos());
-    QPropertyAnimation *anim7 = new QPropertyAnimation(items.at(7),"pos" );
-    anim7->setDuration(3001);
-    anim7->setEndValue(items.at(0)->pos());
-    QPropertyAnimation *anim8 = new QPropertyAnimation(items.at(8),"pos" );
-    anim8->setDuration(3001);
-    anim8->setStartValue(QPoint(291,168));
-    anim8->setEndValue(items.at(0)->pos());
-    //////////////////////
-
-    //anim0->setEasingCurve(QEasingCurve::InElastic);
-    anim1->setEasingCurve(QEasingCurve::OutExpo);
-    anim2->setEasingCurve(QEasingCurve::OutExpo);
-    anim3->setEasingCurve(QEasingCurve::OutExpo);
-    anim4->setEasingCurve(QEasingCurve::OutExpo);
-    anim5->setEasingCurve(QEasingCurve::OutExpo);
-    anim6->setEasingCurve(QEasingCurve::OutExpo);
-    anim7->setEasingCurve(QEasingCurve::OutExpo);
-    anim8->setEasingCurve(QEasingCurve::InExpo);
-    //////////////////////
-    QPropertyAnimation *anim10 = new QPropertyAnimation(items.at(0),"opacity" );
-    anim10->setDuration(3001);
-    anim10->setEndValue(0.0);
-    QPropertyAnimation *anim11 = new QPropertyAnimation(items.at(1),"opacity" );
-    anim11->setDuration(3001);
-    anim11->setEndValue(0.0);
-    QPropertyAnimation *anim12 = new QPropertyAnimation(items.at(2),"opacity" );
-    anim12->setDuration(3001);
-    anim12->setEndValue(0.0);
-    QPropertyAnimation *anim13 = new QPropertyAnimation(items.at(3),"opacity" );
-    anim13->setDuration(3001);
-    anim13->setEndValue(0.0);
-    QPropertyAnimation *anim14 = new QPropertyAnimation(items.at(4),"opacity" );
-    anim14->setDuration(3001);
-    anim14->setEndValue(0.0);
-    QPropertyAnimation *anim15 = new QPropertyAnimation(items.at(5),"opacity" );
-    anim15->setDuration(3001);
-    anim15->setEndValue(0.0);
-    QPropertyAnimation *anim16 = new QPropertyAnimation(items.at(6),"opacity" );
-    anim16->setDuration(3001);
-    anim16->setEndValue(0.0);
-    QPropertyAnimation *anim17 = new QPropertyAnimation(items.at(7),"opacity" );
-    anim17->setDuration(3001);
-    anim17->setEndValue(0.0);
-    QPropertyAnimation *anim18 = new QPropertyAnimation(items.at(8),"opacity" );
-    anim18->setDuration(3001);
-    anim18->setEndValue(0.0);
-    //////////////////////
-    anim10->setEasingCurve(QEasingCurve::OutExpo);
-    anim11->setEasingCurve(QEasingCurve::InExpo);
-    anim12->setEasingCurve(QEasingCurve::InExpo);
-    anim13->setEasingCurve(QEasingCurve::InExpo);
-    anim14->setEasingCurve(QEasingCurve::InExpo);
-    anim15->setEasingCurve(QEasingCurve::InExpo);
-    anim16->setEasingCurve(QEasingCurve::InExpo);
-    anim17->setEasingCurve(QEasingCurve::InExpo);
-    anim18->setEasingCurve(QEasingCurve::OutExpo);
-    //////////////////////
-    //groupAnim_1->addAnimation(anim0);
-    groupAnim_1->addAnimation(anim1);
-    groupAnim_1->addAnimation(anim2);
-    groupAnim_1->addAnimation(anim3);
-    groupAnim_1->addAnimation(anim4);
-    groupAnim_1->addAnimation(anim5);
-    groupAnim_1->addAnimation(anim6);
-    groupAnim_1->addAnimation(anim7);
-    groupAnim_1->addAnimation(anim8);
-    //////////////////////
-    groupAnim_1->addAnimation(anim10);
-    groupAnim_1->addAnimation(anim11);
-    groupAnim_1->addAnimation(anim12);
-    groupAnim_1->addAnimation(anim13);
-    groupAnim_1->addAnimation(anim14);
-    groupAnim_1->addAnimation(anim15);
-    groupAnim_1->addAnimation(anim16);
-    groupAnim_1->addAnimation(anim17);
-    groupAnim_1->addAnimation(anim18);
-    //groupAnim_1->addAnimation(anim19);
+                                items.at(0),3001,items.at(0)->pos(),items.at(8)->pos(),QEasingCurve::OutExpo));
+    groupAnim_1->addAnimation(posAnimation(
+                                items.at(1),3001,items.at(1)->pos(),items.at(0)->pos(),QEasingCurve::OutExpo));
+    groupAnim_1->addAnimation(posAnimation(
+                                items.at(2),3001,items.at(2)->pos(),items.at(0)->pos(),QEasingCurve::OutExpo));
+    groupAnim_1->addAnimation(posAnimation(
+                                items.at(3),3001,items.at(3)->pos(),items.at(0)->pos(),QEasingCurve::OutExpo));
+    groupAnim_1->addAnimation(posAnimation(
+                                items.at(4),3001,items.at(4)->pos(),items.at(0)->pos(),QEasingCurve::OutExpo));
+    groupAnim_1->addAnimation(posAnimation(
+                                items.at(5),3001,items.at(5)->pos(),items.at(0)->pos(),QEasingCurve::OutExpo));
+    groupAnim_1->addAnimation(posAnimation(
+                                items.at(6),3001,items.at(6)->pos(),items.at(0)->pos(),QEasingCurve::OutExpo));
+    groupAnim_1->addAnimation(posAnimation(
+                                items.at(7),3001,items.at(7)->pos(),items.at(0)->pos(),QEasingCurve::OutExpo));
+    groupAnim_1->addAnimation(posAnimation(
+                                items.at(8),3001,items.at(8)->pos(),items.at(0)->pos(),QEasingCurve::OutExpo));
+    ////////////////////////
+    groupAnim_1->addAnimation(opacityAnimation(
+                                items.at(0),3001,1.0,0.0,QEasingCurve::InExpo));
+    groupAnim_1->addAnimation(opacityAnimation(
+                                items.at(1),3001,1.0,0.0,QEasingCurve::OutExpo));
+    groupAnim_1->addAnimation(opacityAnimation(
+                                items.at(2),3001,1.0,0.0,QEasingCurve::OutExpo));
+    groupAnim_1->addAnimation(opacityAnimation(
+                                items.at(3),3001,1.0,0.0,QEasingCurve::OutExpo));
+    groupAnim_1->addAnimation(opacityAnimation(
+                                items.at(4),3001,1.0,0.0,QEasingCurve::OutExpo));
+    groupAnim_1->addAnimation(opacityAnimation(
+                                items.at(5),3001,1.0,0.0,QEasingCurve::OutExpo));
+    groupAnim_1->addAnimation(opacityAnimation(
+                                items.at(6),3001,1.0,0.0,QEasingCurve::OutExpo));
+    groupAnim_1->addAnimation(opacityAnimation(
+                                items.at(7),3001,1.0,0.0,QEasingCurve::OutExpo));
+    groupAnim_1->addAnimation(opacityAnimation(
+                                items.at(8),3001,1.0,0.0,QEasingCurve::InExpo));
+    ////////////////////
     connect(items.at(8), &MySquare::click, this, &Dialog::partnersPage);
     groupAnim_2->start();
 }
@@ -433,142 +371,75 @@ void Dialog::setPartnersPage()
     ar4->updatePosition();
     ar5->updatePosition();
     ar6->updatePosition();
-    QPropertyAnimation *anim20 = new QPropertyAnimation(items2.at(0),"opacity" );
-    anim20->setDuration(3001);
-    anim20->setStartValue(0.0);
-    anim20->setEndValue(1.0);
-    QPropertyAnimation *anim21 = new QPropertyAnimation(items2.at(1),"opacity" );
-    anim21->setDuration(3001);
-    anim21->setStartValue(0.0);
-    anim21->setEndValue(1.0);
-    QPropertyAnimation *anim22 = new QPropertyAnimation(items2.at(2),"opacity" );
-    anim22->setDuration(3001);
-    anim22->setStartValue(0.0);
-    anim22->setEndValue(1.0);
-    QPropertyAnimation *anim23 = new QPropertyAnimation(items2.at(3),"opacity" );
-    anim23->setDuration(3001);
-    anim23->setStartValue(0.0);
-    anim23->setEndValue(1.0);
-    QPropertyAnimation *anim24 = new QPropertyAnimation(items2.at(4),"opacity" );
-    anim24->setDuration(3001);
-    anim24->setStartValue(0.0);
-    anim24->setEndValue(1.0);
-    QPropertyAnimation *anim25 = new QPropertyAnimation(items2.at(5),"opacity" );
-    anim25->setDuration(3001);
-    anim25->setStartValue(0.0);
-    anim25->setEndValue(1.0);
-    QPropertyAnimation *anim26 = new QPropertyAnimation(items2.at(6),"opacity" );
-    anim26->setDuration(3001);
-    anim26->setStartValue(0.0);
-    anim26->setEndValue(1.0);
-    QPropertyAnimation *anim27 = new QPropertyAnimation(items2.at(7),"opacity" );
-    anim27->setDuration(3001);
-    anim27->setStartValue(0.0);
-    anim27->setEndValue(1.0);
-    ///////////
-    groupAnim_2->clear();
-    groupAnim_2->addAnimation(anim20);
-    groupAnim_2->addAnimation(anim21);
-    groupAnim_2->addAnimation(anim22);
-    groupAnim_2->addAnimation(anim23);
-    groupAnim_2->addAnimation(anim24);
-    groupAnim_2->addAnimation(anim25);
-    groupAnim_2->addAnimation(anim26);
-    groupAnim_2->addAnimation(anim27);
-    groupAnim_2->start();
-    //////////////////
-    QPropertyAnimation *anim30 = new QPropertyAnimation(items2.at(0),"opacity" );
-    anim30->setDuration(3001);
-    anim30->setStartValue(1.0);
-    anim30->setEndValue(0.0);
-    QPropertyAnimation *anim31 = new QPropertyAnimation(items2.at(1),"opacity" );
-    anim31->setDuration(3001);
-    anim31->setStartValue(1.0);
-    anim31->setEndValue(0.0);
-    QPropertyAnimation *anim32 = new QPropertyAnimation(items2.at(2),"opacity" );
-    anim32->setDuration(3001);
-    anim32->setStartValue(1.0);
-    anim32->setEndValue(0.0);
-    QPropertyAnimation *anim33 = new QPropertyAnimation(items2.at(3),"opacity" );
-    anim33->setDuration(3001);
-    anim33->setStartValue(1.0);
-    anim33->setEndValue(0.0);
-    QPropertyAnimation *anim34 = new QPropertyAnimation(items2.at(4),"opacity" );
-    anim34->setDuration(3001);
-    anim34->setStartValue(1.0);
-    anim34->setEndValue(0.0);
-    QPropertyAnimation *anim35 = new QPropertyAnimation(items2.at(5),"opacity" );
-    anim35->setDuration(3001);
-    anim35->setStartValue(1.0);
-    anim35->setEndValue(0.0);
-    QPropertyAnimation *anim36 = new QPropertyAnimation(items2.at(6),"opacity" );
-    anim36->setDuration(3001);
-    anim36->setStartValue(1.0);
-    anim36->setEndValue(0.0);
-    QPropertyAnimation *anim37 = new QPropertyAnimation(items2.at(7),"opacity" );
-    anim37->setDuration(3001);
-    anim37->setStartValue(1.0);
-    anim37->setEndValue(0.0);
+    groupAnim_2->clear();   
+    groupAnim_2->addAnimation(opacityAnimation(
+                                items2.at(0), 3001,0.0,1.0,QEasingCurve::Linear));
+    groupAnim_2->addAnimation(opacityAnimation(
+                                items2.at(1), 3001,0.0,1.0,QEasingCurve::Linear));
+    groupAnim_2->addAnimation(opacityAnimation(
+                                items2.at(2), 3001,0.0,1.0,QEasingCurve::Linear));
+    groupAnim_2->addAnimation(opacityAnimation(
+                                items2.at(3), 3001,0.0,1.0,QEasingCurve::Linear));
+    groupAnim_2->addAnimation(opacityAnimation(
+                                items2.at(4), 3001,0.0,1.0,QEasingCurve::Linear));
+    groupAnim_2->addAnimation(opacityAnimation(
+                                items2.at(5), 3001,0.0,1.0,QEasingCurve::Linear));
+    groupAnim_2->addAnimation(opacityAnimation(
+                                items2.at(6), 3001,0.0,1.0,QEasingCurve::Linear));
+    groupAnim_2->addAnimation(opacityAnimation(
+                                items2.at(7), 3001,0.0,1.0,QEasingCurve::Linear));
     /////////////change position animation ///////
-    QPropertyAnimation *anim40 = new QPropertyAnimation(items2.at(0),"pos" );
-    anim40->setDuration(3001);
-    anim40->setEndValue(items2.at(7)->pos());
-    QPropertyAnimation *anim41 = new QPropertyAnimation(items2.at(1),"pos" );
-    anim41->setDuration(3001);
-    anim41->setEndValue(items2.at(7)->pos());
-    QPropertyAnimation *anim42 = new QPropertyAnimation(items2.at(2),"pos" );
-    anim42->setDuration(3001);
-    anim42->setEndValue(items2.at(7)->pos());
-    QPropertyAnimation *anim43 = new QPropertyAnimation(items2.at(3),"pos" );
-    anim43->setDuration(3001);
-    anim43->setEndValue(items2.at(7)->pos());
-    QPropertyAnimation *anim44 = new QPropertyAnimation(items2.at(4),"pos" );
-    anim44->setDuration(3001);
-    anim44->setEndValue(items2.at(7)->pos());
-    QPropertyAnimation *anim45 = new QPropertyAnimation(items2.at(5),"pos" );
-    anim45->setDuration(3001);
-    anim45->setEndValue(items2.at(7)->pos());
-    QPropertyAnimation *anim46 = new QPropertyAnimation(items2.at(6),"pos" );
-    anim46->setDuration(3001);
-    anim46->setEndValue(items2.at(7)->pos());
+    groupAnim_3->clear();
+    groupAnim_3->addAnimation(opacityAnimation(
+                               items2.at(0), 3001,1.0,0.0,QEasingCurve::Linear));
+    groupAnim_3->addAnimation(opacityAnimation(
+                               items2.at(1), 3001,1.0,0.0,QEasingCurve::Linear));
+    groupAnim_3->addAnimation(opacityAnimation(
+                               items2.at(2), 3001,1.0,0.0,QEasingCurve::Linear));
+    groupAnim_3->addAnimation(opacityAnimation(
+                               items2.at(3), 3001,1.0,0.0,QEasingCurve::Linear));
+    groupAnim_3->addAnimation(opacityAnimation(
+                               items2.at(4), 3001,1.0,0.0,QEasingCurve::Linear));
+    groupAnim_3->addAnimation(opacityAnimation(
+                               items2.at(5), 3001,1.0,0.0,QEasingCurve::Linear));
+    groupAnim_3->addAnimation(opacityAnimation(
+                               items2.at(6), 3001,1.0,0.0,QEasingCurve::Linear));
+    groupAnim_3->addAnimation(opacityAnimation(
+                               items2.at(7), 3001,1.0,0.0,QEasingCurve::Linear));
+    //////////////////////
+    groupAnim_3->addAnimation(posAnimation(
+                               items2.at(0), 3001,items2.at(0)->pos(),
+                               items2.at(7)->pos(),QEasingCurve::OutExpo));
+    groupAnim_3->addAnimation(posAnimation(                                               
+                               items2.at(1), 3001,items2.at(1)->pos(),
+                               items2.at(7)->pos(),QEasingCurve::OutExpo));
+    groupAnim_3->addAnimation(posAnimation(                                               
+                               items2.at(2), 3001,items2.at(2)->pos(),
+                               items2.at(7)->pos(),QEasingCurve::OutExpo));
+    groupAnim_3->addAnimation(posAnimation(                                               
+                               items2.at(3), 3001,items2.at(3)->pos(),
+                               items2.at(7)->pos(),QEasingCurve::OutExpo));
+    groupAnim_3->addAnimation(posAnimation(                                               
+                               items2.at(4), 3001,items2.at(4)->pos(),
+                               items2.at(7)->pos(),QEasingCurve::OutExpo));
+    groupAnim_3->addAnimation(posAnimation(                                               
+                               items2.at(5), 3001,items2.at(5)->pos(),
+                               items2.at(7)->pos(),QEasingCurve::OutExpo));
+    groupAnim_3->addAnimation(posAnimation(                                               
+                               items2.at(6), 3001,items2.at(6)->pos(),
+                               items2.at(7)->pos(),QEasingCurve::OutExpo));
+    groupAnim_3->addAnimation(posAnimation(                                                  
+                               items2.at(7), 3001,items2.at(7)->pos(),
+                               items2.at(6)->pos(),QEasingCurve::OutExpo));
     items2.at(6)->setZValue(1000);
-    QPropertyAnimation *anim47 = new QPropertyAnimation(items2.at(7),"pos" );
-    anim47->setDuration(3001);
-    anim47->setEndValue(items2.at(6)->pos());
     items2.at(7)->setZValue(0);
     //////////////////////////
-
-    anim40->setEasingCurve(QEasingCurve::OutExpo);
-    anim41->setEasingCurve(QEasingCurve::OutExpo);
-    anim42->setEasingCurve(QEasingCurve::OutExpo);
-    anim43->setEasingCurve(QEasingCurve::OutExpo);
-    anim44->setEasingCurve(QEasingCurve::OutExpo);
-    anim45->setEasingCurve(QEasingCurve::OutExpo);
-    anim46->setEasingCurve(QEasingCurve::OutExpo);
-    anim47->setEasingCurve(QEasingCurve::OutExpo);
-    groupAnim_3->clear();
-    groupAnim_3->addAnimation(anim30);
-    groupAnim_3->addAnimation(anim31);
-    groupAnim_3->addAnimation(anim32);
-    groupAnim_3->addAnimation(anim33);
-    groupAnim_3->addAnimation(anim34);
-    groupAnim_3->addAnimation(anim35);
-    groupAnim_3->addAnimation(anim36);
-    groupAnim_3->addAnimation(anim37);
-    groupAnim_3->addAnimation(anim40);
-    groupAnim_3->addAnimation(anim41);
-    groupAnim_3->addAnimation(anim42);
-    groupAnim_3->addAnimation(anim43);
-    groupAnim_3->addAnimation(anim44);
-    groupAnim_3->addAnimation(anim45);
-    groupAnim_3->addAnimation(anim46);
-    groupAnim_3->addAnimation(anim47);
+    groupAnim_2->start();
     connect(items2.at(6), &MySquare::click, this, &Dialog::firstPage);
 }
 
 void Dialog::partnersPage()
 {
-    //std::cout << scene->
     groupAnim_1->start();
     //QTimer::singleShot(4100, scene, SLOT(clear()));
     //scene->clear();
