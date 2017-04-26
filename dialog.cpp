@@ -249,6 +249,8 @@ Dialog::Dialog(QWidget *parent) :
     groupAnim_1 = new QParallelAnimationGroup;
     groupAnim_2 = new QParallelAnimationGroup;
     groupAnim_3 = new QParallelAnimationGroup;
+    connect(items.at(8), &MySquare::click, this, &Dialog::partnersPage);
+    connect(items2.at(6), &MySquare::click, this, &Dialog::firstPage);
     //QList<QGraphicsItem * > allItms = scene->items();
     //for( int i=0; i<allItms.count(); ++i )
     //{ 
@@ -333,7 +335,6 @@ void Dialog::setFirstPage()
     groupAnim_1->addAnimation(opacityAnimation(
                                 items.at(8),3001,1.0,0.0,QEasingCurve::InExpo));
     ////////////////////
-    connect(items.at(8), &MySquare::click, this, &Dialog::partnersPage);
     groupAnim_2->start();
 }
 
@@ -417,7 +418,6 @@ void Dialog::animateSecondPage()
     items2.at(7)->setZValue(0);
     //////////////////////////
     groupAnim_2->start();
-    connect(items2.at(6), &MySquare::click, this, &Dialog::firstPage);
 }
 
 void Dialog::partnersPage()

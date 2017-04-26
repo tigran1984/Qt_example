@@ -12,7 +12,7 @@ MySquare::MySquare()
     posXY = new QString(QString::number(this->x())+", "+
             QString::number(this->y()));
     itemXY = new QGraphicsTextItem(this);
-    itemXY->setPlainText((*posXY));
+    //itemXY->setPlainText((*posXY));
     itemXY->setTextInteractionFlags(Qt::TextEditorInteraction);
     itemXY->setZValue(2000);
     //text->setHtml("<heloooooooooo>");
@@ -92,7 +92,7 @@ QVariant MySquare::itemChange(GraphicsItemChange change, const QVariant &value)
         }
        *posXY = QString::number(this->x())+", "+
                             QString::number(this->y());
-        itemXY->setPlainText((*posXY));
+        //itemXY->setPlainText((*posXY));
 
     }
     if (change == QGraphicsItem::ItemOpacityChange ) {
