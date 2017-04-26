@@ -36,15 +36,13 @@ public slots:
     void firstPage();
     void partnersPage();
     void setFirstPage();
-    void setPartnersPage();
+    void animateSecondPage();
 
 private:
     Ui::Dialog *ui;
     QGraphicsScene *scene;
-    MyGroup *group;
-    //MyGroup *group2;
-    MySquare *square;
-    MySquare *square2;
+    QList<MySquare *> items;
+    QList<MySquare *> items2;
     QParallelAnimationGroup * groupAnim_1;
     QParallelAnimationGroup * groupAnim_2;
     QParallelAnimationGroup * groupAnim_3;
