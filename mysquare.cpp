@@ -7,17 +7,19 @@ MySquare::MySquare()
 {
     myItemRect = QRectF(0,0,150,70); //default value
     setFlag(ItemIsMovable);
+    setFlag(QGraphicsItem::ItemIsSelectable);
     setMyPolygon();//member function
     setFlag(ItemSendsScenePositionChanges, true);
     posXY = new QString(QString::number(this->x())+", "+
             QString::number(this->y()));
     itemXY = new QGraphicsTextItem(this);
-    //itemXY->setPlainText((*posXY));
+    itemXY->setPlainText((*posXY));
     itemXY->setTextInteractionFlags(Qt::TextEditorInteraction);
     itemXY->setZValue(2000);
     //text->setHtml("<heloooooooooo>");
     itemXY->setPos(this->x(), this->y());
-    
+    this->setCacheMode(QGraphicsItem::DeviceCoordinateCache);
+    this->setPos(100,100); 
 }
 
 QRectF MySquare::boundingRect() const
@@ -57,7 +59,82 @@ void MySquare::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     //Pressed = true;
     //update();
+    QString *xy = new QString(QString::number(event->pos().x())+", "+
+            QString::number(event->pos().y()));
+    itemXY->setPlainText((*xy));
+    QPointF p = event->pos();
+    QRectF r = sceneBoundingRect(); // relative to scene
+    QPointF tl = mapFromScene(r.topLeft());
+    QPointF br = mapFromScene(r.bottomRight());
+    if (p.x() <= tl.x()+10)
+    {
+        resize_direction_ = rd_left;
+        itemXY->setPlainText("rd_left");
+    }
+    else if (p.x() >= br.x()-10)
+    {
+        resize_direction_ = rd_right;
+    }
+    else if (p.y() <= tl.y()+10)
+    {
+        resize_direction_ = rd_top;
+    }
+    else if (p.y() >= br.y()-10)
+    {
+        resize_direction_ = rd_bottom;
+        qDebug() << "rd_right" ;
+    }
+    else
+    {
+        resize_direction_ = rd_none;
+    }
+    //this->setCursor(Qt::SizeAllCursor);
+
     QGraphicsItem::mousePressEvent(event);
+}
+
+void MySquare::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+{
+    //was_moved_ = true;
+    if (isSelected())
+    {
+        // resize border to mouse position
+        QPointF p = event->pos();
+        QPointF pp = mapToItem(this, p);
+        //QRectF r = rect();
+        QRectF r = boundingRect();
+        
+        switch (resize_direction_)
+        {
+        case rd_left:
+            r.setLeft(pp.x()+10);
+            prepareGeometryChange();
+            myItemRect = r ;
+            break;
+        case rd_top:
+            r.setTop(pp.y());
+            prepareGeometryChange();
+            myItemRect = r ;
+            break;
+        case rd_right:
+            r.setRight(pp.x());
+            prepareGeometryChange();
+            myItemRect = r ;
+            break;
+        case rd_bottom:
+            r.setBottom(pp.y());
+            prepareGeometryChange();
+            myItemRect = r ;
+            break;
+        default:
+            QGraphicsItem::mouseMoveEvent(event);
+            qDebug() << " default moving "; 
+            this->setCursor(Qt::ArrowCursor);
+            break;
+        }
+        return; //
+    }
+    QGraphicsItem::mouseMoveEvent(event);
 }
 
 void MySquare::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
@@ -68,21 +145,6 @@ void MySquare::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
     QTimer::singleShot(500, this, SIGNAL(click()));
     QGraphicsItem::mouseReleaseEvent(event);
 }
-
-
-//QVariant MySquare::itemChange(GraphicsItemChange change, const QVariant &value)
-//{
-//    if (change == QGraphicsItem::ItemPositionChange) {
-//        foreach (Arrow *arrow, arrows) {
-//            arrow->updatePosition();
-//        }
-//       qDebug() << "helooooooo" ;
-//    }
-//
-//    return value;
-//}
-
-
 
 QVariant MySquare::itemChange(GraphicsItemChange change, const QVariant &value)
 {
@@ -132,7 +194,21 @@ void MySquare::setMyPolygon()
 
 void MySquare::setItemSize(qreal width,qreal height)
 {
-     myItemRect = QRectF(0,0,width,height);
+    myItemRect.setWidth(width);
+    myItemRect.setHeight(height);
+    update();
+}
+
+void MySquare::setSize(QSize size)
+{
+    myItemRect.setWidth(size.width());
+    myItemRect.setHeight(size.height());
+    update();
+}
+
+QSize MySquare::size()
+{
+    return QSize( myItemRect.width(), myItemRect.height());
 }
 
 void MySquare::setImage(const QString& str) 

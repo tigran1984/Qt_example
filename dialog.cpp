@@ -6,6 +6,7 @@ Dialog::Dialog(QWidget *parent) :
     //ui->setupUi(this);
     //this->setGeometry(0,0,400,400);
     QHBoxLayout *hb = new QHBoxLayout();
+    //MyGraphicsView *gview = new MyGraphicsView();
     QGraphicsView *gview = new QGraphicsView();
     hb->addWidget(gview);
     this->setLayout(hb);

@@ -5,7 +5,6 @@
 #include<QGraphicsItem>
 #include<QGraphicsItemGroup>
 #include<QGraphicsPixmapItem>
-#include<QDebug>
 #include<QPainterPath>
 #include<QPointF>
 #include<QSizeF>
@@ -21,6 +20,7 @@
 #include <QtSvg>
 #include <QSvgGenerator>
 #include "arrow.h"
+#include "mysvgitem.h"
 class QGraphicsSvgItem;
 class QPolygonF;
 class Arrow;
@@ -29,10 +29,19 @@ class MySquare : public QObject,  public QGraphicsItem
 {
     Q_OBJECT
     Q_PROPERTY(qreal opacity READ opacity WRITE setOpacity);
+    Q_PROPERTY(QSize size READ size WRITE setSize);
     Q_PROPERTY(QPointF pos READ pos WRITE setPos);
-    Q_PROPERTY(qreal rotation READ rotation WRITE setRotation);
     Q_PROPERTY(qreal x READ x WRITE setX);
     Q_PROPERTY(qreal y READ y WRITE setY);
+    enum resize_direction
+    {
+        rd_none,
+        rd_left,
+        rd_top,
+        rd_right,
+        rd_bottom
+
+    };
 public:
     MySquare();
 
@@ -50,15 +59,18 @@ public:
     void setSvgImage(const QString& str);
     void setSvgImage(const QString& str ,QSizeF);
     void setSvgImage(const QString& str ,QRectF rec);
-    void setText(const QString& str ,QRectF rec); 
+    void setText(const QString& str ,QRectF rec);
+    QSize size(); 
+    void setSize(QSize size); 
     ~MySquare();
 signals:
     void click();
- 
+
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
-    QVariant itemChange(GraphicsItemChange change, const QVariant &value) Q_DECL_OVERRIDE;
+    void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+    QVariant itemChange(GraphicsItemChange change, const QVariant &value) ;
 private:
     QPolygonF myPolygon;
     QList<Arrow *> arrows;
@@ -67,6 +79,8 @@ private:
     QRectF MyTextRect;
     QGraphicsTextItem *itemXY;
     QString *posXY;
+    resize_direction resize_direction_;
+
 
 };
 

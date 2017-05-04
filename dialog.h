@@ -16,6 +16,7 @@
 #include"mysquare.h"
 #include "mygroup.h"
 #include"arrow.h"
+#include"mygraphicsview.h"
 
 namespace Ui {
 class Dialog;
