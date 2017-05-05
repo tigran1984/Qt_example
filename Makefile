@@ -294,7 +294,7 @@ qmake_all: FORCE
 
 dist: 
 	@test -d .tmp/test1.0.0 || mkdir -p .tmp/test1.0.0
-	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/test1.0.0/ && $(COPY_FILE) --parents arrow.h dialog.h mygraphicsview.h mygroup.h mysquare.h mysvgitem.h .tmp/test1.0.0/ && $(COPY_FILE) --parents arrow.cpp dialog.cpp main.cpp mygraphicsview.cpp mygroup.cpp mysquare.cpp mysvgitem.cpp .tmp/test1.0.0/ && $(COPY_FILE) --parents dialog.ui .tmp/test1.0.0/ && (cd `dirname .tmp/test1.0.0` && $(TAR) test1.0.0.tar test1.0.0 && $(COMPRESS) test1.0.0.tar) && $(MOVE) `dirname .tmp/test1.0.0`/test1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/test1.0.0
+	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/test1.0.0/ && $(COPY_FILE) --parents arrow.h dialog.h mygraphicsview.h mygroup.h mysquare.h mysvgitem.h ui_dialog.h .tmp/test1.0.0/ && $(COPY_FILE) --parents arrow.cpp dialog.cpp main.cpp mygraphicsview.cpp mygroup.cpp mysquare.cpp mysvgitem.cpp .tmp/test1.0.0/ && $(COPY_FILE) --parents dialog.ui .tmp/test1.0.0/ && (cd `dirname .tmp/test1.0.0` && $(TAR) test1.0.0.tar test1.0.0 && $(COMPRESS) test1.0.0.tar) && $(MOVE) `dirname .tmp/test1.0.0`/test1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/test1.0.0
 
 
 clean:compiler_clean 

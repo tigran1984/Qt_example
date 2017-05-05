@@ -22,5 +22,6 @@ public:
     MyGraphicsView(QGraphicsScene * scene, QWidget * parent = 0);
 protected:
     void mouseMoveEvent(QMouseEvent *event);
+    void mousePressEvent(QMouseEvent *event);
 };
 #endif // MYGRAPHICSVIEW_H

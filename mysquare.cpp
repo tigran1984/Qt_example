@@ -13,8 +13,8 @@ MySquare::MySquare()
     posXY = new QString(QString::number(this->x())+", "+
             QString::number(this->y()));
     itemXY = new QGraphicsTextItem(this);
-    itemXY->setPlainText((*posXY));
-    itemXY->setTextInteractionFlags(Qt::TextEditorInteraction);
+    //itemXY->setPlainText((*posXY));
+    //itemXY->setTextInteractionFlags(Qt::TextEditorInteraction);
     itemXY->setZValue(2000);
     //text->setHtml("<heloooooooooo>");
     itemXY->setPos(this->x(), this->y());
@@ -59,30 +59,44 @@ void MySquare::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     //Pressed = true;
     //update();
-    QString *xy = new QString(QString::number(event->pos().x())+", "+
-            QString::number(event->pos().y()));
-    itemXY->setPlainText((*xy));
+    bool diagonal_flag = false ;
+    clickFlag = true;
+    //QString *xy = new QString(QString::number(event->pos().x())+", "+
+    //        QString::number(event->pos().y()));
+    //itemXY->setPlainText((*xy));
     QPointF p = event->pos();
     QRectF r = sceneBoundingRect(); // relative to scene
     QPointF tl = mapFromScene(r.topLeft());
     QPointF br = mapFromScene(r.bottomRight());
-    if (p.x() <= tl.x()+10)
+    if (p.x() >= br.x()-10 && p.y() >= br.y()-10)
+    {
+        diagonal_flag = true ;
+        //qDebug() << "rd_diagonal" ;
+    }
+    else { diagonal_flag = false ;}
+    if (p.x() <= tl.x()+10 && !diagonal_flag)
     {
         resize_direction_ = rd_left;
-        itemXY->setPlainText("rd_left");
+        //itemXY->setPlainText("rd_left");
     }
-    else if (p.x() >= br.x()-10)
+    else if (p.x() >= br.x()-10 && !diagonal_flag)
     {
         resize_direction_ = rd_right;
     }
-    else if (p.y() <= tl.y()+10)
+    else if (p.y() <= tl.y()+10 && !diagonal_flag)
     {
         resize_direction_ = rd_top;
     }
-    else if (p.y() >= br.y()-10)
+    else if (p.y() >= br.y()-10 && !diagonal_flag)
     {
         resize_direction_ = rd_bottom;
-        qDebug() << "rd_right" ;
+        //qDebug() << "rd_right" ;
+    }
+    ////// testing diagonal resize /////
+    else if (diagonal_flag)
+    {
+        resize_direction_ = rd_diagonal;
+        //qDebug() << "rd_diagonal" ;
     }
     else
     {
@@ -95,7 +109,7 @@ void MySquare::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
 void MySquare::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
-    //was_moved_ = true;
+    clickFlag = false;
     if (isSelected())
     {
         // resize border to mouse position
@@ -103,11 +117,12 @@ void MySquare::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
         QPointF pp = mapToItem(this, p);
         //QRectF r = rect();
         QRectF r = boundingRect();
-        
+    
+    
         switch (resize_direction_)
         {
         case rd_left:
-            r.setLeft(pp.x()+10);
+            r.setLeft(pp.x());
             prepareGeometryChange();
             myItemRect = r ;
             break;
@@ -126,10 +141,16 @@ void MySquare::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
             prepareGeometryChange();
             myItemRect = r ;
             break;
+        case rd_diagonal:
+            r.setBottomRight(pp);
+            //qDebug() << " diagonal moving "; 
+            prepareGeometryChange();
+            myItemRect = r ;
+            break;
+
         default:
             QGraphicsItem::mouseMoveEvent(event);
-            qDebug() << " default moving "; 
-            this->setCursor(Qt::ArrowCursor);
+            //this->setCursor(Qt::ArrowCursor);
             break;
         }
         return; //
@@ -141,8 +162,11 @@ void MySquare::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
     //Pressed = false;
     //update();
-    //emit click();
-    QTimer::singleShot(500, this, SIGNAL(click()));
+    if(clickFlag)
+    {
+        emit click();
+    }
+    //QTimer::singleShot(500, this, SIGNAL(click()));
     QGraphicsItem::mouseReleaseEvent(event);
 }
 
@@ -194,16 +218,16 @@ void MySquare::setMyPolygon()
 
 void MySquare::setItemSize(qreal width,qreal height)
 {
+    prepareGeometryChange();
     myItemRect.setWidth(width);
     myItemRect.setHeight(height);
-    update();
 }
 
 void MySquare::setSize(QSize size)
 {
+    prepareGeometryChange();
     myItemRect.setWidth(size.width());
     myItemRect.setHeight(size.height());
-    update();
 }
 
 QSize MySquare::size()

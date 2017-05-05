@@ -39,13 +39,16 @@ class MySquare : public QObject,  public QGraphicsItem
         rd_left,
         rd_top,
         rd_right,
-        rd_bottom
+        rd_bottom,
+        rd_diagonal
 
     };
+    enum { Type = UserType + 1 };
 public:
     MySquare();
 
     QRectF boundingRect() const;
+    int type() const Q_DECL_OVERRIDE {return Type ;} 
     QPolygonF polygon() const { return myPolygon; }
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
     bool Pressed;
@@ -80,6 +83,7 @@ private:
     QGraphicsTextItem *itemXY;
     QString *posXY;
     resize_direction resize_direction_;
+    bool clickFlag ;
 
 
 };
