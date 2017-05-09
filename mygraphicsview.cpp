@@ -17,17 +17,19 @@ void MyGraphicsView::mousePressEvent(QMouseEvent *event)
 
     QGraphicsView::mousePressEvent(event);
     QGraphicsItem * item = itemAt(event->pos());
-    qDebug() << item->type();
+    //qDebug() << item->type();
 }
 
 void MyGraphicsView::mouseMoveEvent(QMouseEvent *event)
 {
     QGraphicsView::mouseMoveEvent(event);
     QGraphicsItem * item = itemAt(event->pos());
-
     if (item == 0)
         return;
-    //qDebug() << item->type();
+
+    if (!(item->type() == MySquare::Type))
+        return;
+    //qDebug() << "type = " + item->type();
     QPointF p = event->pos(); // relative to page-view
     QRectF r = item->sceneBoundingRect(); // relative to scene
     QPointF tl = mapFromScene(r.topLeft());
@@ -37,7 +39,15 @@ void MyGraphicsView::mouseMoveEvent(QMouseEvent *event)
         item->setCursor(Qt::SizeHorCursor);
     else if (p.y() <= tl.y()+3 || p.y() >= br.y()-3)
         item->setCursor(Qt::SizeVerCursor);
-    //else
-        //item->setCursor(Qt::OpenHandCursor);
+    else
+        item->setCursor(Qt::OpenHandCursor);
 
 }
+//bool MyGraphicsView::isItemChange(int type)
+//{
+//    foreach (QGraphicsItem *item, selectedItems()) {
+//        if (item->type() == type)
+//            return true;
+//    }
+//    return false;
+//}

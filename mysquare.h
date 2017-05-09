@@ -29,7 +29,7 @@ class MySquare : public QObject,  public QGraphicsItem
 {
     Q_OBJECT
     Q_PROPERTY(qreal opacity READ opacity WRITE setOpacity);
-    Q_PROPERTY(QSize size READ size WRITE setSize);
+    Q_PROPERTY(QSizeF size READ size WRITE setSize);
     Q_PROPERTY(QPointF pos READ pos WRITE setPos);
     Q_PROPERTY(qreal x READ x WRITE setX);
     Q_PROPERTY(qreal y READ y WRITE setY);
@@ -43,12 +43,12 @@ class MySquare : public QObject,  public QGraphicsItem
         rd_diagonal
 
     };
-    enum { Type = UserType + 1 };
 public:
+    enum { Type = UserType + 1 };
     MySquare();
 
     QRectF boundingRect() const;
-    int type() const Q_DECL_OVERRIDE {return Type ;} 
+    int type() const Q_DECL_OVERRIDE ; 
     QPolygonF polygon() const { return myPolygon; }
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
     bool Pressed;
@@ -63,8 +63,8 @@ public:
     void setSvgImage(const QString& str ,QSizeF);
     void setSvgImage(const QString& str ,QRectF rec);
     void setText(const QString& str ,QRectF rec);
-    QSize size(); 
-    void setSize(QSize size); 
+    QSizeF size(); 
+    void setSize(QSizeF size); 
     ~MySquare();
 signals:
     void click();

@@ -31,6 +31,7 @@ public:
     MySquare *endItem() const { return myEndItem; }
 
     void updatePosition();
+    QPointF getIntersectPoint(MySquare * mySqrItem);
     ~Arrow();
 
 protected:

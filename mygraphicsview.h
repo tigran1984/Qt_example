@@ -23,5 +23,6 @@ public:
 protected:
     void mouseMoveEvent(QMouseEvent *event);
     void mousePressEvent(QMouseEvent *event);
+    //bool isItemChange(int type);
 };
 #endif // MYGRAPHICSVIEW_H

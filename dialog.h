@@ -17,6 +17,7 @@
 #include "mygroup.h"
 #include"arrow.h"
 #include"mygraphicsview.h"
+//#include"mygraphicsscene.h"
 
 namespace Ui {
 class Dialog;
@@ -28,10 +29,15 @@ class Dialog : public QDialog
 
 public:
     explicit Dialog(QWidget *parent = 0);
-    QPropertyAnimation* posAnimation(MySquare* ptr,int duration,QPointF startValue,
+    QPropertyAnimation* posAnimation(MySquare* ptr,
+            int duration,QPointF startValue,
             QPointF endValue, QEasingCurve easing);
-    QPropertyAnimation* opacityAnimation(MySquare* ptr,int duration,qreal startValue,
+    QPropertyAnimation* opacityAnimation(MySquare* ptr,
+            int duration,qreal startValue,
             qreal endValue, QEasingCurve easing);
+    QPropertyAnimation* sizeAnimation(MySquare* ptr,
+            int duration,QSizeF startValue,
+            QSizeF endValue, QEasingCurve easing);
     ~Dialog();
 public slots:
     void firstPage();
@@ -42,6 +48,7 @@ public slots:
 private:
     Ui::Dialog *ui;
     QGraphicsScene *scene;
+    //MyGraphicsScene *scene;
     QList<MySquare *> items;
     QList<MySquare *> items2;
     QParallelAnimationGroup * groupAnim_1;
