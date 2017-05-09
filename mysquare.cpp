@@ -58,7 +58,7 @@ void MySquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
 
 void MySquare::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    //Pressed = true;
+    bool resizeFlag;
     //update();
     //qDebug() << this->type();
     bool diagonal_flag = false ;
@@ -119,8 +119,18 @@ void MySquare::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
         QPointF pp = mapToItem(this, p);
         //QRectF r = rect();
         QRectF r = boundingRect();
-    
-    
+        //////// minimum size limit //////
+        if (r.width() <= myItemRect.width() && r.width() < 30.0)
+        {
+            resize_direction_ = rd_none;
+            return;
+        }
+        if (r.height() <= myItemRect.height() && r.height() < 30.0)
+        {
+            resize_direction_ = rd_none;
+            return;
+        }
+        ///////////// resize item //// 
         switch (resize_direction_)
         {
         case rd_left:
@@ -163,6 +173,11 @@ void MySquare::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 void MySquare::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
     //Pressed = false;
+    QRectF r = sceneBoundingRect(); // relative to scene
+    if (r.width() <= myItemRect.width() && r.width() < 30.0)
+        myItemRect.setWidth(35);
+    if (r.height() <= myItemRect.height() && r.height() < 30.0)
+        myItemRect.setHeight(35);
     //update();
     if(clickFlag)
     {
