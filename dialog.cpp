@@ -272,6 +272,7 @@ void Dialog::setFirstPage()
     //QList<MySquare * > items;
 
     //animateSecondPage();
+    qDebug() << items.at(8)->childItems()  << " \n";
     //qDebug() << items.at(8)->childItems().at(1)->type()  << " \n";
     //qDebug() << scene->items()  << " \n";
     //items.at(0)->childItems().at(0)->setOpacity(0.5);

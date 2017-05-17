@@ -1,5 +1,5 @@
 #!/bin/bash
-qmake -project -o test.pro
+qmake -qt=qt5 -project -o test.pro
 match='INCLUDEPATH += .'
 insert='QT += widgets\nQT += svg'
 file='test.pro'
@@ -7,6 +7,6 @@ file='test.pro'
 sed -i "/$match/a $insert" $file
 
 #./insert_text_inline.sh
-qmake test.pro
+qmake -qt=qt5 test.pro
 make
 # awk '/QT/{ print NR }' test.pro

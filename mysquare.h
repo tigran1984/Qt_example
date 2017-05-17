@@ -48,7 +48,8 @@ public:
     MySquare();
 
     QRectF boundingRect() const;
-    int type() const Q_DECL_OVERRIDE ; 
+    //int type() const Q_DECL_OVERRIDE {return Type ;} 
+    int type() const  {return Type ;} 
     QPolygonF polygon() const { return myPolygon; }
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
     bool Pressed;

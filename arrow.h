@@ -23,9 +23,12 @@ public:
     Arrow(MySquare *startItem, MySquare *endItem, QGraphicsItem *parent = 0);
     //Arrow(qreal x1, qreal x2, qreal x3, qreal x4, QGraphicsItem *parent = 0);
 
-    int type() const Q_DECL_OVERRIDE { return Type; }
-    QRectF boundingRect() const Q_DECL_OVERRIDE;
-    QPainterPath shape() const Q_DECL_OVERRIDE;
+    //int type() const Q_DECL_OVERRIDE { return Type; }
+    int type() const  { return Type; }
+    //QRectF boundingRect() const Q_DECL_OVERRIDE;
+    QRectF boundingRect() const ;
+    //QPainterPath shape() const Q_DECL_OVERRIDE;
+    QPainterPath shape() const ;
     void setColor(const QColor &color) { myColor = color; }
     MySquare *startItem() const { return myStartItem; }
     MySquare *endItem() const { return myEndItem; }
@@ -35,7 +38,7 @@ public:
     ~Arrow();
 
 protected:
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0) Q_DECL_OVERRIDE;
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0); //Q_DECL_OVERRIDE;
 
 private:
     MySquare *myStartItem;

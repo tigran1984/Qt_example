@@ -21,7 +21,10 @@ QRectF MyGroup::boundingRect() const
 void MyGroup::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 
 {
-    QRectF rec = boundingRect();
+    //QRectF rec = boundingRect();
+    Q_UNUSED(option);
+    Q_UNUSED(widget);
+    Q_UNUSED(painter);
     QBrush brush(Qt::green);
 
     if (Pressed)

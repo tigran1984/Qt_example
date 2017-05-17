@@ -7,6 +7,7 @@ MySquare::MySquare()
 {
     myItemRect = QRectF(0,0,150,70); //default value
     setFlag(ItemIsMovable);
+    setFlag(QGraphicsItem::ItemClipsChildrenToShape, true);
     setFlag(QGraphicsItem::ItemIsSelectable);
     setMyPolygon();//member function
     setFlag(ItemSendsScenePositionChanges, true);
@@ -58,7 +59,6 @@ void MySquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
 
 void MySquare::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    bool resizeFlag;
     //update();
     //qDebug() << this->type();
     bool diagonal_flag = false ;
@@ -200,7 +200,7 @@ QVariant MySquare::itemChange(GraphicsItemChange change, const QVariant &value)
     }
     if (change == QGraphicsItem::ItemOpacityChange ) {
         foreach (Arrow *arrow, arrows) {
-            arrow->setOpacity(this->opacity());
+            arrow->setOpacity(this->opacity()-0.2);
         }
     }
     return QGraphicsItem::itemChange(change, value);
@@ -347,7 +347,6 @@ void MySquare::setText(const QString& str ,QRectF rec)
     text->setHtml(str);
     text->setPos(rec.x(), rec.y());
 }
-    int MySquare::type() const Q_DECL_OVERRIDE {return Type ;} 
 
 MySquare::~MySquare()
 {

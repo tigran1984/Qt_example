@@ -16,7 +16,7 @@ void MyGraphicsView::mousePressEvent(QMouseEvent *event)
 {
 
     QGraphicsView::mousePressEvent(event);
-    QGraphicsItem * item = itemAt(event->pos());
+    //QGraphicsItem * item = itemAt(event->pos());
     //qDebug() << item->type();
 }
 
