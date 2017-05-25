@@ -25,6 +25,21 @@ class QGraphicsSvgItem;
 class QPolygonF;
 class Arrow;
 
+struct MySquareStruct {
+    QVariant itemPos;
+    QVariant itemSize;
+    QVariant image;
+    QVariant imgSize;
+    QVariant imgRect;
+    QVariant svgImage;
+    QVariant svgImgSize;
+    QVariant svgImgRect;
+    QVariant text;
+    QVariant txtRect;
+    QVariant description;
+    QVariant descRect;
+};
+
 class MySquare : public QObject,  public QGraphicsItem
 {
     Q_OBJECT
@@ -66,6 +81,8 @@ public:
     void setText(const QString& str ,QRectF rec);
     QSizeF size(); 
     void setSize(QSizeF size); 
+    void initMySquare( MySquareStruct &mystruct);
+    void printStruct(const MySquareStruct &st); 
     ~MySquare();
 signals:
     void click();

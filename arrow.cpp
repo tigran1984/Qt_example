@@ -50,6 +50,10 @@ void Arrow::paint(QPainter *painter, const QStyleOptionGraphicsItem *,
     if (myStartItem->collidesWithItem(myEndItem))
         return;
 
+    //if (myStartItem->opacity() < myEndItem->opacity())
+    //{
+    //    this->setOpacity(myStartItem->opacity());
+    //} else {this->setOpacity(myEndItem->opacity());}
     QPen myPen = pen();
     myPen.setColor(myColor);
     qreal arrowSize = 5;

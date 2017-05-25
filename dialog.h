@@ -13,6 +13,8 @@
 #include<QtCore>
 #include<QtGui>
 #include<QLineF>
+#include <iterator>
+#include <typeinfo>
 #include"mysquare.h"
 #include "mygroup.h"
 #include"arrow.h"
@@ -38,8 +40,11 @@ public:
     QPropertyAnimation* sizeAnimation(MySquare* ptr,
             int duration,QSizeF startValue,
             QSizeF endValue, QEasingCurve easing);
+    void removeChildItems(MySquare* item);
     ~Dialog();
 public slots:
+
+    void firstAppearance();
     void firstPage();
     void partnersPage();
     void setFirstPage();
@@ -54,6 +59,11 @@ private:
     QParallelAnimationGroup * groupAnim_1;
     QParallelAnimationGroup * groupAnim_2;
     QParallelAnimationGroup * groupAnim_3;
+    QParallelAnimationGroup * groupAnim_4;
+    MySquareStruct initItem_0;
+    MySquareStruct initItem_8;
+    MySquareStruct initItem_0_2_page;
+    MySquareStruct initItem_8_2_page;
 
 };
 

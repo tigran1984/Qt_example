@@ -24,6 +24,52 @@ MySquare::MySquare()
     this->setPos(100,100); 
 }
 
+
+void MySquare::initMySquare( MySquareStruct &st)
+{
+    if(!(st.itemPos.isNull())){
+        QPointF point = st.itemPos.toPointF();
+        this->setPos(point);
+        qDebug() << "Position changed successfully";
+    }
+    if(!(st.itemSize.isNull())){
+        QSizeF size = st.itemSize.toSizeF();
+        this->setItemSize(size.width(),size.height());
+        qDebug() << "Size changed successfully";
+    }
+    qDebug() << "null value "  << st.image.isNull();
+    if(!(st.image.isNull())){
+        const QString image = st.image.toString();
+        if(!(st.imgSize.isNull())){
+            this->setImage(image,st.imgSize.toSize());
+            qDebug() << "imgSize added successfully";
+        }  else { 
+            this->setImage(image,st.imgRect.toRectF());
+            qDebug() << "imgRect added successfully";
+        }
+    }
+    if(!(st.svgImage.isNull())){
+        const QString svgImage = st.svgImage.toString();
+        if(!(st.svgImgSize.isNull())){
+            this->setSvgImage(svgImage,st.svgImgSize.toSizeF());
+            qDebug() << "svgSize added successfully";
+        }  else {
+            this->setSvgImage(svgImage,st.svgImgRect.toRectF());
+            qDebug() << "svgRect added successfully";
+        }
+    }
+    if(!(st.text.isNull())){
+            const QString text = st.text.toString();
+            this->setText(text,st.txtRect.toRectF());
+            qDebug() << "text added successfully";
+    }
+    if(!(st.description.isNull())){
+            const QString desc = st.description.toString();
+            this->setText(desc, st.descRect.toRectF());
+            qDebug() << "description added successfully";
+    }
+}
+
 QRectF MySquare::boundingRect() const
 {
     return myItemRect;
@@ -346,6 +392,22 @@ void MySquare::setText(const QString& str ,QRectF rec)
     text->setFlag(QGraphicsItem::ItemIsSelectable,false);
     text->setHtml(str);
     text->setPos(rec.x(), rec.y());
+}
+
+void MySquare::printStruct(const MySquareStruct &st) 
+{
+    qDebug() <<  "  itemPos ;   "   << st.itemPos ;
+    qDebug() <<  "  itemSize ;  "   << st.itemSize ;
+    qDebug() <<  "  image ;     "   << st.image ;
+    qDebug() <<  "  imgSize ;   "   << st.imgSize ;
+    qDebug() <<  "  imgRect;    "   << st.imgRect;
+    qDebug() <<  "  svgImage ;  "   << st.svgImage ;
+    qDebug() <<  "  svgImage;   "   << st.svgImage;
+    qDebug() <<  "  svgImgRect; "   << st.svgImgRect;
+    qDebug() <<  "  text ;      "   << st.text ;
+    qDebug() <<  "  txtRect ;   "   << st.txtRect ;
+    qDebug() <<  "  description "   << st.description ;
+    qDebug() <<  "  descRect ;  "   << st.descRect ;
 }
 
 MySquare::~MySquare()
