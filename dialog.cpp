@@ -6,8 +6,8 @@ Dialog::Dialog(QWidget *parent) :
     //ui->setupUi(this);
     //this->setGeometry(0,0,400,400);
     QHBoxLayout *hb = new QHBoxLayout();
-    //MyGraphicsView *gview = new MyGraphicsView();
-    QGraphicsView *gview = new QGraphicsView();
+    MyGraphicsView *gview = new MyGraphicsView();
+    //QGraphicsView *gview = new QGraphicsView();
     hb->addWidget(gview);
     this->setLayout(hb);
     scene = new QGraphicsScene(this);
@@ -111,7 +111,8 @@ Dialog::Dialog(QWidget *parent) :
     items.at(8)->initMySquare(initItem_8);
     /////////////////
     // create arrows
-    QList<Arrow *> ar_list;
+    QList<Arrow *> arrow_list1;
+    ar_list = arrow_list1  ;
 	Arrow *ar0 = new Arrow(items.at(0),items.at(1));
     ar_list.append(ar0);
     items.at(0)->addArrow(ar0);
@@ -227,7 +228,8 @@ Dialog::Dialog(QWidget *parent) :
         QRectF(4,5,132,79), null, null, null, null };
 
     // create arrows
-    QList<Arrow *> ar2_list;
+    QList<Arrow *> arrow_list2;
+    ar2_list  = arrow_list2 ;
 	//Arrow *ar2_0 = new Arrow(items.at(0),items.at(8));
     //ar2_list.append(ar2_0);
     //items.at(8)->addArrow(ar2_0);
@@ -273,6 +275,7 @@ Dialog::Dialog(QWidget *parent) :
         scene->addItem(ar2_list.at(i));
         ar2_list.at(i)->updatePosition();
         ar2_list.at(i)->setOpacity(0.0);
+        ar2_list.at(i)->hide();
     }
     groupAnim_1 = new QParallelAnimationGroup;
     groupAnim_2 = new QParallelAnimationGroup;
@@ -381,6 +384,7 @@ void Dialog::setFirstPage()
 
 void Dialog::firstPage()
 {
+
     //items.at(0)->setPos(291,168);
     items.at(1)->setPos(106,423);
     items.at(2)->setPos(647,203);
@@ -404,6 +408,13 @@ void Dialog::firstPage()
     groupAnim_2->stop();
     groupAnim_3->start();
     //setFirstPage();
+    for( int i=0; i<ar2_list.count(); ++i )
+    { 
+        scene->addItem(ar2_list.at(i));
+        ar2_list.at(i)->updatePosition();
+        ar2_list.at(i)->setOpacity(0.0);
+        ar2_list.at(i)->hide();
+    }
 }
 void Dialog::animateSecondPage()
 {
@@ -488,7 +499,9 @@ void Dialog::partnersPage()
     //scene->clear();
     //QTimer::singleShot(4330, this, SLOT(animateSecondPage()));
     //animateSecondPage();
+    connect(groupAnim_2,SIGNAL(finished()),this,SLOT(showSecondPageArrows()));
     groupAnim_2->start();
+    
 }
 
 QPropertyAnimation* Dialog::posAnimation(MySquare* ptr,int duration,
@@ -542,6 +555,38 @@ void Dialog::removeChildItems(MySquare* item)
            //(*i)->setParentItem(NULL);
            delete (*i);
     }
+}
+
+void Dialog::showSecondPageArrows()
+{
+            qDebug() << "ar2_list finished\n\n\n\n";
+            qDebug() << "duration ====" << groupAnim_2->currentTime();
+                                                                      ;
+    //if (groupAnim_3->currentTime() == 1)
+    {
+        for( int i=0; i<ar2_list.count(); ++i )
+        { 
+            ar2_list.at(i)->updatePosition();
+            ar2_list.at(i)->show();
+            qDebug() << "ar2_list finished";
+        }
+    }
+}
+
+void Dialog::showFirstPageArrows()
+{
+            qDebug() << "ar_list finished\n\n\n\n";
+            qDebug() << "duration ====" << groupAnim_2->currentTime();
+    //if (groupAnim_2->currentTime() == 1)
+    {
+        for( int i=0; i<ar_list.count(); ++i )
+        { 
+            ar_list.at(i)->updatePosition();
+            ar_list.at(i)->show();
+            qDebug() << "ar_list finished\n\n\n\n";
+        }
+    }
+                                                                      ;
 }
 
 Dialog::~Dialog()

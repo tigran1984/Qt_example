@@ -14,15 +14,16 @@
 #include <QList>
 #include <QVariant>
 #include <QtSvg>
+#include "mysquare.h"
 
 class MyGraphicsView : public QGraphicsView
 {
 public:
-    MyGraphicsView( QWidget * parent = 0);
     MyGraphicsView(QGraphicsScene * scene, QWidget * parent = 0);
+    MyGraphicsView(QWidget * parent = 0);
 protected:
     void mouseMoveEvent(QMouseEvent *event);
     void mousePressEvent(QMouseEvent *event);
-    //bool isItemChange(int type);
+    void mouseReleaseEvent(QMouseEvent *event);
 };
 #endif // MYGRAPHICSVIEW_H

@@ -15,6 +15,7 @@
 #include<QLineF>
 #include <iterator>
 #include <typeinfo>
+#include <QAbstractAnimation>
 #include"mysquare.h"
 #include "mygroup.h"
 #include"arrow.h"
@@ -49,6 +50,8 @@ public slots:
     void partnersPage();
     void setFirstPage();
     void animateSecondPage();
+    void showFirstPageArrows();
+    void showSecondPageArrows();
 
 private:
     Ui::Dialog *ui;
@@ -64,6 +67,8 @@ private:
     MySquareStruct initItem_8;
     MySquareStruct initItem_0_2_page;
     MySquareStruct initItem_8_2_page;
+    QList<Arrow *> ar_list;
+    QList<Arrow *> ar2_list;
 
 };
 

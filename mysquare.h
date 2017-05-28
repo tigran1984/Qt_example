@@ -58,6 +58,14 @@ class MySquare : public QObject,  public QGraphicsItem
         rd_diagonal
 
     };
+    enum cursor_shape
+    {
+        cs_none,
+        cs_vertical,
+        cs_horizotal,
+        cs_diagonal
+
+    };
 public:
     enum { Type = UserType + 1 };
     MySquare();
@@ -86,7 +94,9 @@ public:
     ~MySquare();
 signals:
     void click();
-
+    void changeCursor();
+public slots:
+    void showCursorAs() ;
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
@@ -101,6 +111,7 @@ private:
     QGraphicsTextItem *itemXY;
     QString *posXY;
     resize_direction resize_direction_;
+    cursor_shape cursor_shape_;
     bool clickFlag ;
 
 

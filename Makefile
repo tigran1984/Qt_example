@@ -643,6 +643,7 @@ moc_dialog.cpp: /usr/include/qt5/QtCore/QDebug \
 		/usr/include/qt5/QtGui/qvalidator.h \
 		/usr/include/qt5/QtGui/qtguiversion.h \
 		/usr/include/qt5/QtCore/QLineF \
+		/usr/include/qt5/QtCore/QAbstractAnimation \
 		mysquare.h \
 		/usr/include/qt5/QtGui/QPainter \
 		/usr/include/qt5/QtWidgets/QGraphicsItem \
@@ -2071,6 +2072,7 @@ dialog.o: dialog.cpp dialog.h \
 		/usr/include/qt5/QtGui/qvalidator.h \
 		/usr/include/qt5/QtGui/qtguiversion.h \
 		/usr/include/qt5/QtCore/QLineF \
+		/usr/include/qt5/QtCore/QAbstractAnimation \
 		mysquare.h \
 		/usr/include/qt5/QtGui/QPainter \
 		/usr/include/qt5/QtWidgets/QGraphicsItem \
@@ -2548,6 +2550,7 @@ main.o: main.cpp dialog.h \
 		/usr/include/qt5/QtGui/qvalidator.h \
 		/usr/include/qt5/QtGui/qtguiversion.h \
 		/usr/include/qt5/QtCore/QLineF \
+		/usr/include/qt5/QtCore/QAbstractAnimation \
 		mysquare.h \
 		/usr/include/qt5/QtGui/QPainter \
 		/usr/include/qt5/QtWidgets/QGraphicsItem \
@@ -2702,9 +2705,9 @@ main.o: main.cpp dialog.h \
 		/usr/include/qt5/QtWidgets/QApplication
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
-mygraphicsview.o: mygraphicsview.cpp /usr/include/qt5/QtCore/QDebug \
-		/usr/include/qt5/QtCore/qdebug.h \
-		/usr/include/qt5/QtCore/qalgorithms.h \
+mygraphicsview.o: mygraphicsview.cpp mygraphicsview.h \
+		/usr/include/qt5/QtWidgets/QGraphicsItem \
+		/usr/include/qt5/QtWidgets/qgraphicsitem.h \
 		/usr/include/qt5/QtCore/qglobal.h \
 		/usr/include/qt5/QtCore/qconfig.h \
 		/usr/include/qt5/QtCore/qfeatures.h \
@@ -2741,23 +2744,19 @@ mygraphicsview.o: mygraphicsview.cpp /usr/include/qt5/QtCore/QDebug \
 		/usr/include/qt5/QtCore/qtypeinfo.h \
 		/usr/include/qt5/QtCore/qtypetraits.h \
 		/usr/include/qt5/QtCore/qsysinfo.h \
-		/usr/include/qt5/QtCore/qhash.h \
-		/usr/include/qt5/QtCore/qchar.h \
-		/usr/include/qt5/QtCore/qiterator.h \
-		/usr/include/qt5/QtCore/qlist.h \
-		/usr/include/qt5/QtCore/qrefcount.h \
-		/usr/include/qt5/QtCore/qpair.h \
-		/usr/include/qt5/QtCore/qmap.h \
-		/usr/include/qt5/QtCore/qtextstream.h \
-		/usr/include/qt5/QtCore/qiodevice.h \
 		/usr/include/qt5/QtCore/qobject.h \
 		/usr/include/qt5/QtCore/qobjectdefs.h \
 		/usr/include/qt5/QtCore/qnamespace.h \
 		/usr/include/qt5/QtCore/qobjectdefs_impl.h \
 		/usr/include/qt5/QtCore/qstring.h \
+		/usr/include/qt5/QtCore/qchar.h \
 		/usr/include/qt5/QtCore/qbytearray.h \
+		/usr/include/qt5/QtCore/qrefcount.h \
 		/usr/include/qt5/QtCore/qarraydata.h \
 		/usr/include/qt5/QtCore/qstringbuilder.h \
+		/usr/include/qt5/QtCore/qlist.h \
+		/usr/include/qt5/QtCore/qalgorithms.h \
+		/usr/include/qt5/QtCore/qiterator.h \
 		/usr/include/qt5/QtCore/qcoreevent.h \
 		/usr/include/qt5/QtCore/qscopedpointer.h \
 		/usr/include/qt5/QtCore/qmetatype.h \
@@ -2765,20 +2764,23 @@ mygraphicsview.o: mygraphicsview.cpp /usr/include/qt5/QtCore/QDebug \
 		/usr/include/qt5/QtCore/qcontainerfwd.h \
 		/usr/include/qt5/QtCore/qisenum.h \
 		/usr/include/qt5/QtCore/qobject_impl.h \
-		/usr/include/qt5/QtCore/qlocale.h \
 		/usr/include/qt5/QtCore/qvariant.h \
-		/usr/include/qt5/QtCore/qstringlist.h \
-		/usr/include/qt5/QtCore/qdatastream.h \
-		/usr/include/qt5/QtCore/qregexp.h \
-		/usr/include/qt5/QtCore/qstringmatcher.h \
+		/usr/include/qt5/QtCore/qmap.h \
+		/usr/include/qt5/QtCore/qpair.h \
+		/usr/include/qt5/QtCore/qdebug.h \
+		/usr/include/qt5/QtCore/qhash.h \
+		/usr/include/qt5/QtCore/qtextstream.h \
+		/usr/include/qt5/QtCore/qiodevice.h \
+		/usr/include/qt5/QtCore/qlocale.h \
 		/usr/include/qt5/QtCore/qshareddata.h \
 		/usr/include/qt5/QtCore/qvector.h \
 		/usr/include/qt5/QtCore/qpoint.h \
 		/usr/include/qt5/QtCore/qset.h \
 		/usr/include/qt5/QtCore/qcontiguouscache.h \
-		mygraphicsview.h \
-		/usr/include/qt5/QtWidgets/QGraphicsItem \
-		/usr/include/qt5/QtWidgets/qgraphicsitem.h \
+		/usr/include/qt5/QtCore/qstringlist.h \
+		/usr/include/qt5/QtCore/qdatastream.h \
+		/usr/include/qt5/QtCore/qregexp.h \
+		/usr/include/qt5/QtCore/qstringmatcher.h \
 		/usr/include/qt5/QtCore/qrect.h \
 		/usr/include/qt5/QtCore/qsize.h \
 		/usr/include/qt5/QtGui/qpainterpath.h \
@@ -2803,6 +2805,7 @@ mygraphicsview.o: mygraphicsview.cpp /usr/include/qt5/QtCore/QDebug \
 		/usr/include/qt5/QtGui/qpen.h \
 		/usr/include/qt5/QtWidgets/QGraphicsItemGroup \
 		/usr/include/qt5/QtWidgets/QGraphicsPixmapItem \
+		/usr/include/qt5/QtCore/QDebug \
 		/usr/include/qt5/QtGui/QPainterPath \
 		/usr/include/qt5/QtCore/QPointF \
 		/usr/include/qt5/QtCore/QRectF \

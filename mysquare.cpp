@@ -22,6 +22,7 @@ MySquare::MySquare()
     itemXY->setPos(this->x(), this->y());
     this->setCacheMode(QGraphicsItem::DeviceCoordinateCache);
     this->setPos(100,100); 
+    connect(this, SIGNAL(changeCursor()),this, SLOT(showCursorAs()));
 }
 
 
@@ -160,6 +161,9 @@ void MySquare::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     clickFlag = false;
     if (isSelected())
     {
+        emit changeCursor();
+        qDebug() << " cursor_shape_ == " << cursor_shape_; 
+        qDebug() << " Hover Event ====_ == " << this->acceptHoverEvents(); 
         // resize border to mouse position
         QPointF p = event->pos();
         QPointF pp = mapToItem(this, p);
@@ -183,6 +187,7 @@ void MySquare::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
             r.setLeft(pp.x());
             prepareGeometryChange();
             myItemRect = r ;
+            cursor_shape_ = cs_horizotal;
             break;
         case rd_top:
             r.setTop(pp.y());
@@ -193,6 +198,7 @@ void MySquare::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
             r.setRight(pp.x());
             prepareGeometryChange();
             myItemRect = r ;
+            cursor_shape_ = cs_horizotal;
             break;
         case rd_bottom:
             r.setBottom(pp.y());
@@ -201,7 +207,6 @@ void MySquare::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
             break;
         case rd_diagonal:
             r.setBottomRight(pp);
-            //qDebug() << " diagonal moving "; 
             prepareGeometryChange();
             myItemRect = r ;
             break;
@@ -211,6 +216,48 @@ void MySquare::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
             //this->setCursor(Qt::ArrowCursor);
             break;
         }
+        //bool diagl_flag = false ;
+        //QPointF mp = event->pos();
+        //QRectF mr = sceneBoundingRect(); // relative to scene
+        //QPointF tl = mapFromScene(mr.topLeft());
+        //QPointF br = mapFromScene(mr.bottomRight());
+        //if (mp.x() >= br.x()-10 && mp.y() >= br.y()-10)
+        //{
+        //    diagl_flag = true ;
+        //    //qDebug() << "rd_diagonal" ;
+        //}
+        //else { diagl_flag = false ;}
+        //if (mp.x() <= tl.x()+10 && !diagl_flag)
+        //{
+        //    cursor_shape_ = cs_horizotal;
+        //    qDebug() << "cs_horizotal" ;
+        //    //itemXY->setPlainText("rd_left");
+        //}
+        //else if (mp.x() >= br.x()-10 && !diagl_flag)
+        //{
+        //    cursor_shape_ = cs_horizotal;
+        //    qDebug() << "cs_horizotal" ;
+        //}
+        //else if (mp.y() <= tl.y()+10 && !diagl_flag)
+        //{
+        //    cursor_shape_ = cs_vertical;
+        //}
+        //else if (mp.y() >= br.y()-10 && !diagl_flag)
+        //{
+        //    cursor_shape_ = cs_vertical;
+        //    qDebug() << "cs_vertical" ;
+        //}
+        //////// testing diagonal resize /////
+        //else if (diagl_flag)
+        //{
+        //    cursor_shape_ = cs_diagonal;
+        //    qDebug() << "cs_diagonal" ;
+        //}
+        //else
+        //{
+        //    cursor_shape_ = cs_none;
+        //}
+        //    qDebug() << "rd_none" ;
         return; //
     }
     QGraphicsItem::mouseMoveEvent(event);
@@ -310,6 +357,7 @@ void MySquare::setImage(const QString& str)
     Q_ASSERT(!item.isNull());
     item->setFlag(QGraphicsItem::ItemIsSelectable,false);
     item->setParentItem(this);
+    item->setAcceptHoverEvents(false);
 }
 
 void MySquare::setImage(const QString& str, const QSize size) 
@@ -328,6 +376,7 @@ void MySquare::setImage(const QString& str, const QSize size)
     item->setFlag(QGraphicsItem::ItemIsSelectable,false);
     item->setPos(21,11);
     item->setParentItem(this);
+    item->setAcceptHoverEvents(false);
 }
 
 void MySquare::setImage(const QString& str ,QRectF rec) 
@@ -344,6 +393,7 @@ void MySquare::setImage(const QString& str ,QRectF rec)
     //item->setSize(QSize(rec.width(),rec.height()));
     item->setParentItem(this);
     item->setPos(rec.x(),rec.y());
+    item->setAcceptHoverEvents(false);
 }
 
 void MySquare::setSvgImage(const QString& str) 
@@ -354,6 +404,7 @@ void MySquare::setSvgImage(const QString& str)
     m_svgItem->setFlag(QGraphicsItem::ItemIsSelectable,false);
     m_svgItem->setPos(5,5);
     m_svgItem->setParentItem(this);
+    m_svgItem->setAcceptHoverEvents(false);
 }
 
 void MySquare::setSvgImage(const QString& str ,QSizeF size) 
@@ -370,6 +421,7 @@ void MySquare::setSvgImage(const QString& str ,QSizeF size)
     m_svgItem->setFlag(QGraphicsItem::ItemIsSelectable,false);
     m_svgItem->setParentItem(this);
     m_svgItem->setZValue(-1000);
+    m_svgItem->setAcceptHoverEvents(false);
 }
 
 void MySquare::setSvgImage(const QString& str ,QRectF rec) 
@@ -383,6 +435,7 @@ void MySquare::setSvgImage(const QString& str ,QRectF rec)
     m_svgItem->setParentItem(this);
     m_svgItem->setPos(rec.x(),rec.y());
     m_svgItem->setZValue(-1000);
+    m_svgItem->setAcceptHoverEvents(false);
 }
 
 void MySquare::setText(const QString& str ,QRectF rec) 
@@ -392,6 +445,7 @@ void MySquare::setText(const QString& str ,QRectF rec)
     text->setFlag(QGraphicsItem::ItemIsSelectable,false);
     text->setHtml(str);
     text->setPos(rec.x(), rec.y());
+    text->setAcceptHoverEvents(false);
 }
 
 void MySquare::printStruct(const MySquareStruct &st) 
@@ -408,6 +462,29 @@ void MySquare::printStruct(const MySquareStruct &st)
     qDebug() <<  "  txtRect ;   "   << st.txtRect ;
     qDebug() <<  "  description "   << st.description ;
     qDebug() <<  "  descRect ;  "   << st.descRect ;
+}
+
+
+void MySquare::showCursorAs() 
+{
+        //qDebug( << "changeCursor signal is emmited "; 
+        //switch (cursor_shape_)
+        //{
+        //case cs_vertical:
+        //    this->setCursor(Qt::SizeVerCursor);
+        //    break;
+        //case cs_horizotal:
+        //    this->setCursor(Qt::SizeHorCursor);
+        //    break;
+        //case cs_diagonal:
+        //    this->setCursor(Qt::SizeFDiagCursor);
+        //    break;
+
+        //default:
+        //    this->setCursor(Qt::ArrowCursor);
+        //    break;
+        //}
+
 }
 
 MySquare::~MySquare()
