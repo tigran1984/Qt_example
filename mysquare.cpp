@@ -293,7 +293,7 @@ QVariant MySquare::itemChange(GraphicsItemChange change, const QVariant &value)
     }
     if (change == QGraphicsItem::ItemOpacityChange ) {
         foreach (Arrow *arrow, arrows) {
-            arrow->setOpacity(this->opacity()-0.2);
+            arrow->setOpacity(this->opacity()-0.1);
         }
     }
     return QGraphicsItem::itemChange(change, value);
