@@ -1,6 +1,5 @@
 #ifndef DIALOG_H
 #define DIALOG_H
-
 #include<iostream>
 #include<QDebug>
 #include <QPropertyAnimation>
@@ -22,54 +21,47 @@
 #include"mygraphicsview.h"
 //#include"mygraphicsscene.h"
 
-namespace Ui {
-class Dialog;
-}
-
 class Dialog : public QDialog
 {
-    Q_OBJECT
-
+Q_OBJECT
 public:
-    explicit Dialog(QWidget *parent = 0);
-    QPropertyAnimation* posAnimation(MySquare* ptr,
-            int duration,QPointF startValue,
-            QPointF endValue, QEasingCurve easing);
-    QPropertyAnimation* opacityAnimation(MySquare* ptr,
-            int duration,qreal startValue,
-            qreal endValue, QEasingCurve easing);
-    QPropertyAnimation* sizeAnimation(MySquare* ptr,
-            int duration,QSizeF startValue,
-            QSizeF endValue, QEasingCurve easing);
-    void removeChildItems(MySquare* item);
-    ~Dialog();
-public slots:
-
-    void firstAppearance();
-    void firstPage();
-    void partnersPage();
-    void setFirstPage();
-    void animateSecondPage();
-    void showFirstPageArrows();
-    void showSecondPageArrows();
-
+        explicit Dialog(QWidget *parent = 0);
+        QPropertyAnimation* posAnimation(MySquare* ptr,
+                        int duration,QPointF startValue,
+                        QPointF endValue, QEasingCurve easing);
+        QPropertyAnimation* opacityAnimation(MySquare* ptr,
+                        int duration,qreal startValue,
+                        qreal endValue, QEasingCurve easing);
+        QPropertyAnimation* sizeAnimation(MySquare* ptr,
+                        int duration,QSizeF startValue,
+                        QSizeF endValue, QEasingCurve easing);
+        void remove_child_items(MySquare* item);
+        void setup_1_page_items();
+        void setup_2_page_items();
+        void create_1_page_animation();
+        void create_2_page_animation();
+        ~Dialog();
+        public slots:
+                void show_first_page();
+        void animate_and_show_1_page();
+        void animate_and_show_2_page();
+        void showFirstPageArrows();
+        void showSecondPageArrows();
 private:
-    Ui::Dialog *ui;
-    QGraphicsScene *scene;
-    //MyGraphicsScene *scene;
-    QList<MySquare *> items;
-    QList<MySquare *> items2;
-    QParallelAnimationGroup * groupAnim_1;
-    QParallelAnimationGroup * groupAnim_2;
-    QParallelAnimationGroup * groupAnim_3;
-    QParallelAnimationGroup * groupAnim_4;
-    MySquareStruct initItem_0;
-    MySquareStruct initItem_8;
-    MySquareStruct initItem_0_2_page;
-    MySquareStruct initItem_8_2_page;
-    QList<Arrow *> ar_list;
-    QList<Arrow *> ar2_list;
-
+        QGraphicsScene* m_scene;
+        //MyGraphicsScene* m_scene;
+        QList<MySquare* > m_items;
+        QList<MySquare* > m_items2;
+        QParallelAnimationGroup* m_group_anim_1;
+        QParallelAnimationGroup* m_group_anim_2;
+        QParallelAnimationGroup* m_group_anim_3;
+        QParallelAnimationGroup* m_group_anim_4;
+        MySquareStruct item_struct_0;
+        MySquareStruct item_struct_8;
+        MySquareStruct item_struct_0_2_page;
+        MySquareStruct item_struct_8_2_page;
+        QList<Arrow *> m_ar_list;
+        QList<Arrow *> m_ar2_list;
 };
 
 #endif // DIALOG_H
