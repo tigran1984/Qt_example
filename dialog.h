@@ -16,7 +16,6 @@
 #include <typeinfo>
 #include <QAbstractAnimation>
 #include"mysquare.h"
-#include "mygroup.h"
 #include"arrow.h"
 #include"mygraphicsview.h"
 //#include"mygraphicsscene.h"

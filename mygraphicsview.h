@@ -14,6 +14,7 @@
 #include <QList>
 #include <QVariant>
 #include <QtSvg>
+#include <typeinfo>
 #include "mysquare.h"
 
 class MyGraphicsView : public QGraphicsView

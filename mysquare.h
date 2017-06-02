@@ -99,6 +99,7 @@ protected:
         void mousePressEvent(QGraphicsSceneMouseEvent *event);
         void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
         void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+        void hoverMoveEvent(QGraphicsSceneHoverEvent * event);
         QVariant itemChange(GraphicsItemChange change, const QVariant &value) ;
 private:
         QPolygonF myPolygon;

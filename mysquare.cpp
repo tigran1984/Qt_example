@@ -11,13 +11,14 @@ MySquare::MySquare()
         setFlag(QGraphicsItem::ItemIsSelectable);
         setMyPolygon();//member function
         setFlag(ItemSendsScenePositionChanges, true);
+        setFlag(QGraphicsItem::ItemStacksBehindParent);
         setAcceptHoverEvents(true);
         posXY = new QString(QString::number(this->x())+", "+
                         QString::number(this->y()));
         itemXY = new QGraphicsTextItem(this);
         //itemXY->setPlainText((*posXY));
         //itemXY->setTextInteractionFlags(Qt::TextEditorInteraction);
-        itemXY->setZValue(2000);
+        //itemXY->setZValue(2000);
         //text->setHtml("<heloooooooooo>");
         itemXY->setPos(this->x(), this->y());
         this->setCacheMode(QGraphicsItem::DeviceCoordinateCache);
@@ -149,10 +150,8 @@ void MySquare::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
         clickFlag = false;
         if (isSelected()) {
-                emit changeCursor();
-                qDebug() << " cursor_shape_ == " << cursor_shape_; 
-                qDebug() << " Hover Event ====_ == " \
-                         << this->acceptHoverEvents(); 
+                //emit changeCursor();
+                //qDebug() << " cursor_shape_ == " << cursor_shape_; 
                 // resize border to mouse position
                 QPointF p = event->pos();
                 QPointF pp = mapToItem(this, p);
@@ -221,6 +220,47 @@ void MySquare::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
         //QTimer::singleShot(500, this, SIGNAL(click()));
         QGraphicsItem::mouseReleaseEvent(event);
 }
+
+void MySquare::hoverMoveEvent(QGraphicsSceneHoverEvent * event)
+{
+        //qDebug() <<  "ItemType ========" << this->type();
+        //qDebug() <<  "mouseTracking ========" << hasMouseTracking();
+        //emit this->changeCursor();
+        bool diagl_flag = false ;
+        QPointF mp = event->pos();
+        QRectF mr =sceneBoundingRect(); // relative to scene
+        QPointF tl = mapFromScene(mr.topLeft());
+        QPointF br = mapFromScene(mr.bottomRight());
+        if (mp.x() >= br.x()-10 && mp.y() >= br.y()-10) {
+                diagl_flag = true ;
+                //qDebug() << "rd_diagonal" ;
+        } else {
+                diagl_flag = false ;
+        }
+        if (((mp.x() <= tl.x()+10) ||( mp.x() >= br.x()-10)) && \
+            !diagl_flag) {
+                this->setCursor(Qt::SizeHorCursor);
+                //viewport()->setCursor(Qt::SizeHorCursor);
+                //qDebug() << "cs_horizotal" ;
+                //itemXY->setPlainText("rd_left");
+        }
+        else if (((mp.y() <= tl.y()+10) ||(mp.y() >= br.y()-10)) && \
+                 !diagl_flag) {
+                this->setCursor(Qt::SizeVerCursor);
+                //viewport()->setCursor(Qt::SizeVerCursor);
+                //qDebug() << "cs_vertical" ;
+        }
+        ////// testing diagonal resize /////
+        else if (diagl_flag) {
+                this->setCursor(Qt::SizeFDiagCursor);
+                //viewport()->setCursor(Qt::SizeFDiagCursor);
+                //qDebug() << "cs_diagonal" ;
+        } else {
+                this->setCursor(Qt::ArrowCursor);
+        }
+        QGraphicsItem::hoverMoveEvent(event);
+}
+
 
 QVariant MySquare::itemChange(GraphicsItemChange change, const QVariant &value)
 {
@@ -292,11 +332,9 @@ QSizeF MySquare::size()
 void MySquare::setImage(const QString& str) 
 {
         QImage image(QCoreApplication::applicationDirPath() + "/" + str);
-
         QImage img = image;
         QGraphicsItem *item = new QGraphicsPixmapItem(\
                         QPixmap::fromImage(img));
-
         //svg->setMaximumCacheSize(QSize(350,350));
         Q_ASSERT(!item.isNull());
         item->setFlag(QGraphicsItem::ItemIsSelectable,false);
@@ -307,13 +345,11 @@ void MySquare::setImage(const QString& str)
 void MySquare::setImage(const QString& str, const QSize size) 
 {
         QImage image(QCoreApplication::applicationDirPath() + "/" + str);
-
         QImage img = image.scaled(size);
         /*QGraphicsPixmapItem* item = new QGraphicsPixmapItem(\
           QPixmap::fromImage(image));*/
         QGraphicsItem *item = new QGraphicsPixmapItem(\
                         QPixmap::fromImage(img));
-
         //item->setSize(size);
         //svg->setMaximumCacheSize(QSize(350,350));
         Q_ASSERT(!item.isNull());
@@ -326,7 +362,6 @@ void MySquare::setImage(const QString& str, const QSize size)
 void MySquare::setImage(const QString& str ,QRectF rec) 
 {
         QImage image(QCoreApplication::applicationDirPath() + "/" + str);
-
         QImage img = image.scaled(QSize(rec.width(),rec.height()));
         /*QGraphicsPixmapItem* item = new QGraphicsPixmapItem(\
           QPixmap::fromImage(image));*/
@@ -364,7 +399,7 @@ void MySquare::setSvgImage(const QString& str ,QSizeF size)
         //m_svgItem->setPos(5,5);
         m_svgItem->setFlag(QGraphicsItem::ItemIsSelectable,false);
         m_svgItem->setParentItem(this);
-        m_svgItem->setZValue(-1000);
+        //m_svgItem->setZValue(this->zValue);
         m_svgItem->setAcceptHoverEvents(false);
 }
 
@@ -378,7 +413,7 @@ void MySquare::setSvgImage(const QString& str ,QRectF rec)
         m_svgItem->setFlag(QGraphicsItem::ItemIsSelectable,false);
         m_svgItem->setParentItem(this);
         m_svgItem->setPos(rec.x(),rec.y());
-        m_svgItem->setZValue(-1000);
+        //m_svgItem->setZValue(-1000);
         m_svgItem->setAcceptHoverEvents(false);
 }
 

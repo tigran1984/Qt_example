@@ -370,8 +370,8 @@ void Dialog::setup_1_page_items()
         m_items.at(7)->setText(str7,QRectF(63,22,286,203));
         //m_items.at(8)->setText(str8,QRectF(61,0,286,203));
         //////////////////
-        m_items.at(8)->setZValue(1000);
-        m_items.at(0)->setZValue(999);
+        //m_items.at(8)->setZValue(1000);
+        //m_items.at(0)->setZValue(999);
         /////////////////
         m_items.at(1)->setText(str1_,QRectF(4,48,286,203));
         m_items.at(2)->setText(str2_,QRectF(10,50,286,203));
