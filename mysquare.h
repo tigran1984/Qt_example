@@ -44,7 +44,7 @@ class MySquare : public QObject,  public QGraphicsItem
 {
         Q_OBJECT
         Q_PROPERTY(qreal opacity READ opacity WRITE setOpacity);
-        Q_PROPERTY(QSizeF size READ size WRITE setSize);
+        Q_PROPERTY(QSizeF size READ size WRITE set_size);
         Q_PROPERTY(QPointF pos READ pos WRITE setPos);
         Q_PROPERTY(qreal x READ x WRITE setX);
         Q_PROPERTY(qreal y READ y WRITE setY);
@@ -64,7 +64,7 @@ class MySquare : public QObject,  public QGraphicsItem
                 cs_horizotal,
                 cs_diagonal
         };
-        public:
+public:
         enum { Type = UserType + 1 };
         MySquare();
         QRectF boundingRect() const;
@@ -74,27 +74,27 @@ class MySquare : public QObject,  public QGraphicsItem
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
                         QWidget *widget);
         bool Pressed;
-        void addArrow(Arrow *arrow);
-        QPointF returnCenter();
-        void setMyPolygon();
-        void setItemSize(qreal height,qreal width);
-        void setImage(const QString& str);
-        void setImage(const QString& str ,QSize);
-        void setImage(const QString& str ,QRectF rec);
-        void setSvgImage(const QString& str);
-        void setSvgImage(const QString& str ,QSizeF);
-        void setSvgImage(const QString& str ,QRectF rec);
-        void setText(const QString& str ,QRectF rec);
+        void add_arrow(Arrow *arrow);
+        QPointF return_center();
+        void set_my_polygon();
+        void set_item_size(qreal height,qreal width);
+        void set_image(const QString& str);
+        void set_image(const QString& str ,QSize);
+        void set_image(const QString& str ,QRectF rec);
+        void set_svg_image(const QString& str);
+        void set_svg_image(const QString& str ,QSizeF);
+        void set_svg_image(const QString& str ,QRectF rec);
+        void set_text(const QString& str ,QRectF rec);
         QSizeF size(); 
-        void setSize(QSizeF size); 
+        void set_size(QSizeF size); 
         void initMySquare( MySquareStruct &mystruct);
-        void printStruct(const MySquareStruct &st); 
+        void print_struct(const MySquareStruct &st); 
         ~MySquare();
 signals:
         void click();
         void changeCursor();
 public slots:
-        void showCursorAs() ;
+        void show_cursor_as() ;
 protected:
         void mousePressEvent(QGraphicsSceneMouseEvent *event);
         void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);

@@ -9,23 +9,22 @@ MySquare::MySquare()
         setFlag(ItemIsMovable);
         setFlag(QGraphicsItem::ItemClipsChildrenToShape, true);
         setFlag(QGraphicsItem::ItemIsSelectable);
-        setMyPolygon();//member function
+        set_my_polygon();//member function
         setFlag(ItemSendsScenePositionChanges, true);
-        setFlag(QGraphicsItem::ItemStacksBehindParent);
+        //setFlag(QGraphicsItem::ItemStacksBehindParent);
         setAcceptHoverEvents(true);
         posXY = new QString(QString::number(this->x())+", "+
                         QString::number(this->y()));
         itemXY = new QGraphicsTextItem(this);
         //itemXY->setPlainText((*posXY));
-        //itemXY->setTextInteractionFlags(Qt::TextEditorInteraction);
+        //itemXY->eetTextInteractionFlags(Qt::TextEditorInteraction);      
         //itemXY->setZValue(2000);
         //text->setHtml("<heloooooooooo>");
         itemXY->setPos(this->x(), this->y());
         this->setCacheMode(QGraphicsItem::DeviceCoordinateCache);
         this->setPos(100,100); 
-        connect(this, SIGNAL(changeCursor()),this, SLOT(showCursorAs()));
+        connect(this, SIGNAL(changeCursor()),this, SLOT(show_cursor_as()));
 }
-
 
 void MySquare::initMySquare( MySquareStruct &st)
 {
@@ -36,38 +35,38 @@ void MySquare::initMySquare( MySquareStruct &st)
         }
         if(!(st.itemSize.isNull())){
                 QSizeF size = st.itemSize.toSizeF();
-                this->setItemSize(size.width(),size.height());
+                this->set_item_size(size.width(),size.height());
                 qDebug() << "Size changed successfully";
         }
         qDebug() << "null value "  << st.image.isNull();
         if(!(st.image.isNull())){
                 const QString image = st.image.toString();
                 if(!(st.imgSize.isNull())){
-                        this->setImage(image,st.imgSize.toSize());
+                        this->set_image(image,st.imgSize.toSize());
                         qDebug() << "imgSize added successfully";
                 }  else { 
-                        this->setImage(image,st.imgRect.toRectF());
+                        this->set_image(image,st.imgRect.toRectF());
                         qDebug() << "imgRect added successfully";
                 }
         }
         if(!(st.svgImage.isNull())){
                 const QString svgImage = st.svgImage.toString();
                 if(!(st.svgImgSize.isNull())){
-                        this->setSvgImage(svgImage,st.svgImgSize.toSizeF());
+                        this->set_svg_image(svgImage,st.svgImgSize.toSizeF());
                         qDebug() << "svgSize added successfully";
                 }  else {
-                        this->setSvgImage(svgImage,st.svgImgRect.toRectF());
+                        this->set_svg_image(svgImage,st.svgImgRect.toRectF());
                         qDebug() << "svgRect added successfully";
                 }
         }
         if(!(st.text.isNull())){
                 const QString text = st.text.toString();
-                this->setText(text,st.txtRect.toRectF());
+                this->set_text(text,st.txtRect.toRectF());
                 qDebug() << "text added successfully";
         }
         if(!(st.description.isNull())){
                 const QString desc = st.description.toString();
-                this->setText(desc, st.descRect.toRectF());
+                this->set_text(desc, st.descRect.toRectF());
                 qDebug() << "description added successfully";
         }
 }
@@ -261,32 +260,48 @@ void MySquare::hoverMoveEvent(QGraphicsSceneHoverEvent * event)
         QGraphicsItem::hoverMoveEvent(event);
 }
 
-
 QVariant MySquare::itemChange(GraphicsItemChange change, const QVariant &value)
 {
         if (change == QGraphicsItem::ItemPositionChange && scene()) {
                 foreach (Arrow *arrow, arrows) {
-                        arrow->updatePosition();
+                        arrow->update_position();
                 }
                 *posXY = QString::number(this->x())+", "+
                         QString::number(this->y());
                 //itemXY->setPlainText((*posXY));
-
         }
-        if (change == QGraphicsItem::ItemOpacityChange ) {
-                foreach (Arrow *arrow, arrows) {
-                        arrow->setOpacity(this->opacity()-0.1);
-                }
-        }
+        //if (change == QGraphicsItem::ItemOpacityChange ) {
+        //        int n = 3;
+        //       foreach (Arrow *arrow, arrows) {
+        //                if(0.4 >= this->opacity()){
+        //                        n = 1;
+        //                }  
+        //                if(0.6 <= this->opacity()){
+        //                        n = 2;
+        //                }
+        //                switch (n)
+        //                {
+        //                        case 1:
+        //                                arrow->setOpacity(0);
+        //                                break;
+        //                        case 2:
+        //                                arrow->setOpacity(1.0);
+        //                                break;
+        //                        default:
+        //                                arrow->setOpacity(this->opacity());
+        //                                break;
+        //                }
+        //        }
+        //}
         return QGraphicsItem::itemChange(change, value);
 }
 
-void MySquare::addArrow(Arrow *arrow)
+void MySquare::add_arrow(Arrow *arrow)
 {
         arrows.append(arrow);
 }
 
-QPointF MySquare::returnCenter()
+QPointF MySquare::return_center()
 {
         QRectF rect = boundingRect();
         qreal width = rect.width();
@@ -296,7 +311,7 @@ QPointF MySquare::returnCenter()
         return this->pos()+p;// changed for test 
 }
 
-void MySquare::setMyPolygon()
+void MySquare::set_my_polygon()
 {
         QRectF rec = boundingRect();
         QPolygonF poly ;
@@ -310,14 +325,14 @@ void MySquare::setMyPolygon()
 }
 
 
-void MySquare::setItemSize(qreal width,qreal height)
+void MySquare::set_item_size(qreal width,qreal height)
 {
         prepareGeometryChange();
         myItemRect.setWidth(width);
         myItemRect.setHeight(height);
 }
 
-void MySquare::setSize(QSizeF size)
+void MySquare::set_size(QSizeF size)
 {
         prepareGeometryChange();
         myItemRect.setWidth(size.width());
@@ -329,7 +344,7 @@ QSizeF MySquare::size()
         return QSizeF( myItemRect.width(), myItemRect.height());
 }
 
-void MySquare::setImage(const QString& str) 
+void MySquare::set_image(const QString& str) 
 {
         QImage image(QCoreApplication::applicationDirPath() + "/" + str);
         QImage img = image;
@@ -342,7 +357,7 @@ void MySquare::setImage(const QString& str)
         item->setAcceptHoverEvents(false);
 }
 
-void MySquare::setImage(const QString& str, const QSize size) 
+void MySquare::set_image(const QString& str, const QSize size) 
 {
         QImage image(QCoreApplication::applicationDirPath() + "/" + str);
         QImage img = image.scaled(size);
@@ -350,7 +365,7 @@ void MySquare::setImage(const QString& str, const QSize size)
           QPixmap::fromImage(image));*/
         QGraphicsItem *item = new QGraphicsPixmapItem(\
                         QPixmap::fromImage(img));
-        //item->setSize(size);
+        //item->set_size(size);
         //svg->setMaximumCacheSize(QSize(350,350));
         Q_ASSERT(!item.isNull());
         item->setFlag(QGraphicsItem::ItemIsSelectable,false);
@@ -359,7 +374,7 @@ void MySquare::setImage(const QString& str, const QSize size)
         item->setAcceptHoverEvents(false);
 }
 
-void MySquare::setImage(const QString& str ,QRectF rec) 
+void MySquare::set_image(const QString& str ,QRectF rec) 
 {
         QImage image(QCoreApplication::applicationDirPath() + "/" + str);
         QImage img = image.scaled(QSize(rec.width(),rec.height()));
@@ -369,13 +384,13 @@ void MySquare::setImage(const QString& str ,QRectF rec)
                         QPixmap::fromImage(img));
         Q_ASSERT(!item.isNull());
         item->setFlag(QGraphicsItem::ItemIsSelectable,false);
-        //item->setSize(QSize(rec.width(),rec.height()));
+        //item->set_size(QSize(rec.width(),rec.height()));
         item->setParentItem(this);
         item->setPos(rec.x(),rec.y());
         item->setAcceptHoverEvents(false);
 }
 
-void MySquare::setSvgImage(const QString& str) 
+void MySquare::set_svg_image(const QString& str) 
 {
         QGraphicsItem  *m_svgItem = new QGraphicsSvgItem(\
                         QCoreApplication::applicationDirPath() + "/" + str);
@@ -386,13 +401,13 @@ void MySquare::setSvgImage(const QString& str)
         m_svgItem->setAcceptHoverEvents(false);
 }
 
-void MySquare::setSvgImage(const QString& str ,QSizeF size) 
+void MySquare::set_svg_image(const QString& str ,QSizeF size) 
 {
         /*QGraphicsSvgItem  *svg = new QGraphicsSvgItem(\
           QCoreApplication::applicationDirPath() + "/" + str);*/
         MySvgItem  *svg = new MySvgItem(\
                         QCoreApplication::applicationDirPath() + "/" + str );
-        svg->setSize(size);
+        svg->set_size(size);
         //svg->setMaximumCacheSize(QSize(350,350));
         Q_ASSERT(!svg.isNull());
         QGraphicsItem  *m_svgItem = svg; 
@@ -403,12 +418,12 @@ void MySquare::setSvgImage(const QString& str ,QSizeF size)
         m_svgItem->setAcceptHoverEvents(false);
 }
 
-void MySquare::setSvgImage(const QString& str ,QRectF rec) 
+void MySquare::set_svg_image(const QString& str ,QRectF rec) 
 {
         MySvgItem  *svg = new MySvgItem(\
                         QCoreApplication::applicationDirPath() + "/" + str );
         Q_ASSERT(!svg.isNull());
-        svg->setSize(QSize(rec.width(),rec.height()));
+        svg->set_size(QSize(rec.width(),rec.height()));
         QGraphicsItem  *m_svgItem = svg; 
         m_svgItem->setFlag(QGraphicsItem::ItemIsSelectable,false);
         m_svgItem->setParentItem(this);
@@ -417,17 +432,17 @@ void MySquare::setSvgImage(const QString& str ,QRectF rec)
         m_svgItem->setAcceptHoverEvents(false);
 }
 
-void MySquare::setText(const QString& str ,QRectF rec) 
+void MySquare::set_text(const QString& str ,QRectF rec) 
 {
         QGraphicsTextItem *text = new QGraphicsTextItem(this);
-        //text->setTextInteractionFlags(Qt::TextEditorInteraction);
+        //text->eetTextInteractionFlags(Qt::TextEditorInteraction);
         text->setFlag(QGraphicsItem::ItemIsSelectable,false);
         text->setHtml(str);
         text->setPos(rec.x(), rec.y());
         text->setAcceptHoverEvents(false);
 }
 
-void MySquare::printStruct(const MySquareStruct &st) 
+void MySquare::print_struct(const MySquareStruct &st) 
 {
         qDebug() <<  "  itemPos ;   "   << st.itemPos ;
         qDebug() <<  "  itemSize ;  "   << st.itemSize ;
@@ -443,8 +458,7 @@ void MySquare::printStruct(const MySquareStruct &st)
         qDebug() <<  "  descRect ;  "   << st.descRect ;
 }
 
-
-void MySquare::showCursorAs() 
+void MySquare::show_cursor_as() 
 {
         //qDebug( << "changeCursor signal is emmited "; 
         //switch (cursor_shape_)
@@ -458,12 +472,10 @@ void MySquare::showCursorAs()
         //case cs_diagonal:
         //    this->setCursor(Qt::SizeFDiagCursor);
         //    break;
-
         //default:
         //    this->setCursor(Qt::ArrowCursor);
         //    break;
         //}
-
 }
 
 MySquare::~MySquare()

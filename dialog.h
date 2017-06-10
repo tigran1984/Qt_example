@@ -25,13 +25,13 @@ class Dialog : public QDialog
 Q_OBJECT
 public:
         explicit Dialog(QWidget *parent = 0);
-        QPropertyAnimation* posAnimation(MySquare* ptr,
+        QPropertyAnimation* pos_animation(MySquare* ptr,
                         int duration,QPointF startValue,
                         QPointF endValue, QEasingCurve easing);
-        QPropertyAnimation* opacityAnimation(MySquare* ptr,
+        QPropertyAnimation* opacity_animation(MySquare* ptr,
                         int duration,qreal startValue,
                         qreal endValue, QEasingCurve easing);
-        QPropertyAnimation* sizeAnimation(MySquare* ptr,
+        QPropertyAnimation* size_animation(MySquare* ptr,
                         int duration,QSizeF startValue,
                         QSizeF endValue, QEasingCurve easing);
         void remove_child_items(MySquare* item);
@@ -40,12 +40,14 @@ public:
         void create_1_page_animation();
         void create_2_page_animation();
         ~Dialog();
-        public slots:
-                void show_first_page();
+public slots:
+        void show_first_page();
         void animate_and_show_1_page();
         void animate_and_show_2_page();
-        void showFirstPageArrows();
-        void showSecondPageArrows();
+        void show_first_page_arrows();
+        void show_second_page_arrows();
+        void hide_first_page_arrows();
+        void hide_second_page_arrows();
 private:
         QGraphicsScene* m_scene;
         //MyGraphicsScene* m_scene;

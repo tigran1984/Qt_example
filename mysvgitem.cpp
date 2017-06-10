@@ -28,7 +28,7 @@ void MySvgItem::paint(QPainter* painter, const QStyleOptionGraphicsItem* option,
         renderer()->render(painter, elementId(), boundingRect());
 }
 
-void MySvgItem::setSize(QSizeF size)
+void MySvgItem::set_size(QSizeF size)
 {
     if (size_m != size) {
         prepareGeometryChange();
