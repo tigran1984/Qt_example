@@ -4,8 +4,8 @@ Dialog::Dialog(QWidget *parent) :
         QDialog(parent)
 {
         QHBoxLayout *hb = new QHBoxLayout();
-        MyGraphicsView *gview = new MyGraphicsView();
-        //QGraphicsView *gview = new QGraphicsView();
+        //MyGraphicsView *gview = new MyGraphicsView();
+        QGraphicsView *gview = new QGraphicsView();
         hb->addWidget(gview);
         this->setLayout(hb);
         m_scene = new QGraphicsScene(this);
@@ -57,27 +57,27 @@ void Dialog::create_2_page_animation()
         //////////////////////
         m_group_anim_2->addAnimation(pos_animation(
                                 m_items.at(0),701,QPointF(291,168),
-                                QPointF(42,139),QEasingCurve::OutExpo));
+                                QPointF(42,139),QEasingCurve::Linear));
         m_group_anim_2->addAnimation(pos_animation(
                                 m_items.at(8),701,QPointF(42,139),
-                                QPointF(291,168),QEasingCurve::OutExpo));
+                                QPointF(291,168),QEasingCurve::Linear));
         ////////////////////////
         //m_group_anim_2->addAnimation(opacity_animation(
         //        m_items.at(0),701,1.0,0.0,QEasingCurve::InExpo));
         m_group_anim_2->addAnimation(opacity_animation(
-                m_items.at(1),701,1.0,0.0,QEasingCurve::OutExpo));
+                m_items.at(1),701,1.0,0.0,QEasingCurve::Linear));
         m_group_anim_2->addAnimation(opacity_animation(
-                m_items.at(2),701,1.0,0.0,QEasingCurve::OutExpo));
+                m_items.at(2),701,1.0,0.0,QEasingCurve::Linear));
         m_group_anim_2->addAnimation(opacity_animation(
-                m_items.at(3),701,1.0,0.0,QEasingCurve::OutExpo));
+                m_items.at(3),701,1.0,0.0,QEasingCurve::Linear));
         m_group_anim_2->addAnimation(opacity_animation(
-                m_items.at(4),701,1.0,0.0,QEasingCurve::OutExpo));
+                m_items.at(4),701,1.0,0.0,QEasingCurve::Linear));
         m_group_anim_2->addAnimation(opacity_animation(
-                m_items.at(5),701,1.0,0.0,QEasingCurve::OutExpo));
+                m_items.at(5),701,1.0,0.0,QEasingCurve::Linear));
         m_group_anim_2->addAnimation(opacity_animation(
-                m_items.at(6),701,1.0,0.0,QEasingCurve::OutExpo));
+                m_items.at(6),701,1.0,0.0,QEasingCurve::Linear));
         m_group_anim_2->addAnimation(opacity_animation(
-                m_items.at(7),701,1.0,0.0,QEasingCurve::OutExpo));
+                m_items.at(7),701,1.0,0.0,QEasingCurve::Linear));
         //m_group_anim_2->addAnimation(opacity_animation(
         //        m_items.at(8),701,1.0,0.0,QEasingCurve::InExpo));
         ////////////////////
@@ -86,14 +86,14 @@ void Dialog::create_2_page_animation()
                                 701,
                                 QSizeF(169,70),
                                 QSizeF(211,281),
-                                QEasingCurve::OutExpo));
+                                QEasingCurve::Linear));
         ////////////////////
         m_group_anim_2->addAnimation(size_animation(
                                 m_items.at(0),
                                 701,
                                 QSizeF(291,168),
                                 QSizeF(148,89),
-                                QEasingCurve::OutExpo));
+                                QEasingCurve::Linear));
         /////////////////// second page m_items /////////////
         m_group_anim_2->addAnimation(opacity_animation(
                                 m_items2.at(0), 701,0.0,1.0,
@@ -189,29 +189,29 @@ void Dialog::create_1_page_animation()
                                 701,
                                 QSizeF(211,281),
                                 QSizeF(169,70),
-                                QEasingCurve::OutExpo));
+                                QEasingCurve::Linear));
         ////////////////////
         m_group_anim_3->addAnimation(size_animation(
                                 m_items.at(0),
                                 701,
                                 QSizeF(148,89),
                                 QSizeF(314,220),
-                                QEasingCurve::OutExpo));
+                                QEasingCurve::Linear));
         //////////////////
         m_group_anim_3->addAnimation(opacity_animation(
-                m_items.at(1),701,0.0,1.0,QEasingCurve::OutExpo));
+                m_items.at(1),701,0.0,1.0,QEasingCurve::Linear));
         m_group_anim_3->addAnimation(opacity_animation(
-                m_items.at(2),701,0.0,1.0,QEasingCurve::OutExpo));
+                m_items.at(2),701,0.0,1.0,QEasingCurve::Linear));
         m_group_anim_3->addAnimation(opacity_animation(
-                m_items.at(3),701,0.0,1.0,QEasingCurve::OutExpo));
+                m_items.at(3),701,0.0,1.0,QEasingCurve::Linear));
         m_group_anim_3->addAnimation(opacity_animation(
-                m_items.at(4),701,0.0,1.0,QEasingCurve::OutExpo));
+                m_items.at(4),701,0.0,1.0,QEasingCurve::Linear));
         m_group_anim_3->addAnimation(opacity_animation(
-                m_items.at(5),701,0.0,1.0,QEasingCurve::OutExpo));
+                m_items.at(5),701,0.0,1.0,QEasingCurve::Linear));
         m_group_anim_3->addAnimation(opacity_animation(
-                m_items.at(6),701,0.0,1.0,QEasingCurve::OutExpo));
+                m_items.at(6),701,0.0,1.0,QEasingCurve::Linear));
         m_group_anim_3->addAnimation(opacity_animation(
-                m_items.at(7),701,0.0,1.0,QEasingCurve::OutExpo));
+                m_items.at(7),701,0.0,1.0,QEasingCurve::Linear));
         /////////////// position change //////////
         m_group_anim_3->addAnimation(pos_animation(
                 m_items.at(0),701,QPointF(42,139),

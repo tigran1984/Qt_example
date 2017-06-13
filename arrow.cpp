@@ -44,14 +44,9 @@ void Arrow::update_position()
 void Arrow::paint(QPainter *painter, const QStyleOptionGraphicsItem *,
                 QWidget *)
 {
-
-        if (m_my_start_item->collidesWithItem(m_my_end_item))
+        if (m_my_start_item->collidesWithItem(m_my_end_item)){
                 return;
-
-        //if (m_my_start_item->opacity() < m_my_end_item->opacity())
-        //{
-        //    this->setOpacity(m_my_start_item->opacity());
-        //} else {this->setOpacity(m_my_end_item->opacity());}
+        }
         QPen myPen = pen();
         myPen.setColor(m_color);
         qreal arrow_size = 5;

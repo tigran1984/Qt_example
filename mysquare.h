@@ -92,9 +92,6 @@ public:
         ~MySquare();
 signals:
         void click();
-        void changeCursor();
-public slots:
-        void show_cursor_as() ;
 protected:
         void mousePressEvent(QGraphicsSceneMouseEvent *event);
         void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);

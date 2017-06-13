@@ -21,9 +21,8 @@ MySquare::MySquare()
         //itemXY->setZValue(2000);
         //text->setHtml("<heloooooooooo>");
         itemXY->setPos(this->x(), this->y());
-        this->setCacheMode(QGraphicsItem::DeviceCoordinateCache);
+        //this->setCacheMode(QGraphicsItem::DeviceCoordinateCache);
         this->setPos(100,100); 
-        connect(this, SIGNAL(changeCursor()),this, SLOT(show_cursor_as()));
 }
 
 void MySquare::initMySquare( MySquareStruct &st)
@@ -149,7 +148,6 @@ void MySquare::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
         clickFlag = false;
         if (isSelected()) {
-                //emit changeCursor();
                 //qDebug() << " cursor_shape_ == " << cursor_shape_; 
                 // resize border to mouse position
                 QPointF p = event->pos();
@@ -224,7 +222,6 @@ void MySquare::hoverMoveEvent(QGraphicsSceneHoverEvent * event)
 {
         //qDebug() <<  "ItemType ========" << this->type();
         //qDebug() <<  "mouseTracking ========" << hasMouseTracking();
-        //emit this->changeCursor();
         bool diagl_flag = false ;
         QPointF mp = event->pos();
         QRectF mr =sceneBoundingRect(); // relative to scene
@@ -456,26 +453,6 @@ void MySquare::print_struct(const MySquareStruct &st)
         qDebug() <<  "  txtRect ;   "   << st.txtRect ;
         qDebug() <<  "  description "   << st.description ;
         qDebug() <<  "  descRect ;  "   << st.descRect ;
-}
-
-void MySquare::show_cursor_as() 
-{
-        //qDebug( << "changeCursor signal is emmited "; 
-        //switch (cursor_shape_)
-        //{
-        //case cs_vertical:
-        //    this->setCursor(Qt::SizeVerCursor);
-        //    break;
-        //case cs_horizotal:
-        //    this->setCursor(Qt::SizeHorCursor);
-        //    break;
-        //case cs_diagonal:
-        //    this->setCursor(Qt::SizeFDiagCursor);
-        //    break;
-        //default:
-        //    this->setCursor(Qt::ArrowCursor);
-        //    break;
-        //}
 }
 
 MySquare::~MySquare()
