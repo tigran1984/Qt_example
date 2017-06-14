@@ -57,10 +57,10 @@ private:
         QParallelAnimationGroup* m_group_anim_2;
         QParallelAnimationGroup* m_group_anim_3;
         QParallelAnimationGroup* m_group_anim_4;
-        MySquareStruct item_struct_0;
-        MySquareStruct item_struct_8;
-        MySquareStruct item_struct_0_2_page;
-        MySquareStruct item_struct_8_2_page;
+        MySquareStruct m_item_struct_0;
+        MySquareStruct m_item_struct_8;
+        MySquareStruct m_item_struct_0_2_page;
+        MySquareStruct m_item_struct_8_2_page;
         QList<Arrow *> m_ar_list;
         QList<Arrow *> m_ar2_list;
 };

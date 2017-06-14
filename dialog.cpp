@@ -22,10 +22,14 @@ Dialog::Dialog(QWidget *parent) :
         m_group_anim_1 = new QParallelAnimationGroup;
         m_group_anim_2 = new QParallelAnimationGroup;
         m_group_anim_3 = new QParallelAnimationGroup;
-        connect(m_items.at(8), &MySquare::click,
-                this, &Dialog::animate_and_show_2_page);
-        connect(m_items2.at(6), &MySquare::click,
-                this, &Dialog::animate_and_show_1_page);
+        //connect(m_items.at(8), &MySquare::click,
+        //        this, &Dialog::animate_and_show_2_page);
+        //connect(m_items2.at(6), &MySquare::click,
+        //        this, &Dialog::animate_and_show_1_page);
+        connect(m_items.at(8), SIGNAL(click_item()),
+                this, SLOT(animate_and_show_2_page()));
+        connect(m_items2.at(6), SIGNAL(click_item()),
+                this, SLOT(animate_and_show_1_page()));
         //QList<QGraphicsItem * > allItms = m_scene->m_items();
         //for( int i=0; i<allItms.count(); ++i )
         //{ 
@@ -138,14 +142,16 @@ void Dialog::animate_and_show_1_page()
         //m_items.at(0)->set_item_size(314,220);
         //m_items.at(8)->set_item_size(169,70);
         m_items.at(0)->disconnect();
-        connect(m_items.at(8), &MySquare::click,
-                this, &Dialog::animate_and_show_2_page);
+        //connect(m_items.at(8), &MySquare::click,
+        //        this, &Dialog::animate_and_show_2_page);
+        connect(m_items.at(8),SIGNAL( click_item()),
+                this, SLOT(animate_and_show_2_page()));
         remove_child_items(m_items.at(8));
         remove_child_items(m_items.at(0));
         //m_scene->addItem(m_items.at(8));
-        m_items.at(8)->print_struct(item_struct_8_2_page);
-        m_items.at(8)->initMySquare(item_struct_8);
-        m_items.at(0)->initMySquare(item_struct_0);
+        m_items.at(8)->print_struct(m_item_struct_8_2_page);
+        m_items.at(8)->initMySquare(m_item_struct_8);
+        m_items.at(0)->initMySquare(m_item_struct_0);
         m_group_anim_2->stop();
         hide_second_page_arrows();
         connect(m_group_anim_3,SIGNAL(finished()),
@@ -224,14 +230,16 @@ void Dialog::create_1_page_animation()
 void Dialog::animate_and_show_2_page()
 {
         m_items.at(8)->disconnect();
-        connect(m_items.at(0), &MySquare::click,
-                this, &Dialog::animate_and_show_1_page);
+        //connect(m_items.at(0), &MySquare::click,
+        //        this, &Dialog::animate_and_show_1_page);
+        connect(m_items.at(0), SIGNAL(click_item()),
+                this, SLOT(animate_and_show_1_page()));
         remove_child_items(m_items.at(8));
         remove_child_items(m_items.at(0));
         //m_scene->addItem(m_items.at(8));
-        m_items.at(8)->print_struct(item_struct_8_2_page);
-        m_items.at(8)->initMySquare(item_struct_8_2_page);
-        m_items.at(0)->initMySquare(item_struct_0_2_page);
+        m_items.at(8)->print_struct(m_item_struct_8_2_page);
+        m_items.at(8)->initMySquare(m_item_struct_8_2_page);
+        m_items.at(0)->initMySquare(m_item_struct_0_2_page);
         //QTimer::singleShot(4100, m_scene, SLOT(clear()));
         //m_scene->clear();
         //QTimer::singleShot(4330, this, SLOT(create_1_page_animation()));
@@ -374,15 +382,17 @@ void Dialog::setup_1_page_items()
         m_items.at(2)->set_text(str2_,QRectF(10,50,286,203));
         m_items.at(3)->set_text(str3_,QRectF(16,50,286,203));
         ////////////////
-        QVariant null; // uninitialized QVariant == NULL or QVariant::invalid;
-        item_struct_0 = MySquareStruct  { null,null,\
+        QVariant null;
+        MySquareStruct strc_0 = { null,null,\
                 null,null,null,QString("instigate_design3.svg"),\
                 QSizeF(286,203), null, null, null, null, null };
-        item_struct_8 = MySquareStruct { null,null,\
+        m_item_struct_0 =strc_0;
+        MySquareStruct strc_8 = { null,null,\
                 null,null,null,QString("image.svg"),null,\
                 QRectF(14,16,35,37), str8,QRectF(61,0,286,203), null, null };
-        m_items.at(0)->initMySquare(item_struct_0);
-        m_items.at(8)->initMySquare(item_struct_8);
+        m_item_struct_8 = strc_8;
+        m_items.at(0)->initMySquare(m_item_struct_0);
+        m_items.at(8)->initMySquare(m_item_struct_8);
         // create arrows
         QList<Arrow *> arrow_list1;
         m_ar_list = arrow_list1  ;
@@ -494,16 +504,18 @@ void Dialog::setup_2_page_items()
         //m_items2.at(7)->setPos(291,168);
         //////// m_items.at(8) equal m_items2.at(7)  ////////
         QVariant null; // uninitialized QVariant == NULL or QVariant::invalid;
-        item_struct_8_2_page = MySquareStruct  { null,null,\
+        MySquareStruct strc_8_2 = { null,null,\
                 null,null,null,QString("image.svg"),null,\
                         QRectF(19,23,63,57), str2_8 ,QRectF(105,31,99,46),\
                         str2_8_, QRectF(21,97,176,170) };
-        //m_items.at(8)->initMySquare(item_struct_8_2_page);
-        m_items.at(8)->print_struct(item_struct_8_2_page);
+        m_item_struct_8_2_page = strc_8_2;
+        //m_items.at(8)->initMySquare(m_item_struct_8_2_page);
+        m_items.at(8)->print_struct(m_item_struct_8_2_page);
         //////// m_items.at(0) equal m_items2.at(6)  ////////
-        item_struct_0_2_page = MySquareStruct  { null,null,\
+        MySquareStruct strc_0_2 = { null,null,\
                 null,null,null,QString("instigate_design3.svg"),null,\
                         QRectF(4,5,132,79), null, null, null, null };
+        m_item_struct_0_2_page = strc_0_2;
         // create arrows
         QList<Arrow *> arrow_list2;
         m_ar2_list  = arrow_list2 ;

@@ -212,7 +212,7 @@ void MySquare::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
                 myItemRect.setHeight(35);
         //update();
         if(clickFlag) {
-                emit click();
+                emit click_item();
         }
         //QTimer::singleShot(500, this, SIGNAL(click()));
         QGraphicsItem::mouseReleaseEvent(event);

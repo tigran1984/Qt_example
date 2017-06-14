@@ -7,6 +7,6 @@ file='test.pro'
 sed -i "/$match/a $insert" $file
 
 #./insert_text_inline.sh
-qmake -qt=qt5 test.pro
+qmake -qt=qt4 test.pro
 make
 # awk '/QT/{ print NR }' test.pro

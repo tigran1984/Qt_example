@@ -91,7 +91,7 @@ public:
         void print_struct(const MySquareStruct &st); 
         ~MySquare();
 signals:
-        void click();
+        void click_item();
 protected:
         void mousePressEvent(QGraphicsSceneMouseEvent *event);
         void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
