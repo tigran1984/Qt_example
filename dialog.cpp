@@ -61,10 +61,10 @@ void Dialog::create_2_page_animation()
         //////////////////////
         m_group_anim_2->addAnimation(pos_animation(
                                 m_items.at(0),701,QPointF(291,168),
-                                QPointF(42,139),QEasingCurve::Linear));
+                                QPointF(42,139),QEasingCurve::OutExpo));
         m_group_anim_2->addAnimation(pos_animation(
                                 m_items.at(8),701,QPointF(42,139),
-                                QPointF(291,168),QEasingCurve::Linear));
+                                QPointF(291,168),QEasingCurve::OutExpo));
         ////////////////////////
         //m_group_anim_2->addAnimation(opacity_animation(
         //        m_items.at(0),701,1.0,0.0,QEasingCurve::InExpo));
@@ -98,7 +98,6 @@ void Dialog::create_2_page_animation()
                                 QSizeF(291,168),
                                 QSizeF(148,89),
                                 QEasingCurve::Linear));
-        /////////////////// second page m_items /////////////
         m_group_anim_2->addAnimation(opacity_animation(
                                 m_items2.at(0), 701,0.0,1.0,
                                 QEasingCurve::Linear));
@@ -161,7 +160,6 @@ void Dialog::animate_and_show_1_page()
 }
 void Dialog::create_1_page_animation()
 {
-        /////////////change position animation ///////
         m_group_anim_3->addAnimation(opacity_animation(
                                 m_items2.at(0), 701,1.0,
                                 0.0,QEasingCurve::Linear));
@@ -196,14 +194,12 @@ void Dialog::create_1_page_animation()
                                 QSizeF(211,281),
                                 QSizeF(169,70),
                                 QEasingCurve::Linear));
-        ////////////////////
         m_group_anim_3->addAnimation(size_animation(
                                 m_items.at(0),
                                 701,
                                 QSizeF(148,89),
                                 QSizeF(314,220),
                                 QEasingCurve::Linear));
-        //////////////////
         m_group_anim_3->addAnimation(opacity_animation(
                 m_items.at(1),701,0.0,1.0,QEasingCurve::Linear));
         m_group_anim_3->addAnimation(opacity_animation(
@@ -218,13 +214,12 @@ void Dialog::create_1_page_animation()
                 m_items.at(6),701,0.0,1.0,QEasingCurve::Linear));
         m_group_anim_3->addAnimation(opacity_animation(
                 m_items.at(7),701,0.0,1.0,QEasingCurve::Linear));
-        /////////////// position change //////////
         m_group_anim_3->addAnimation(pos_animation(
                 m_items.at(0),701,QPointF(42,139),
-                QPointF(291,168),QEasingCurve::Linear));
+                QPointF(291,168),QEasingCurve::OutExpo));
         m_group_anim_3->addAnimation(pos_animation(
                 m_items.at(8),701,QPointF(291,168),
-                QPointF(42,139),QEasingCurve::Linear));
+                QPointF(42,139),QEasingCurve::OutExpo));
 }
 
 void Dialog::animate_and_show_2_page()
@@ -396,52 +391,52 @@ void Dialog::setup_1_page_items()
         // create arrows
         QList<Arrow *> arrow_list1;
         m_ar_list = arrow_list1  ;
-        Arrow *ar0 = new Arrow(m_items.at(0),m_items.at(1));
+        Arrow *ar0 = new Arrow(m_items.at(1),m_items.at(0));
         m_ar_list.append(ar0);
         m_items.at(0)->add_arrow(ar0);
         m_items.at(1)->add_arrow(ar0);
         /////////////////
-        Arrow *ar1 = new Arrow(m_items.at(0),m_items.at(2));
+        Arrow *ar1 = new Arrow(m_items.at(2),m_items.at(0));
         m_ar_list.append(ar1);
         m_items.at(0)->add_arrow(ar1);
         m_items.at(2)->add_arrow(ar1);
         /////////////////
-        Arrow *ar2 = new Arrow(m_items.at(0),m_items.at(3));
+        Arrow *ar2 = new Arrow(m_items.at(3),m_items.at(0));
         m_ar_list.append(ar2);
         m_items.at(0)->add_arrow(ar2);
         m_items.at(3)->add_arrow(ar2);
         /////////////////
-        Arrow *ar3 = new Arrow(m_items.at(0),m_items.at(4));
+        Arrow *ar3 = new Arrow(m_items.at(4),m_items.at(0));
         m_ar_list.append(ar3);
         m_items.at(0)->add_arrow(ar3);
         m_items.at(4)->add_arrow(ar3);
         /////////////////
-        Arrow *ar4 = new Arrow(m_items.at(0),m_items.at(5));
+        Arrow *ar4 = new Arrow(m_items.at(5),m_items.at(0));
         m_ar_list.append(ar4);
         m_items.at(0)->add_arrow(ar4);
         m_items.at(5)->add_arrow(ar4);
         /////////////////
-        Arrow *ar5 = new Arrow(m_items.at(0),m_items.at(6));
+        Arrow *ar5 = new Arrow(m_items.at(6),m_items.at(0));
         m_ar_list.append(ar5);
         m_items.at(0)->add_arrow(ar5);
         m_items.at(6)->add_arrow(ar5);
         /////////////////
-        Arrow *ar6 = new Arrow(m_items.at(0),m_items.at(7));
+        Arrow *ar6 = new Arrow(m_items.at(7),m_items.at(0));
         m_ar_list.append(ar6);
         m_items.at(0)->add_arrow(ar6);
         m_items.at(7)->add_arrow(ar6);
         /////////////////
-        Arrow *ar7 = new Arrow(m_items.at(0),m_items.at(8));
+        Arrow *ar7 = new Arrow(m_items.at(8),m_items.at(0));
         m_ar_list.append(ar7);
         m_items.at(0)->add_arrow(ar7);
         m_items.at(8)->add_arrow(ar7);
         /////////////////
-        Arrow *ar8 = new Arrow(m_items.at(2),m_items.at(3));
+        Arrow *ar8 = new Arrow(m_items.at(3),m_items.at(2));
         m_ar_list.append(ar8);
         m_items.at(2)->add_arrow(ar8);
         m_items.at(3)->add_arrow(ar8);
         /////////////////
-        Arrow *ar9 = new Arrow(m_items.at(1),m_items.at(3));
+        Arrow *ar9 = new Arrow(m_items.at(3),m_items.at(1));
         m_ar_list.append(ar9);
         m_items.at(1)->add_arrow(ar9);
         m_items.at(3)->add_arrow(ar9);
@@ -524,32 +519,32 @@ void Dialog::setup_2_page_items()
         //m_items.at(8)->add_arrow(ar2_0);
         //m_items.at(0)->add_arrow(ar2_0);
         ///////////////
-        Arrow *ar2_1 = new Arrow(m_items.at(8),m_items2.at(5));
+        Arrow *ar2_1 = new Arrow(m_items2.at(5), m_items.at(8));
         m_ar2_list.append(ar2_1);
         m_items.at(8)->add_arrow(ar2_1);
         m_items2.at(5)->add_arrow(ar2_1);
         //////////////
-        Arrow *ar2_2 = new Arrow(m_items.at(8),m_items2.at(4));
+        Arrow *ar2_2 = new Arrow(m_items2.at(4), m_items.at(8));
         m_ar2_list.append(ar2_2);
         m_items.at(8)->add_arrow(ar2_2);
         m_items2.at(4)->add_arrow(ar2_2);
         /////////////
-        Arrow *ar2_3 = new Arrow(m_items.at(8),m_items2.at(3));
+        Arrow *ar2_3 = new Arrow(m_items2.at(3), m_items.at(8));
         m_ar2_list.append(ar2_3);
         m_items.at(8)->add_arrow(ar2_3);
         m_items2.at(3)->add_arrow(ar2_3);
         ////////////
-        Arrow *ar2_4 = new Arrow(m_items.at(8),m_items2.at(2));
+        Arrow *ar2_4 = new Arrow(m_items2.at(2), m_items.at(8));
         m_ar2_list.append(ar2_4);
         m_items.at(8)->add_arrow(ar2_4);
         m_items2.at(2)->add_arrow(ar2_4);
         ////////////
-        Arrow *ar2_5 = new Arrow(m_items.at(8),m_items2.at(1));
+        Arrow *ar2_5 = new Arrow(m_items2.at(1), m_items.at(8));
         m_ar2_list.append(ar2_5);
         m_items.at(8)->add_arrow(ar2_5);
         m_items2.at(1)->add_arrow(ar2_5);
         ////////////
-        Arrow *ar2_6 = new Arrow(m_items.at(8),m_items2.at(0));
+        Arrow *ar2_6 = new Arrow(m_items2.at(0), m_items.at(8));
         m_ar2_list.append(ar2_6);
         m_items2.at(0)->add_arrow(ar2_6);
         m_items.at(8)->add_arrow(ar2_6);
@@ -593,29 +588,29 @@ void Dialog::show_second_page_arrows()
         m_ar_list.at(7)->setOpacity(1.0);
         for( int i=0; i<m_ar2_list.count(); ++i )
         { 
-            m_ar2_list.at(i)->update_position();
-            m_ar2_list.at(i)->show();
-            m_ar2_list.at(i)->setOpacity(1.0);
-            qDebug() << "m_ar2_list showed";
+                m_ar2_list.at(i)->update_position();
+                m_ar2_list.at(i)->show();
+                m_ar2_list.at(i)->setOpacity(1.0);
+                qDebug() << "m_ar2_list showed";
         }
 }
 
 void Dialog::hide_first_page_arrows()
 {
-                for( int i=0; i<m_ar_list.count(); ++i )
-                { 
-                        m_ar_list.at(i)->update_position();
-                        m_ar_list.at(i)->hide();
-                }
+        for( int i=0; i<m_ar_list.count(); ++i )
+        { 
+                m_ar_list.at(i)->update_position();
+                m_ar_list.at(i)->hide();
+        }
 }
 
 void Dialog::hide_second_page_arrows()
 {
-                for( int i=0; i<m_ar2_list.count(); ++i )
-                { 
-                        m_ar2_list.at(i)->update_position();
-                        m_ar2_list.at(i)->hide();
-                }
+        for( int i=0; i<m_ar2_list.count(); ++i )
+        { 
+                m_ar2_list.at(i)->update_position();
+                m_ar2_list.at(i)->hide();
+        }
 }
 
 Dialog::~Dialog()
