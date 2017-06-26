@@ -12,7 +12,9 @@ MySvgItem::MySvgItem(const QString& fileName, QGraphicsItem* parent)
 {
 }
 
-void MySvgItem::paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget)
+void MySvgItem::paint(QPainter* painter,
+                      const QStyleOptionGraphicsItem* option,
+                      QWidget* widget)
 {
     //QGraphicsSvgItem::paint(painter, option, widget);
 

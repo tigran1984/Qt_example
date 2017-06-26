@@ -369,14 +369,11 @@ void Dialog::setup_1_page_items()
         m_items.at(6)->set_text(str6,QRectF(66,22,286,203));
         m_items.at(7)->set_text(str7,QRectF(63,22,286,203));
         //m_items.at(8)->set_text(str8,QRectF(61,0,286,203));
-        //////////////////
         //m_items.at(8)->setZValue(1000);
         //m_items.at(0)->setZValue(999);
-        /////////////////
         m_items.at(1)->set_text(str1_,QRectF(4,48,286,203));
         m_items.at(2)->set_text(str2_,QRectF(10,50,286,203));
         m_items.at(3)->set_text(str3_,QRectF(16,50,286,203));
-        ////////////////
         QVariant null;
         MySquareStruct strc_0 = { null,null,\
                 null,null,null,QString("instigate_design3.svg"),\
@@ -395,47 +392,38 @@ void Dialog::setup_1_page_items()
         m_ar_list.append(ar0);
         m_items.at(0)->add_arrow(ar0);
         m_items.at(1)->add_arrow(ar0);
-        /////////////////
         Arrow *ar1 = new Arrow(m_items.at(2),m_items.at(0));
         m_ar_list.append(ar1);
         m_items.at(0)->add_arrow(ar1);
         m_items.at(2)->add_arrow(ar1);
-        /////////////////
         Arrow *ar2 = new Arrow(m_items.at(3),m_items.at(0));
         m_ar_list.append(ar2);
         m_items.at(0)->add_arrow(ar2);
         m_items.at(3)->add_arrow(ar2);
-        /////////////////
         Arrow *ar3 = new Arrow(m_items.at(4),m_items.at(0));
         m_ar_list.append(ar3);
         m_items.at(0)->add_arrow(ar3);
         m_items.at(4)->add_arrow(ar3);
-        /////////////////
         Arrow *ar4 = new Arrow(m_items.at(5),m_items.at(0));
         m_ar_list.append(ar4);
         m_items.at(0)->add_arrow(ar4);
         m_items.at(5)->add_arrow(ar4);
-        /////////////////
         Arrow *ar5 = new Arrow(m_items.at(6),m_items.at(0));
         m_ar_list.append(ar5);
         m_items.at(0)->add_arrow(ar5);
         m_items.at(6)->add_arrow(ar5);
-        /////////////////
         Arrow *ar6 = new Arrow(m_items.at(7),m_items.at(0));
         m_ar_list.append(ar6);
         m_items.at(0)->add_arrow(ar6);
         m_items.at(7)->add_arrow(ar6);
-        /////////////////
         Arrow *ar7 = new Arrow(m_items.at(8),m_items.at(0));
         m_ar_list.append(ar7);
         m_items.at(0)->add_arrow(ar7);
         m_items.at(8)->add_arrow(ar7);
-        /////////////////
         Arrow *ar8 = new Arrow(m_items.at(3),m_items.at(2));
         m_ar_list.append(ar8);
         m_items.at(2)->add_arrow(ar8);
         m_items.at(3)->add_arrow(ar8);
-        /////////////////
         Arrow *ar9 = new Arrow(m_items.at(3),m_items.at(1));
         m_ar_list.append(ar9);
         m_items.at(1)->add_arrow(ar9);
@@ -471,14 +459,14 @@ void Dialog::setup_2_page_items()
         m_items2.at(5)->set_item_size(198,84);
         m_items2.at(6)->set_item_size(148,89);
         //m_items2.at(7)->set_item_size(211,281);
-        //////////////////
         m_items2.at(0)->set_image("atmel.jpg",QRectF(12,15,226,41));
         m_items2.at(1)->set_image("xilinx.jpg",QRectF(34,6,186,63));
         m_items2.at(2)->set_image("exar.png",QRectF(18,2,212,77));
         m_items2.at(3)->set_image("uite.jpg",QRectF(21,11,151,66));
         m_items2.at(4)->set_image("logo_laflin.gif",QRectF(10,10,165,62));
         m_items2.at(5)->set_image("logo_conintec.jpg",QRectF(10,10,165,70));
-        m_items2.at(6)->set_svg_image("instigate_design3.svg",QRectF(4,5,132,79));
+        m_items2.at(6)->set_svg_image("instigate_design3.svg",
+                                      QRectF(4,5,132,79));
         //m_items2.at(7)->set_svg_image("image.svg",QRectF(19,23,63,57));
         QString str2_8 = "<div  style='color:blue'><h3>\
                           Partners and <br>Customers</h3></div>";
@@ -497,7 +485,7 @@ void Dialog::setup_2_page_items()
         m_items2.at(5)->setPos(39,264);
         m_items2.at(6)->setPos(42,139);
         //m_items2.at(7)->setPos(291,168);
-        //////// m_items.at(8) equal m_items2.at(7)  ////////
+        // m_items.at(8) equal m_items2.at(7) 
         QVariant null; // uninitialized QVariant == NULL or QVariant::invalid;
         MySquareStruct strc_8_2 = { null,null,\
                 null,null,null,QString("image.svg"),null,\
@@ -518,37 +506,31 @@ void Dialog::setup_2_page_items()
         //m_ar2_list.append(ar2_0);
         //m_items.at(8)->add_arrow(ar2_0);
         //m_items.at(0)->add_arrow(ar2_0);
-        ///////////////
         Arrow *ar2_1 = new Arrow(m_items2.at(5), m_items.at(8));
         m_ar2_list.append(ar2_1);
         m_items.at(8)->add_arrow(ar2_1);
         m_items2.at(5)->add_arrow(ar2_1);
-        //////////////
         Arrow *ar2_2 = new Arrow(m_items2.at(4), m_items.at(8));
         m_ar2_list.append(ar2_2);
         m_items.at(8)->add_arrow(ar2_2);
         m_items2.at(4)->add_arrow(ar2_2);
-        /////////////
         Arrow *ar2_3 = new Arrow(m_items2.at(3), m_items.at(8));
         m_ar2_list.append(ar2_3);
         m_items.at(8)->add_arrow(ar2_3);
         m_items2.at(3)->add_arrow(ar2_3);
-        ////////////
         Arrow *ar2_4 = new Arrow(m_items2.at(2), m_items.at(8));
         m_ar2_list.append(ar2_4);
         m_items.at(8)->add_arrow(ar2_4);
         m_items2.at(2)->add_arrow(ar2_4);
-        ////////////
         Arrow *ar2_5 = new Arrow(m_items2.at(1), m_items.at(8));
         m_ar2_list.append(ar2_5);
         m_items.at(8)->add_arrow(ar2_5);
         m_items2.at(1)->add_arrow(ar2_5);
-        ////////////
         Arrow *ar2_6 = new Arrow(m_items2.at(0), m_items.at(8));
         m_ar2_list.append(ar2_6);
         m_items2.at(0)->add_arrow(ar2_6);
         m_items.at(8)->add_arrow(ar2_6);
-        /////////// add second page m_items in m_scene /////////
+        // add second page m_items in m_scene 
         for (int i=0 ;i<7 ;++i)
         {
                 m_scene->addItem(m_items2.at(i));

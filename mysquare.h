@@ -72,7 +72,7 @@ public:
         int type() const  {return Type ;} 
         QPolygonF polygon() const { return myPolygon; }
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
-                        QWidget *widget);
+                   QWidget *widget);
         bool Pressed;
         void add_arrow(Arrow *arrow);
         QPointF return_center();
