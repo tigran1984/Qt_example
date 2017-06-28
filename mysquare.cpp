@@ -133,7 +133,7 @@ void MySquare::mousePressEvent(QGraphicsSceneMouseEvent *event)
                 resize_direction_ = rd_bottom;
                 //qDebug() << "rd_right" ;
         }
-        ////// testing diagonal resize /////
+        // testing diagonal resize 
         else if (diagonal_flag) {
                 resize_direction_ = rd_diagonal;
                 //qDebug() << "rd_diagonal" ;
@@ -154,7 +154,7 @@ void MySquare::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
                 QPointF pp = mapToItem(this, p);
                 //QRectF r = rect();
                 QRectF r = boundingRect();
-                //////// minimum size limit //////
+                // minimum size limit 
                 if (r.width() <= myItemRect.width() && r.width() < 30.0) {
                         resize_direction_ = rd_none;
                         return;
@@ -163,7 +163,7 @@ void MySquare::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
                         resize_direction_ = rd_none;
                         return;
                 }
-                ///////////// resize item //// 
+                // resize item  
                 switch (resize_direction_) {
                         case rd_left:
                                 r.setLeft(pp.x());
@@ -246,7 +246,7 @@ void MySquare::hoverMoveEvent(QGraphicsSceneHoverEvent * event)
                 //viewport()->setCursor(Qt::SizeVerCursor);
                 //qDebug() << "cs_vertical" ;
         }
-        ////// testing diagonal resize /////
+        // testing diagonal resize 
         else if (diagl_flag) {
                 this->setCursor(Qt::SizeFDiagCursor);
                 //viewport()->setCursor(Qt::SizeFDiagCursor);

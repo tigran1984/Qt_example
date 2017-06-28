@@ -45,7 +45,7 @@ Dialog::Dialog(QWidget *parent) :
 
 void Dialog::show_first_page()
 {
-        ///////////// apearance of first page //////////////
+        // apearance of first page 
         //m_group_anim_2->clear();
         for (int i=0 ;i<9 ;++i)
         {
@@ -58,14 +58,12 @@ void Dialog::create_2_page_animation()
 {
         // set Animation when page changed //
         //remove_child_items(m_items.at(8));
-        //////////////////////
         m_group_anim_2->addAnimation(pos_animation(
                                 m_items.at(0),701,QPointF(291,168),
                                 QPointF(42,139),QEasingCurve::OutExpo));
         m_group_anim_2->addAnimation(pos_animation(
                                 m_items.at(8),701,QPointF(42,139),
                                 QPointF(291,168),QEasingCurve::OutExpo));
-        ////////////////////////
         //m_group_anim_2->addAnimation(opacity_animation(
         //        m_items.at(0),701,1.0,0.0,QEasingCurve::InExpo));
         m_group_anim_2->addAnimation(opacity_animation(
@@ -84,14 +82,12 @@ void Dialog::create_2_page_animation()
                 m_items.at(7),701,1.0,0.0,QEasingCurve::Linear));
         //m_group_anim_2->addAnimation(opacity_animation(
         //        m_items.at(8),701,1.0,0.0,QEasingCurve::InExpo));
-        ////////////////////
         m_group_anim_2->addAnimation(size_animation(
                                 m_items.at(8),
                                 701,
                                 QSizeF(169,70),
                                 QSizeF(211,281),
                                 QEasingCurve::Linear));
-        ////////////////////
         m_group_anim_2->addAnimation(size_animation(
                                 m_items.at(0),
                                 701,
@@ -137,7 +133,6 @@ void Dialog::animate_and_show_1_page()
         m_items.at(6)->setPos(41,232);
         m_items.at(7)->setPos(42,328);
         //m_items.at(8)->setPos(42,139);
-        ///////////////////
         //m_items.at(0)->set_item_size(314,220);
         //m_items.at(8)->set_item_size(169,70);
         m_items.at(0)->disconnect();
@@ -184,10 +179,8 @@ void Dialog::create_1_page_animation()
         //m_group_anim_3->addAnimation(opacityAntimation(
         //                           m_items2.at(7), 701,1.0,0.0,
         //                           QEasingCurve::Linear));
-        //////////////////////
         //m_items2.at(6)->setZValue(1000);
         //m_items2.at(7)->setZValue(0);
-        ////////////////////
         m_group_anim_3->addAnimation(size_animation(
                                 m_items.at(8),
                                 701,
@@ -428,7 +421,7 @@ void Dialog::setup_1_page_items()
         m_ar_list.append(ar9);
         m_items.at(1)->add_arrow(ar9);
         m_items.at(3)->add_arrow(ar9);
-        /////// add m_items in m_scene //////////
+        // add m_items in m_scene 
         for (int i=0 ;i<9 ;++i)
         {
                 m_scene->addItem(m_items.at(i));
@@ -444,7 +437,7 @@ void Dialog::setup_1_page_items()
 }
 void Dialog::setup_2_page_items()
 {
-        ///////// setup Second Page Items ////
+        // setup Second Page Items 
         QList<MySquare * > item2 ;
         m_items2  =  item2 ;
         for (int i=0 ;i<8 ;++i)
@@ -494,7 +487,7 @@ void Dialog::setup_2_page_items()
         m_item_struct_8_2_page = strc_8_2;
         //m_items.at(8)->initMySquare(m_item_struct_8_2_page);
         m_items.at(8)->print_struct(m_item_struct_8_2_page);
-        //////// m_items.at(0) equal m_items2.at(6)  ////////
+        // m_items.at(0) equal m_items2.at(6)
         MySquareStruct strc_0_2 = { null,null,\
                 null,null,null,QString("instigate_design3.svg"),null,\
                         QRectF(4,5,132,79), null, null, null, null };
